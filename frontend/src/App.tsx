@@ -191,18 +191,33 @@ export default function App() {
       return;
     }
     try {
-      const storedProfile = await api.getProfile();
-      if (storedProfile) {
-        setProfile(storedProfile);
-        saveDraft(storedProfile);
+      if (profileHasContent) {
+        const savedProfile = await api.saveProfile(profile);
+        setProfile(savedProfile);
+        saveDraft(savedProfile);
         setHasStoredDraft(true);
+      } else {
+        const storedProfile = await api.getProfile();
+        if (storedProfile) {
+          setProfile(storedProfile);
+          saveDraft(storedProfile);
+          setHasStoredDraft(true);
+        }
       }
     } catch {
-      // The dashboard can still open and display a useful API error.
+      try {
+        const storedProfile = await api.getProfile();
+        if (storedProfile) {
+          setProfile(storedProfile);
+          saveDraft(storedProfile);
+          setHasStoredDraft(true);
+        }
+      } catch {
+        // The dashboard can still open and display a useful API error.
+      }
     }
     setView("dashboard");
   };
-
   async function openPlan(id: string, currentUser = user) {
     if (!currentUser) {
       setView("auth");

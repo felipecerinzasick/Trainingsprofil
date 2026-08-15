@@ -145,14 +145,14 @@ export function ReviewStep({ profile, updateSection, onEditStep }: ReviewStepPro
 
       {safetyFlags.length > 0 && (
         <Notice tone="warning">
-          Dein Profil enthält Sicherheitsangaben, die vor intensiver Trainingsplanung fachlich geprüft werden sollten. Der Prototyp erzeugt daraus keine Diagnose.
+          Dein Profil enthält Sicherheitsangaben, die vor intensiver Trainingsplanung fachlich geprüft werden sollten. Daraus entsteht keine medizinische Diagnose.
         </Notice>
       )}
 
       <div className="consent-panel">
         <div className="consent-panel__heading">
           <span className="consent-panel__icon"><Icon name="lock" size={23} /></span>
-          <div><h3>Zum Abschluss</h3><p>Diese Checkboxen sind Platzhalter für die spätere produktive Einwilligungsstrecke.</p></div>
+          <div><h3>Zum Abschluss</h3><p>Bitte bestätige die Verarbeitung deiner Angaben und den Trainingshinweis, bevor dein Profil abgeschlossen wird.</p></div>
         </div>
 
         <label className={`checkbox-row ${consent.dataProcessing ? "is-checked" : ""}`}>
@@ -162,7 +162,7 @@ export function ReviewStep({ profile, updateSection, onEditStep }: ReviewStepPro
             onChange={(event) => updateSection("consent", { dataProcessing: event.target.checked })}
           />
           <span className="custom-checkbox"><Icon name="check" size={14} /></span>
-          <span><strong>Ich stimme der Verarbeitung meiner Angaben zur Erstellung meines Trainingsprofils zu.</strong><small>Für die produktive Version muss hier die konkrete Datenschutzerklärung verlinkt werden.</small></span>
+          <span><strong>Ich stimme der Verarbeitung meiner Angaben zur Erstellung und Speicherung meines Trainingsprofils zu.</strong><small>Mit einem Konto werden Profil und erstellte Trainingspläne in der angebundenen Datenbank gespeichert.</small></span>
         </label>
 
         <label className={`checkbox-row ${consent.healthAcknowledgement ? "is-checked" : ""}`}>
@@ -187,7 +187,7 @@ export function ReviewStep({ profile, updateSection, onEditStep }: ReviewStepPro
       </div>
 
       <Notice tone="success" icon="save">
-        In dieser Frontend-Demo bleibt dein Profil lokal im Browser. Beim Abschluss wird noch nichts an einen Server gesendet.
+        Dein Entwurf bleibt bis zur Anmeldung im Browser verfügbar. Nach Login oder Kontoerstellung wird dein Profil im Trainingsbereich gespeichert und kann für Pläne genutzt werden.
       </Notice>
     </div>
   );

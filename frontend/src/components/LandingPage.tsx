@@ -90,7 +90,7 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
             </div>
             <div className="hero__meta">
               <span><Icon name="clock" size={17} /> etwa 6–8 Minuten</span>
-              <span><Icon name="save" size={17} /> wird lokal zwischengespeichert</span>
+              <span><Icon name="save" size={17} /> Profil und Pläne im Konto</span>
               <span><Icon name="shield" size={17} /> jederzeit anpassbar</span>
             </div>
           </div>
@@ -113,10 +113,10 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
           <div className="split-heading">
             <div>
               <span className="eyebrow">Ein Profil, viele Wege</span>
-              <h2>Trainieren, wie es zu deinem Leben passt.</h2>
+              <h2>Trainieren, wie es zu deinem Ziel und Alltag passt.</h2>
             </div>
             <p>
-              Nicht jeder braucht denselben Plan. Der Trainings-Check passt seine Fragen an dein Ziel an – vom ersten Krafttraining bis zur nächsten Langdistanz.
+              Nicht jeder braucht denselben Plan. Der Trainings-Check erfasst Ziel, Erfahrung, Belastbarkeit, Zeitfenster und Ausstattung, damit daraus ein sinnvoller Trainingsblock entstehen kann.
             </p>
           </div>
 
@@ -124,12 +124,12 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
             <article className="audience-card audience-card--runner">
               <div className="audience-card__top">
                 <span className="audience-card__icon"><Icon name="run" size={28} /></span>
-                <span className="audience-card__tag">Wettkampfziel</span>
+                <span className="audience-card__tag">Auf ein Ziel hintrainieren</span>
               </div>
-              <h3>Der Hobbyläufer</h3>
-              <p>Bereitet sich auf Marathon oder Trailrun vor und muss Laufumfang, Krafttraining und Erholung sinnvoll verbinden.</p>
+              <h3>Dein nächstes Ausdauerziel</h3>
+              <p>Ob erster Lauf, Marathon oder Trailrun: Dein Plan verbindet Ausdauertraining, Kraft und Erholung so, dass er zu deinem aktuellen Niveau und deinem Alltag passt.</p>
               <ul>
-                <li><Icon name="check" size={15} /> Event, Distanz und Zieldatum</li>
+                <li><Icon name="check" size={15} /> Ziel, Distanz und Zieldatum</li>
                 <li><Icon name="check" size={15} /> aktueller Wochenumfang</li>
                 <li><Icon name="check" size={15} /> verfügbare Trainingstage</li>
               </ul>
@@ -138,28 +138,28 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
             <article className="audience-card audience-card--tri">
               <div className="audience-card__top">
                 <span className="audience-card__icon"><Icon name="triathlon" size={28} /></span>
-                <span className="audience-card__tag">Mehrere Sportarten</span>
+                <span className="audience-card__tag">Vielseitig trainieren</span>
               </div>
-              <h3>Die Triathletin</h3>
-              <p>Will Schwimmen, Radfahren, Laufen und ergänzende Kraftarbeit in einem realistischen Wochenplan koordinieren.</p>
+              <h3>Mehrere Sportarten, ein Plan</h3>
+              <p>Schwimmen, Radfahren, Laufen und Krafttraining werden so kombiniert, dass Belastung, Fortschritt und Regeneration sinnvoll aufeinander abgestimmt sind.</p>
               <ul>
-                <li><Icon name="check" size={15} /> Zugang zu Pool und Equipment</li>
-                <li><Icon name="check" size={15} /> Erfahrung je Disziplin</li>
-                <li><Icon name="check" size={15} /> Zeitfenster und Präferenzen</li>
+                <li><Icon name="check" size={15} /> Sportarten und Erfahrung</li>
+                <li><Icon name="check" size={15} /> Zugang zu Trainingsorten und Equipment</li>
+                <li><Icon name="check" size={15} /> Zeitfenster und persönliche Präferenzen</li>
               </ul>
             </article>
 
             <article className="audience-card audience-card--healthy">
               <div className="audience-card__top">
                 <span className="audience-card__icon"><Icon name="heart" size={28} /></span>
-                <span className="audience-card__tag">Gesund älter werden</span>
+                <span className="audience-card__tag">Gesundheit und Alltag</span>
               </div>
-              <h3>Die aktive Seniorin</h3>
-              <p>Möchte Kraft, Gleichgewicht und Selbstständigkeit erhalten – mit sicheren Übungen und der Ausstattung, die vorhanden ist.</p>
+              <h3>Stark, beweglich und belastbar bleiben</h3>
+              <p>Für alle, die Kraft, Gleichgewicht und Beweglichkeit erhalten oder verbessern möchten – unabhängig von Alter, Erfahrung oder Ausgangsniveau.</p>
               <ul>
-                <li><Icon name="check" size={15} /> Erfahrung und Belastbarkeit</li>
+                <li><Icon name="check" size={15} /> aktueller Trainingsstand und Belastbarkeit</li>
                 <li><Icon name="check" size={15} /> Beschwerden und Einschränkungen</li>
-                <li><Icon name="check" size={15} /> einfache, gut skalierbare Einheiten</li>
+                <li><Icon name="check" size={15} /> sichere und individuell skalierbare Einheiten</li>
               </ul>
             </article>
           </div>
@@ -238,17 +238,31 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
         <section className="privacy-section" id="datenschutz">
           <div className="page-shell privacy-card">
             <div className="privacy-card__icon"><Icon name="lock" size={32} /></div>
-            <div>
-              <span className="eyebrow">Sensibel behandelt</span>
-              <h2>Deine Gesundheitsangaben verdienen Klarheit.</h2>
+            <div className="privacy-card__copy">
+              <span className="eyebrow">Datenschutz und Einordnung</span>
+              <h2>Deine Angaben werden für dein Konto und deine Trainingspläne gespeichert.</h2>
               <p>
-                Im Prototyp wird dein Entwurf nur lokal in diesem Browser gespeichert. Für eine produktive Version sind Einwilligung, Datenschutzerklärung, Löschkonzept und sichere Backend-Speicherung separat umzusetzen.
+                Wenn du ein Konto erstellst oder einen Plan generierst, speichern wir deine Kontoangaben, dein Trainingsprofil und deine Trainingspläne in der angebundenen Datenbank. Browser-Entwürfe dienen nur dazu, den Check fortzusetzen, bevor du dich anmeldest.
+              </p>
+              <div className="privacy-card__legal" id="hinweis">
+                <article>
+                  <strong>Datenschutzerklärung kurz</strong>
+                  <p>Die Daten werden zur Bereitstellung des Trainingsprofils, der Planerstellung, Speicherung im Dashboard und PDF-Ausgabe verarbeitet. Hosting und Datenbank laufen über Render. Eine Weitergabe zu Werbung oder Verkauf findet nicht statt. Du kannst Berichtigung, Export oder Löschung deiner Konto- und Profildaten anfragen.</p>
+                </article>
+                <article>
+                  <strong>Hinweis</strong>
+                  <p>Trainingspläne ersetzen keine medizinische Diagnose, Behandlung oder persönliche Betreuung. Bei Schmerzen, akuten Beschwerden, Schwangerschaft, Vorerkrankungen oder Unsicherheit solltest du vor Trainingsbeginn fachlichen Rat einholen.</p>
+                </article>
+              </div>
+              <p className="privacy-card__fineprint">
+                Diese Hinweise sind eine kompakte MVP-Datenschutzerklärung. Vor öffentlicher Skalierung sollten Impressum, vollständige Datenschutzerklärung, Löschprozess und Support-Kontakt rechtlich finalisiert werden.
               </p>
             </div>
             <div className="privacy-points">
-              <span><Icon name="check" size={16} /> transparent</span>
-              <span><Icon name="check" size={16} /> änderbar</span>
+              <span><Icon name="check" size={16} /> serverseitig gespeichert</span>
               <span><Icon name="check" size={16} /> exportierbar</span>
+              <span><Icon name="check" size={16} /> löschbar auf Anfrage</span>
+              <span><Icon name="check" size={16} /> keine medizinische Diagnose</span>
             </div>
           </div>
         </section>
@@ -270,8 +284,8 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
       <footer className="landing-footer">
         <div className="page-shell landing-footer__inner">
           <Brand />
-          <p>Full-Stack-MVP für persönliche Trainingsprofile und Trainingspläne.</p>
-          <div><a href="#datenschutz">Datenschutz</a><a href="#top">Nach oben</a></div>
+          <p>Trainingsprofil speichert Konto, Profil und Pläne zur Bereitstellung des Dienstes. Trainingshinweise sind allgemeine Empfehlungen und keine medizinische Beratung.</p>
+          <div><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
         </div>
       </footer>
     </div>

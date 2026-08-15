@@ -157,7 +157,7 @@ export function Onboarding({ profile, setProfile, onExit, onComplete }: Onboardi
         <div className="sidebar-intro">
           <span className="eyebrow">Dein Trainings-Check</span>
           <h2>Schritt für Schritt zu deinem Profil.</h2>
-          <p>Deine Angaben werden automatisch in diesem Browser gespeichert.</p>
+          <p>Dein Entwurf wird im Browser gesichert; mit Konto wird dein Profil in deinem Trainingsbereich gespeichert.</p>
         </div>
 
         <nav className="step-navigation" aria-label="Fortschritt Trainingsprofil">
@@ -183,7 +183,7 @@ export function Onboarding({ profile, setProfile, onExit, onComplete }: Onboardi
 
         <div className={`save-status ${savePulse ? "is-saving" : ""}`}>
           <span><Icon name={savePulse ? "refresh" : "save"} size={16} /></span>
-          <div><strong>{savePulse ? "Wird gespeichert …" : "Entwurf gespeichert"}</strong><small>nur lokal in diesem Browser</small></div>
+          <div><strong>{savePulse ? "Wird gespeichert …" : "Entwurf gespeichert"}</strong><small>Profil wird nach Login serverseitig gespeichert</small></div>
         </div>
       </aside>
 

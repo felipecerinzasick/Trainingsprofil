@@ -94,7 +94,7 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
               {busy ? "Wird verarbeitet …" : mode === "register" ? "Konto erstellen und fortfahren" : "Anmelden"}
               {!busy && <Icon name="arrow-right" size={19} />}
             </button>
-            <small className="auth-card__legal">Dieser MVP enthält noch keine produktive Datenschutzerklärung oder E-Mail-Verifizierung.</small>
+            <small className="auth-card__legal">Mit einem Konto werden Profil und Trainingspläne in der Datenbank gespeichert. Trainingshinweise ersetzen keine medizinische Beratung.</small>
           </form>
         </section>
       </main>
