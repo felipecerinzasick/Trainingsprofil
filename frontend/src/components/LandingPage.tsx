@@ -12,7 +12,7 @@ interface LandingPageProps {
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="Trainingsprofil Startseite">
-      <span className="brand__mark"><BrandLogo /></span>
+      <BrandLogo />
     </a>
   );
 }
@@ -75,9 +75,11 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
         <section className="hero page-shell">
           <div className="hero__copy">
             <div className="hero__eyebrow"><span /><Icon name="spark" size={16} /> Dein persönlicher Trainings-Check</div>
-            <h1>Dein Plan beginnt nicht mit einem Standardprogramm. <em>Sondern mit dir.</em></h1>
+            <h1>Dein Plan beginnt mit dir.</h1>
             <p className="hero__lead">
-              Erzähle uns von deinen Zielen, deinem Alltag, deiner Ausstattung und deinem Körper. Daraus kann später ein Trainingsplan entstehen, der wirklich zu dir passt.
+              Mit deinen Zielen, deinem Alltag und deinen Möglichkeiten.
+              <br />
+              Erzähl uns, was du erreichen möchtest, wie du trainierst, welche Ausstattung dir zur Verfügung steht und was wir berücksichtigen sollten. Daraus entsteht die Grundlage für deinen Trainingsplan.
             </p>
             <div className="hero__actions">
               <button className="button button--primary button--large" onClick={hasDraft ? onResume : onStart}>

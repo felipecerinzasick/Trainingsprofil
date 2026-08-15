@@ -31,7 +31,7 @@ export function CompletePage({ profile, onEdit, onReset, onGenerate, generating,
     <div className="complete-page">
       <header className="complete-header page-shell">
         <button type="button" className="brand" onClick={onEdit}>
-          <span className="brand__mark"><BrandLogo /></span>
+          <BrandLogo />
         </button>
         <div className="complete-header__actions">
           {accountReady && onAccount && <button type="button" className="button button--soft button--small" onClick={onAccount}><Icon name="user" size={16} /> Mein Bereich</button>}

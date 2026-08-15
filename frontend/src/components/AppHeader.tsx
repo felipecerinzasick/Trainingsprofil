@@ -16,7 +16,7 @@ export function AppHeader({ user, onHome, onDashboard, onLogout, action }: AppHe
     <header className="app-header">
       <div className="page-shell app-header__inner">
         <button type="button" className="brand" onClick={onHome}>
-          <span className="brand__mark"><BrandLogo /></span>
+          <BrandLogo />
         </button>
         <div className="app-header__actions">
           {action}

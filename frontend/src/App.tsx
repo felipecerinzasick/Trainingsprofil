@@ -29,7 +29,7 @@ function initialRoute(): { view: AppView; planId?: string } {
 function StatusScreen({ title, text, onHome }: { title: string; text: string; onHome: () => void }) {
   return (
     <div className="status-screen page-shell">
-      <button type="button" className="brand" onClick={onHome}><span className="brand__mark"><BrandLogo /></span></button>
+      <button type="button" className="brand" onClick={onHome}><BrandLogo /></button>
       <span className="loading-orb" />
       <h1>{title}</h1>
       <p>{text}</p>

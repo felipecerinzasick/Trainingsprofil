@@ -144,14 +144,14 @@ export function Onboarding({ profile, setProfile, onExit, onComplete }: Onboardi
     <div className="onboarding-page">
       <header className="onboarding-mobile-header">
         <button type="button" className="mobile-brand" onClick={onExit} aria-label="Zur Startseite">
-          <span><BrandLogo compact /></span>
+          <BrandLogo variant="compact" tone="light" />
         </button>
         <div className="mobile-step-count">{currentStep + 1}/{STEPS.length}</div>
       </header>
 
       <aside className="onboarding-sidebar">
         <button type="button" className="brand brand--sidebar" onClick={onExit} aria-label="Zur Startseite">
-          <span className="brand__mark"><BrandLogo /></span>
+          <BrandLogo tone="light" />
         </button>
 
         <div className="sidebar-intro">

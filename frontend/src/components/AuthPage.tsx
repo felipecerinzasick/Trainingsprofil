@@ -128,7 +128,7 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
     <div className="auth-page">
       <header className="auth-page__header page-shell">
         <button type="button" className="brand" onClick={onBack}>
-          <span className="brand__mark"><BrandLogo /></span>
+          <BrandLogo />
         </button>
         <button type="button" className="button button--ghost button--small" onClick={onBack}>
           <Icon name="arrow-left" size={17} /> Zurück
