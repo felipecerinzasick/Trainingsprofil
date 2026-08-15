@@ -23,14 +23,25 @@ def _ensure_sqlite_directory(database_url: str) -> None:
     Path(raw_path).expanduser().resolve().parent.mkdir(parents=True, exist_ok=True)
 
 
+def normalize_database_url(database_url: str) -> str:
+    if database_url.startswith("postgresql+"):
+        return database_url
+    if database_url.startswith("postgresql://"):
+        return database_url.replace("postgresql://", "postgresql+psycopg://", 1)
+    if database_url.startswith("postgres://"):
+        return database_url.replace("postgres://", "postgresql+psycopg://", 1)
+    return database_url
+
+
 settings = get_settings()
-_ensure_sqlite_directory(settings.database_url)
+database_url = normalize_database_url(settings.database_url)
+_ensure_sqlite_directory(database_url)
 
 engine_kwargs: dict[str, object] = {"pool_pre_ping": True}
-if settings.database_url.startswith("sqlite"):
+if database_url.startswith("sqlite"):
     engine_kwargs["connect_args"] = {"check_same_thread": False}
 
-engine = create_engine(settings.database_url, **engine_kwargs)
+engine = create_engine(database_url, **engine_kwargs)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, expire_on_commit=False)
 
 
