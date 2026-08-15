@@ -2572,6 +2572,35 @@ select {
   box-shadow: var(--shadow-sm);
 }
 
+.google-auth {
+  display: flex;
+  justify-content: center;
+  padding: 30px 38px 16px;
+}
+
+.google-auth.is-disabled {
+  opacity: .55;
+  pointer-events: none;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 38px;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 750;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
+
 .auth-card form {
   padding: 38px;
 }

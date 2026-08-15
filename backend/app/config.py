@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     jwt_secret_key: str = "change-this-development-secret-before-deployment"
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 720
+    google_client_id: str = ""
     cors_origins: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: [
             "http://localhost:5173",

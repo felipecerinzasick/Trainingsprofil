@@ -390,7 +390,19 @@ Render verwendet dabei:
 - Node `22.23.2` für den Frontend-Build
 - `TRAINING_DATABASE_URL` aus der internen Render-Postgres-Verbindung
 - automatisch generierten `TRAINING_JWT_SECRET_KEY`
+- `TRAINING_GOOGLE_CLIENT_ID` für die Anmeldung mit Google
 - automatisch verdrahtete öffentliche URLs für Frontend, API und CORS
+
+## Google-Anmeldung
+
+Die Anmeldung nutzt Google Identity Services mit einem ID-Token. Dafür wird der öffentliche Client-ID-Wert in Frontend und Backend konfiguriert; der Google-Client-Schlüssel wird nicht im Code oder in Render benötigt.
+
+In der Google Cloud Console müssen beim OAuth-Client unter **Authorized JavaScript origins** mindestens diese Ursprünge eingetragen sein:
+
+- `https://trainingsprofil-web.onrender.com`
+- `http://127.0.0.1:5173`
+
+Falls eine eigene Domain verwendet wird, diese zusätzlich als Origin eintragen. Redirect-URIs sind für diesen Button-Flow nicht erforderlich.
 
 Deployment:
 
@@ -413,13 +425,12 @@ Noch nicht produktionsreif sind unter anderem:
 - kein Passwort-zurücksetzen-Prozess
 - Zugriffstoken derzeit im Browser-Local-Storage
 - keine Refresh-Token oder aktive Sitzungsverwaltung
-- SQLite statt PostgreSQL
 - keine Datenbankmigrationen
-- keine produktive Datenschutzerklärung oder versionierte Einwilligung
+- nur kompakte MVP-Datenschutzhinweise statt vollständiger rechtlicher Dokumentation
 - keine administrative Oberfläche
 - keine Abrechnung
 - keine professionelle sportmedizinische Validierung aller Regeln
-- keine öffentliche Bereitstellung, Domain oder TLS-Konfiguration
+- keine eigene Domain
 
 Vor einer öffentlichen Freischaltung unbedingt [`PRODUCTION_CHECKLIST.md`](PRODUCTION_CHECKLIST.md) abarbeiten.
 

@@ -1,8 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { api, ApiError } from "../api/client";
 import type { AuthResponse } from "../api/types";
 import { Icon } from "./Icon";
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
+const GOOGLE_SCRIPT_SRC = "https://accounts.google.com/gsi/client";
+
+interface GoogleCredentialResponse {
+  credential?: string;
+}
+
+declare global {
+  interface Window {
+    google?: {
+      accounts: {
+        id: {
+          initialize: (options: {
+            client_id: string;
+            callback: (response: GoogleCredentialResponse) => void;
+          }) => void;
+          renderButton: (
+            element: HTMLElement,
+            options: {
+              theme: "outline" | "filled_blue" | "filled_black";
+              size: "large" | "medium" | "small";
+              text: "signin_with" | "signup_with" | "continue_with" | "signin";
+              shape: "rectangular" | "pill" | "circle" | "square";
+              width?: number;
+            },
+          ) => void;
+        };
+      };
+    };
+  }
+}
 
 interface AuthPageProps {
   defaultMode?: "register" | "login";
@@ -17,6 +49,63 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
   const [form, setForm] = useState({ firstName, email: "", password: "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const googleButtonRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!GOOGLE_CLIENT_ID || !googleButtonRef.current) return;
+    let cancelled = false;
+
+    const handleGoogleCredential = async (response: GoogleCredentialResponse) => {
+      if (!response.credential) {
+        setError("Google-Anmeldung konnte keine gültige Anmeldung übermitteln.");
+        return;
+      }
+      setBusy(true);
+      setError("");
+      try {
+        const result = await api.loginWithGoogle(response.credential);
+        await onSuccess(result);
+      } catch (reason) {
+        setError(reason instanceof ApiError ? reason.message : "Die Google-Anmeldung ist fehlgeschlagen.");
+      } finally {
+        setBusy(false);
+      }
+    };
+
+    const renderGoogleButton = () => {
+      if (cancelled || !window.google || !googleButtonRef.current) return;
+      googleButtonRef.current.innerHTML = "";
+      window.google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: (response) => void handleGoogleCredential(response),
+      });
+      window.google.accounts.id.renderButton(googleButtonRef.current, {
+        theme: "outline",
+        size: "large",
+        text: "continue_with",
+        shape: "rectangular",
+        width: 320,
+      });
+    };
+
+    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${GOOGLE_SCRIPT_SRC}"]`);
+    if (existingScript) {
+      if (window.google) renderGoogleButton();
+      else existingScript.addEventListener("load", renderGoogleButton, { once: true });
+    } else {
+      const script = document.createElement("script");
+      script.src = GOOGLE_SCRIPT_SRC;
+      script.async = true;
+      script.defer = true;
+      script.onload = renderGoogleButton;
+      script.onerror = () => setError("Google-Anmeldung konnte nicht geladen werden.");
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [onSuccess]);
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -59,7 +148,7 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
             <span><Icon name="calendar" size={20} /><div><strong>Pläne online verfügbar</strong><small>Alle erstellten Trainingsblöcke im persönlichen Dashboard.</small></div></span>
             <span><Icon name="download" size={20} /><div><strong>PDF-Export</strong><small>Sauber formatiert für Smartphone, Ausdruck oder Reise.</small></div></span>
           </div>
-          <div className="auth-local-note"><Icon name="info" size={18} /> Lokaler Entwicklungsmodus: Die Daten liegen zunächst nur in deiner SQLite-Datei auf diesem Computer.</div>
+          <div className="auth-local-note"><Icon name="info" size={18} /> Mit einem Konto werden Profil und Pläne serverseitig gespeichert und bleiben im Dashboard verfügbar.</div>
         </section>
 
         <section className="auth-card" aria-labelledby="auth-title">
@@ -67,6 +156,15 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
             <button type="button" role="tab" aria-selected={mode === "register"} className={mode === "register" ? "is-active" : ""} onClick={() => { setMode("register"); setError(""); }}>Konto erstellen</button>
             <button type="button" role="tab" aria-selected={mode === "login"} className={mode === "login" ? "is-active" : ""} onClick={() => { setMode("login"); setError(""); }}>Anmelden</button>
           </div>
+
+          {GOOGLE_CLIENT_ID && (
+            <>
+              <div className={`google-auth ${busy ? "is-disabled" : ""}`}>
+                <div ref={googleButtonRef} aria-label="Mit Google fortfahren" />
+              </div>
+              <div className="auth-divider"><span>oder mit E-Mail</span></div>
+            </>
+          )}
 
           <form onSubmit={submit}>
             <span className="auth-card__icon"><Icon name={mode === "register" ? "user" : "lock"} size={26} /></span>

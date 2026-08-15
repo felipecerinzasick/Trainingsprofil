@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from fastapi.testclient import TestClient
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -62,6 +63,49 @@ def test_account_profile_plan_and_pdf_flow(client: TestClient) -> None:
 def test_plan_generation_requires_authentication(client: TestClient) -> None:
     response = client.post("/api/plans/generate", json={"profile": load_profile(), "durationWeeks": 4})
     assert response.status_code == 401
+
+
+def test_google_login_creates_account(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    def fake_verify(_: str) -> dict[str, object]:
+        return {
+            "email": "google-user@example.com",
+            "email_verified": True,
+            "given_name": "Greta",
+        }
+
+    monkeypatch.setattr("app.api.auth.verify_google_credential", fake_verify)
+
+    response = client.post("/api/auth/google", json={"credential": "fake-google-credential-token"})
+
+    assert response.status_code == 200, response.text
+    payload = response.json()
+    assert payload["accessToken"]
+    assert payload["user"]["email"] == "google-user@example.com"
+    assert payload["user"]["firstName"] == "Greta"
+
+
+def test_google_login_links_existing_email_account(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    register = client.post(
+        "/api/auth/register",
+        json={"email": "sam@example.com", "password": "very-secure-password", "firstName": "Sam"},
+    )
+    assert register.status_code == 201, register.text
+
+    def fake_verify(_: str) -> dict[str, object]:
+        return {
+            "email": "SAM@example.com",
+            "email_verified": True,
+            "given_name": "Samuel",
+        }
+
+    monkeypatch.setattr("app.api.auth.verify_google_credential", fake_verify)
+
+    response = client.post("/api/auth/google", json={"credential": "fake-google-credential-token"})
+
+    assert response.status_code == 200, response.text
+    payload = response.json()
+    assert payload["user"]["email"] == "sam@example.com"
+    assert payload["user"]["firstName"] == "Sam"
 
 
 def test_plan_generation_returns_structured_safety_block(client: TestClient) -> None:

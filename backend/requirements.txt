@@ -8,3 +8,5 @@ PyJWT==2.13.0
 argon2-cffi==25.1.0
 reportlab==4.4.9
 psycopg[binary]==3.3.4
+google-auth==2.45.0
+requests==2.34.2

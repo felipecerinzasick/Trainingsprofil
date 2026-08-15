@@ -95,6 +95,15 @@ export const api = {
     return result;
   },
 
+  loginWithGoogle: async (credential: string) => {
+    const result = await request<AuthResponse>("/auth/google", {
+      method: "POST",
+      body: JSON.stringify({ credential }),
+    }, false);
+    authStore.setToken(result.accessToken);
+    return result;
+  },
+
   me: () => request<AuthUser>("/auth/me"),
 
   getProfile: () => request<TrainingProfile | null>("/profile"),
