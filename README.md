@@ -376,7 +376,34 @@ Die relevante Dokumentation findest du in:
 
 ---
 
-# 10. Wichtige Grenzen dieses MVP
+# 10. Deployment auf Render
+
+Die Datei [`render.yaml`](render.yaml) beschreibt die Render-Infrastruktur:
+
+- `trainingsprofil-api` – FastAPI-Web-Service aus `backend/`
+- `trainingsprofil-web` – statische Vite-/React-Seite aus `frontend/`
+- `trainingsprofil-db` – Render-Postgres-Datenbank für gespeicherte Konten, Profile und Pläne
+
+Render verwendet dabei:
+
+- Python `3.11.13` für das Backend
+- Node `22.23.2` für den Frontend-Build
+- `TRAINING_DATABASE_URL` aus der internen Render-Postgres-Verbindung
+- automatisch generierten `TRAINING_JWT_SECRET_KEY`
+- automatisch verdrahtete öffentliche URLs für Frontend, API und CORS
+
+Deployment:
+
+1. In Render **New → Blueprint** wählen.
+2. Das GitHub-Repository `felipecerinzasick/Trainingsprofil` verbinden.
+3. Branch `main` und Blueprint-Datei `render.yaml` auswählen.
+4. Blueprint anwenden und die Deploy-Logs der drei Ressourcen prüfen.
+
+Hinweis: Die Datenbank nutzt `basic-256mb`, weil das MVP Benutzerkonten und Pläne dauerhaft speichern soll. Ohne Postgres oder persistenten Datenträger würde SQLite auf Render bei Neustarts/Deploys Daten verlieren.
+
+---
+
+# 11. Wichtige Grenzen dieses MVP
 
 Der aktuelle Stand ist für **lokale Entwicklung und Produkttests**, nicht für den öffentlichen Betrieb mit echten Gesundheitsdaten.
 
@@ -398,7 +425,7 @@ Vor einer öffentlichen Freischaltung unbedingt [`PRODUCTION_CHECKLIST.md`](PROD
 
 ---
 
-# 11. Projektstruktur
+# 12. Projektstruktur
 
 ```text
 trainingsplan-fullstack/

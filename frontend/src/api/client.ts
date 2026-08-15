@@ -1,7 +1,9 @@
 import type { TrainingProfile } from "../types";
 import type { ApiProblem, AuthResponse, AuthUser, PlanListItem, PlanRecord } from "./types";
 
-const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://127.0.0.1:8000/api";
+const configuredApiUrl = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://127.0.0.1:8000/api";
+const normalizedApiUrl = configuredApiUrl.replace(/\/+$/, "");
+const API_BASE = normalizedApiUrl.endsWith("/api") ? normalizedApiUrl : `${normalizedApiUrl}/api`;
 const TOKEN_KEY = "trainingsplan-access-token-v1";
 
 export class ApiError extends Error {
