@@ -19,19 +19,9 @@ function Brand() {
 
 function HeroVisual() {
   return (
-    <div className="hero-visual" aria-label="Beispiele für unterschiedliche Trainingsziele">
+    <div className="hero-visual" aria-label="Dein Coach begleitet dein Trainingsprofil">
       <div className="hero-visual__glow" />
-      <svg className="hero-visual__track" viewBox="0 0 560 500" role="img" aria-hidden="true">
-        <path d="M88 356C48 219 130 79 270 71c121-7 225 79 232 201 6 105-66 190-170 201-107 12-201-55-223-149-21-92 28-178 113-211 75-29 159 3 192 71 29 60 11 135-41 173-49 35-120 29-160-13-36-37-42-96-12-138" />
-      </svg>
-      <div className="hero-visual__person">
-        <span className="person-head" />
-        <span className="person-body" />
-        <span className="person-arm person-arm--left" />
-        <span className="person-arm person-arm--right" />
-        <span className="person-leg person-leg--left" />
-        <span className="person-leg person-leg--right" />
-      </div>
+      <img className="hero-visual__coach" src="/dein_coach.png" alt="Dein Coach" />
 
       <div className="float-card float-card--goal">
         <span className="float-card__icon float-card__icon--lime"><Icon name="flag" size={18} /></span>
