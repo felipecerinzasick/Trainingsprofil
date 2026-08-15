@@ -224,11 +224,11 @@ strong {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   color: var(--ink);
   font-size: 1.05rem;
   font-weight: 850;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   text-transform: lowercase;
   border: 0;
   background: none;
@@ -237,14 +237,15 @@ strong {
 }
 
 .brand__mark {
-  width: 38px;
-  height: 38px;
+  width: clamp(150px, 16vw, 196px);
+  height: 48px;
   display: grid;
   place-items: center;
-  border-radius: 13px;
-  background: #fff;
-  box-shadow: 0 6px 14px rgba(18, 60, 59, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 6px 14px rgba(18, 60, 59, 0.08);
   overflow: hidden;
+  padding: 6px 8px;
 }
 
 .brand-logo {
@@ -255,8 +256,8 @@ strong {
 }
 
 .brand-logo--compact {
-  width: 25px;
-  height: 25px;
+  width: 124px;
+  height: 30px;
 }
 
 /* Landing */
@@ -2230,8 +2231,8 @@ select {
   .onboarding-sidebar { display: none; }
   .onboarding-main { margin-left: 0; padding-top: 64px; padding-bottom: 100px; }
   .onboarding-mobile-header { position: fixed; inset: 0 0 auto; z-index: 30; height: 64px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; background: var(--ink); color: #fff; }
-  .mobile-brand { border: 0; background: transparent; color: #fff; display: flex; align-items: center; gap: 8px; font-weight: 850; letter-spacing: -.035em; cursor: pointer; }
-  .mobile-brand > span { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 10px; background: var(--accent); color: var(--ink); }
+  .mobile-brand { border: 0; background: transparent; color: #fff; display: flex; align-items: center; gap: 8px; font-weight: 850; letter-spacing: 0; cursor: pointer; }
+  .mobile-brand > span { width: 140px; height: 38px; display: grid; place-items: center; border-radius: 8px; background: #fff; color: var(--ink); padding: 4px 7px; }
   .mobile-step-count { color: rgba(255,255,255,.65); font-size: .75rem; font-weight: 750; }
   .mobile-progress { position: fixed; top: 64px; left: 0; right: 0; z-index: 30; height: 4px; display: block; background: rgba(255,255,255,.2); }
   .mobile-progress span { height: 100%; display: block; background: var(--accent); transition: width 220ms ease; }
@@ -2256,8 +2257,7 @@ select {
 
 @media (max-width: 640px) {
   .button--large { width: 100%; }
-  .landing-nav__inner .brand > span:last-child { display: none; }
-  .landing-nav__inner .brand__mark { width: 36px; height: 36px; }
+  .landing-nav__inner .brand__mark { width: 142px; height: 38px; }
   .landing-nav__inner .button { font-size: .76rem; }
   .hero { padding-top: 38px; }
   .hero__eyebrow { font-size: .69rem; }

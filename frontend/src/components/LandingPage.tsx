@@ -13,7 +13,6 @@ function Brand() {
   return (
     <a className="brand" href="#top" aria-label="Trainingsprofil Startseite">
       <span className="brand__mark"><BrandLogo /></span>
-      <span>trainingsprofil</span>
     </a>
   );
 }
