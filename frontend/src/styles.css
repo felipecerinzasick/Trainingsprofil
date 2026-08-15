@@ -241,7 +241,7 @@ strong {
   --brand-word: var(--ink-deep);
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   height: 48px;
   max-width: 100%;
   color: var(--brand-word);
@@ -253,37 +253,47 @@ strong {
 }
 
 .brand-logo__mark {
-  width: 43px;
-  height: 43px;
+  width: auto;
+  height: 46px;
   flex: 0 0 auto;
   display: block;
+  object-fit: contain;
 }
 
 .brand-logo__wordmark {
   color: var(--brand-word);
-  font-size: 1.68rem;
-  font-weight: 850;
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 1.62rem;
+  font-weight: 500;
   letter-spacing: 0;
   line-height: 1;
 }
 
+.brand-logo__wordmark-strong {
+  font-weight: 850;
+}
+
+.brand-logo__wordmark-light {
+  font-weight: 360;
+}
+
 .brand-logo--mark {
-  width: 48px;
+  width: auto;
   justify-content: center;
 }
 
 .brand-logo--compact {
   height: 38px;
-  gap: 7px;
+  gap: 6px;
 }
 
 .brand-logo--compact .brand-logo__mark {
-  width: 34px;
-  height: 34px;
+  height: 36px;
 }
 
 .brand-logo--compact .brand-logo__wordmark {
-  font-size: 1.28rem;
+  font-size: 1.22rem;
 }
 
 .brand-logo__slogan {
@@ -2292,9 +2302,9 @@ select {
 
 @media (max-width: 640px) {
   .button--large { width: 100%; }
-  .landing-nav__inner .brand-logo { height: 38px; gap: 7px; }
-  .landing-nav__inner .brand-logo__mark { width: 34px; height: 34px; }
-  .landing-nav__inner .brand-logo__wordmark { font-size: 1.25rem; }
+  .landing-nav__inner .brand-logo { height: 38px; gap: 6px; }
+  .landing-nav__inner .brand-logo__mark { height: 36px; }
+  .landing-nav__inner .brand-logo__wordmark { font-size: 1.16rem; }
   .landing-nav__inner .button { font-size: .76rem; }
   .hero { padding-top: 38px; }
   .hero__eyebrow { font-size: .69rem; }
@@ -2390,9 +2400,9 @@ select {
   .page-shell { width: calc(100% - 24px); }
   .landing-nav__inner .button svg { display: none; }
   .landing-nav__inner { gap: 10px; }
-  .landing-nav__inner .brand-logo { height: 36px; gap: 6px; }
-  .landing-nav__inner .brand-logo__mark { width: 31px; height: 31px; }
-  .landing-nav__inner .brand-logo__wordmark { font-size: 1.1rem; }
+  .landing-nav__inner .brand-logo { height: 36px; gap: 5px; }
+  .landing-nav__inner .brand-logo__mark { height: 33px; }
+  .landing-nav__inner .brand-logo__wordmark { font-size: 1.02rem; }
   .landing-nav .button { padding-inline: 13px; }
   .hero h1 { font-size: 2.28rem; }
   .hero-visual { min-height: 390px; }
