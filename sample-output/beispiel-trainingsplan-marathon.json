@@ -1,0 +1,1886 @@
+{
+  "schemaVersion": "1.0",
+  "engineVersion": "1.0.0",
+  "id": "9d03f462-2858-4676-8d3b-26d58f5a3a10",
+  "title": "Frühlingsmarathon - 4-Wochen-Trainingsblock",
+  "subtitle": "Grundlagenphase · 5 Einheiten pro Woche",
+  "status": "active",
+  "createdAt": "2026-08-15T11:19:00.893406+00:00",
+  "startsOn": "2026-09-01",
+  "endsOn": "2026-09-28",
+  "durationWeeks": 4,
+  "sessionsPerWeek": 5,
+  "goalType": "marathon",
+  "discipline": "running",
+  "phase": "foundation",
+  "athleteSnapshot": {
+    "firstName": "Nora",
+    "ageGroup": "30–39",
+    "goal": "Auf ein konkretes Ziel vorbereiten",
+    "sports": [
+      "Laufen",
+      "Krafttraining"
+    ],
+    "experience": "regelmässig trainierend",
+    "currentTrainingDays": 4,
+    "event": {
+      "name": "Frühlingsmarathon",
+      "date": "2027-04-18",
+      "distance": "42,2 km",
+      "target": "gesund ankommen, idealerweise unter 4:15"
+    },
+    "equipmentSummary": [
+      "Langes Widerstandsband",
+      "Körpergewicht",
+      "Kurzhantel(n)",
+      "Freie Bodenfläche",
+      "Trainingsmatte",
+      "Outdoor-Strecke",
+      "Wand"
+    ],
+    "restrictionSummary": [
+      "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+    ]
+  },
+  "safety": {
+    "status": "ready",
+    "generationAllowed": true,
+    "notices": [],
+    "disclaimer": "Der Plan ist eine automatisierte Trainingshilfe und keine medizinische Diagnose oder Therapie. Neue, zunehmende oder ungeklärte Beschwerden müssen fachlich abgeklärt werden."
+  },
+  "principles": [
+    "Die geplante Intensität wird über RPE und den Sprechtest gesteuert - nicht über ein starres Tempo.",
+    "Technisch saubere, gut verträgliche Wiederholungen haben Vorrang vor zusätzlichem Gewicht oder Umfang.",
+    "Die vierte Woche jedes Blocks reduziert die Belastung, damit Anpassung und Erholung stattfinden können.",
+    "Ruhige Einheiten bilden die Basis; Qualitätsreize bleiben gezielt und klar begrenzt.",
+    "Bei Zeitmangel zuerst Zubehör kürzen; Hauptteil und Warm-up bleiben bestehen."
+  ],
+  "planNotes": [
+    "Alltagshinweis: Der lange Lauf passt am besten am Sonntag; unter der Woche maximal 60 Minuten."
+  ],
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "theme": "Ankommen und Technik",
+      "coachNote": "Belastung kalibrieren und Bewegungsqualität sichern.",
+      "loadFactor": 0.9,
+      "targetMinutes": 310,
+      "sessions": [
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Lockerer Dauerlauf",
+          "subtitle": "Woche 1 - 50 Minuten",
+          "durationMinutes": 50,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Locker einlaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr ruhig beginnen; bei Bedarf Gehpausen."
+                },
+                {
+                  "title": "Ruhiger Dauerlauf",
+                  "dose": "32 Min.",
+                  "intensity": "RPE 3-4",
+                  "details": "Tempo so wählen, dass ganze Sätze möglich bleiben."
+                },
+                {
+                  "title": "Lockeres Auslaufen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Schritte verkürzen und Atmung beruhigen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.9,
+          "id": "W01-S01",
+          "date": "2026-09-01",
+          "weekday": "Dienstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Ganzkörper A - stabile Basis",
+          "subtitle": "Woche 1: Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001324",
+                  "name": "Goblet Squat mit Kurzhantel",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Bewegungsumfang und Belastung konservativ wählen.",
+                    "Nur beschwerdearm ausführen; bei Bedarf Alternative nutzen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001321",
+                      "name": "Frontkniebeuge mit zwei Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001330",
+                      "name": "Kniebeuge mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000703",
+                  "name": "Kurzhantel-Floor-Press",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Trizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000699",
+                      "name": "Einarmiger Kurzhantel-Floor-Press"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000722",
+                  "name": "Kurzhantelrudern beidarmig vorgebeugt",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Rhomboiden und mittlerer Rücken",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000715",
+                      "name": "Einarmiges Kurzhantelrudern ohne Abstützen"
+                    },
+                    {
+                      "exerciseId": "EX000710",
+                      "name": "Alternierendes Kurzhantelrudern vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001273",
+                  "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, kontralateral",
+                  "pattern": "Hüftbeuge (Hinge)",
+                  "primaryMuscle": "Hintere Oberschenkelmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001268",
+                      "name": "B-Stance rumänisches Kreuzheben mit Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001272",
+                      "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, ipsilateral"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000134",
+                  "name": "Dead Bug, Grundform",
+                  "pattern": "Anti-Extension",
+                  "primaryMuscle": "Tiefe Rumpfmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Trainingsmatte"
+                  ],
+                  "sets": 3,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000126",
+                      "name": "Dead Bug mit Fersentippen"
+                    },
+                    {
+                      "exerciseId": "EX000167",
+                      "name": "Plank Walk-up"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000069",
+                  "name": "Suitcase March auf der Stelle",
+                  "pattern": "Tragen/Halten",
+                  "primaryMuscle": "Seitliche Bauchmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)"
+                  ],
+                  "sets": 3,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000040",
+                      "name": "Farmer's March auf der Stelle"
+                    },
+                    {
+                      "exerciseId": "EX000068",
+                      "name": "Suitcase Carry mit Kurzhantel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Kurzhantel(n)",
+            "Körpergewicht",
+            "Trainingsmatte"
+          ],
+          "adaptations": [
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Lass etwa zwei technisch saubere Wiederholungen im Tank. Belastung nur steigern, wenn alle Sätze kontrolliert bleiben.",
+          "loadFactor": 0.9,
+          "id": "W01-S02",
+          "date": "2026-09-03",
+          "weekday": "Donnerstag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Tempo- und Techniklauf",
+          "subtitle": "Woche 1 - 60 Minuten",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "6-8/10",
+            "zone": "wechselnd Zone 2-4",
+            "talkTest": "im Arbeitsintervall nur kurze Sätze"
+          },
+          "objective": "Gezielt an Tempo, Schwelle oder Technik arbeiten, ohne maximal zu trainieren.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen plus Lauf-ABC",
+                  "dose": "12-15 Min.",
+                  "intensity": "RPE 2-4",
+                  "details": "Locker laufen, danach 3 kurze Technikübungen."
+                },
+                {
+                  "title": "Qualitätsblock",
+                  "dose": "5 x 4 Min. zügig / 2 Min. locker",
+                  "intensity": "RPE 6-8",
+                  "details": "Stabiler Rhythmus, die letzte Wiederholung soll technisch so sauber wie die erste sein."
+                },
+                {
+                  "title": "Auslaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker beenden."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.9,
+          "id": "W01-S03",
+          "date": "2026-09-05",
+          "weekday": "Samstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Regenerativer Lauf/Gehmix",
+          "subtitle": "Woche 1 - 35 Minuten",
+          "durationMinutes": 35,
+          "intensity": {
+            "rpe": "2-3/10",
+            "zone": "Zone 1-2",
+            "talkTest": "sehr lockere Unterhaltung"
+          },
+          "objective": "Durchblutung fördern, ohne zusätzliche Ermüdung aufzubauen.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Regenerativer Lauf/Gehmix",
+                  "dose": "30 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Kein Tempodruck. Gehpausen sind Teil der Einheit."
+                },
+                {
+                  "title": "Mobil ausklingen",
+                  "dose": "5 Min.",
+                  "intensity": "sehr locker",
+                  "details": "Waden, Hüfte und Fussgelenke leicht bewegen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.9,
+          "id": "W01-S04",
+          "date": "2026-09-06",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Langer Lauf",
+          "subtitle": "Woche 1 - 105 Minuten",
+          "durationMinutes": 105,
+          "intensity": {
+            "rpe": "3-5/10",
+            "zone": "überwiegend Zone 2",
+            "talkTest": "meist ganze Sätze möglich"
+          },
+          "objective": "Ausdauer, Energieversorgung und mentale Ruhe unter längerer Belastung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker starten."
+                },
+                {
+                  "title": "Langer, ruhiger Hauptteil",
+                  "dose": "90 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Gleichmässig locker laufen; Verpflegung und Trinken frühzeitig üben."
+                },
+                {
+                  "title": "Auslaufen/Gehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Puls und Atmung normalisieren."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.9,
+          "id": "W01-S05",
+          "date": "2026-09-07",
+          "weekday": "Montag",
+          "preferredTime": "evening"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 2,
+      "theme": "Stabilisieren",
+      "coachNote": "Wiederholungen oder Zeit moderat erweitern.",
+      "loadFactor": 1.0,
+      "targetMinutes": 330,
+      "sessions": [
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Lockerer Dauerlauf",
+          "subtitle": "Woche 2 - 55 Minuten",
+          "durationMinutes": 55,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Locker einlaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr ruhig beginnen; bei Bedarf Gehpausen."
+                },
+                {
+                  "title": "Ruhiger Dauerlauf",
+                  "dose": "37 Min.",
+                  "intensity": "RPE 3-4",
+                  "details": "Tempo so wählen, dass ganze Sätze möglich bleiben."
+                },
+                {
+                  "title": "Lockeres Auslaufen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Schritte verkürzen und Atmung beruhigen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.0,
+          "id": "W02-S01",
+          "date": "2026-09-08",
+          "weekday": "Dienstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Ganzkörper A - stabile Basis",
+          "subtitle": "Woche 2: Wiederholungen innerhalb des Zielbereichs steigern.",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Wiederholungen innerhalb des Zielbereichs steigern.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001324",
+                  "name": "Goblet Squat mit Kurzhantel",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Bewegungsumfang und Belastung konservativ wählen.",
+                    "Nur beschwerdearm ausführen; bei Bedarf Alternative nutzen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001321",
+                      "name": "Frontkniebeuge mit zwei Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001330",
+                      "name": "Kniebeuge mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000703",
+                  "name": "Kurzhantel-Floor-Press",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Trizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000699",
+                      "name": "Einarmiger Kurzhantel-Floor-Press"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000722",
+                  "name": "Kurzhantelrudern beidarmig vorgebeugt",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Rhomboiden und mittlerer Rücken",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000715",
+                      "name": "Einarmiges Kurzhantelrudern ohne Abstützen"
+                    },
+                    {
+                      "exerciseId": "EX000710",
+                      "name": "Alternierendes Kurzhantelrudern vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001273",
+                  "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, kontralateral",
+                  "pattern": "Hüftbeuge (Hinge)",
+                  "primaryMuscle": "Hintere Oberschenkelmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 3,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001268",
+                      "name": "B-Stance rumänisches Kreuzheben mit Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001272",
+                      "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, ipsilateral"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000134",
+                  "name": "Dead Bug, Grundform",
+                  "pattern": "Anti-Extension",
+                  "primaryMuscle": "Tiefe Rumpfmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Trainingsmatte"
+                  ],
+                  "sets": 3,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000126",
+                      "name": "Dead Bug mit Fersentippen"
+                    },
+                    {
+                      "exerciseId": "EX000167",
+                      "name": "Plank Walk-up"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000069",
+                  "name": "Suitcase March auf der Stelle",
+                  "pattern": "Tragen/Halten",
+                  "primaryMuscle": "Seitliche Bauchmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)"
+                  ],
+                  "sets": 3,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000040",
+                      "name": "Farmer's March auf der Stelle"
+                    },
+                    {
+                      "exerciseId": "EX000068",
+                      "name": "Suitcase Carry mit Kurzhantel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Kurzhantel(n)",
+            "Körpergewicht",
+            "Trainingsmatte"
+          ],
+          "adaptations": [
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Lass etwa zwei technisch saubere Wiederholungen im Tank. Belastung nur steigern, wenn alle Sätze kontrolliert bleiben.",
+          "loadFactor": 1.0,
+          "id": "W02-S02",
+          "date": "2026-09-10",
+          "weekday": "Donnerstag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Tempo- und Techniklauf",
+          "subtitle": "Woche 2 - 60 Minuten",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "6-8/10",
+            "zone": "wechselnd Zone 2-4",
+            "talkTest": "im Arbeitsintervall nur kurze Sätze"
+          },
+          "objective": "Gezielt an Tempo, Schwelle oder Technik arbeiten, ohne maximal zu trainieren.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen plus Lauf-ABC",
+                  "dose": "12-15 Min.",
+                  "intensity": "RPE 2-4",
+                  "details": "Locker laufen, danach 3 kurze Technikübungen."
+                },
+                {
+                  "title": "Qualitätsblock",
+                  "dose": "5 x 4 Min. zügig / 2 Min. locker",
+                  "intensity": "RPE 6-8",
+                  "details": "Stabiler Rhythmus, die letzte Wiederholung soll technisch so sauber wie die erste sein."
+                },
+                {
+                  "title": "Auslaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker beenden."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.0,
+          "id": "W02-S03",
+          "date": "2026-09-12",
+          "weekday": "Samstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Regenerativer Lauf/Gehmix",
+          "subtitle": "Woche 2 - 40 Minuten",
+          "durationMinutes": 40,
+          "intensity": {
+            "rpe": "2-3/10",
+            "zone": "Zone 1-2",
+            "talkTest": "sehr lockere Unterhaltung"
+          },
+          "objective": "Durchblutung fördern, ohne zusätzliche Ermüdung aufzubauen.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Regenerativer Lauf/Gehmix",
+                  "dose": "35 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Kein Tempodruck. Gehpausen sind Teil der Einheit."
+                },
+                {
+                  "title": "Mobil ausklingen",
+                  "dose": "5 Min.",
+                  "intensity": "sehr locker",
+                  "details": "Waden, Hüfte und Fussgelenke leicht bewegen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.0,
+          "id": "W02-S04",
+          "date": "2026-09-13",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Langer Lauf",
+          "subtitle": "Woche 2 - 115 Minuten",
+          "durationMinutes": 115,
+          "intensity": {
+            "rpe": "3-5/10",
+            "zone": "überwiegend Zone 2",
+            "talkTest": "meist ganze Sätze möglich"
+          },
+          "objective": "Ausdauer, Energieversorgung und mentale Ruhe unter längerer Belastung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker starten."
+                },
+                {
+                  "title": "Langer, ruhiger Hauptteil",
+                  "dose": "100 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Gleichmässig locker laufen; Verpflegung und Trinken frühzeitig üben."
+                },
+                {
+                  "title": "Auslaufen/Gehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Puls und Atmung normalisieren."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.0,
+          "id": "W02-S05",
+          "date": "2026-09-14",
+          "weekday": "Montag",
+          "preferredTime": "evening"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 3,
+      "theme": "Aufbaureiz",
+      "coachNote": "Stärkste Woche des Zyklus, ohne maximale Belastungen.",
+      "loadFactor": 1.08,
+      "targetMinutes": 345,
+      "sessions": [
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Lockerer Dauerlauf",
+          "subtitle": "Woche 3 - 60 Minuten",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Locker einlaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr ruhig beginnen; bei Bedarf Gehpausen."
+                },
+                {
+                  "title": "Ruhiger Dauerlauf",
+                  "dose": "42 Min.",
+                  "intensity": "RPE 3-4",
+                  "details": "Tempo so wählen, dass ganze Sätze möglich bleiben."
+                },
+                {
+                  "title": "Lockeres Auslaufen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Schritte verkürzen und Atmung beruhigen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.08,
+          "id": "W03-S01",
+          "date": "2026-09-15",
+          "weekday": "Dienstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Ganzkörper A - stabile Basis",
+          "subtitle": "Woche 3: Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001324",
+                  "name": "Goblet Squat mit Kurzhantel",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 4,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Bewegungsumfang und Belastung konservativ wählen.",
+                    "Nur beschwerdearm ausführen; bei Bedarf Alternative nutzen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001321",
+                      "name": "Frontkniebeuge mit zwei Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001330",
+                      "name": "Kniebeuge mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000703",
+                  "name": "Kurzhantel-Floor-Press",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Trizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 4,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000699",
+                      "name": "Einarmiger Kurzhantel-Floor-Press"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000722",
+                  "name": "Kurzhantelrudern beidarmig vorgebeugt",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Rhomboiden und mittlerer Rücken",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 4,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000715",
+                      "name": "Einarmiges Kurzhantelrudern ohne Abstützen"
+                    },
+                    {
+                      "exerciseId": "EX000710",
+                      "name": "Alternierendes Kurzhantelrudern vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001273",
+                  "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, kontralateral",
+                  "pattern": "Hüftbeuge (Hinge)",
+                  "primaryMuscle": "Hintere Oberschenkelmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 4,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001268",
+                      "name": "B-Stance rumänisches Kreuzheben mit Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001272",
+                      "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, ipsilateral"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000134",
+                  "name": "Dead Bug, Grundform",
+                  "pattern": "Anti-Extension",
+                  "primaryMuscle": "Tiefe Rumpfmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Trainingsmatte"
+                  ],
+                  "sets": 4,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000126",
+                      "name": "Dead Bug mit Fersentippen"
+                    },
+                    {
+                      "exerciseId": "EX000167",
+                      "name": "Plank Walk-up"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000069",
+                  "name": "Suitcase March auf der Stelle",
+                  "pattern": "Tragen/Halten",
+                  "primaryMuscle": "Seitliche Bauchmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)"
+                  ],
+                  "sets": 4,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000040",
+                      "name": "Farmer's March auf der Stelle"
+                    },
+                    {
+                      "exerciseId": "EX000068",
+                      "name": "Suitcase Carry mit Kurzhantel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Kurzhantel(n)",
+            "Körpergewicht",
+            "Trainingsmatte"
+          ],
+          "adaptations": [
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Lass etwa zwei technisch saubere Wiederholungen im Tank. Belastung nur steigern, wenn alle Sätze kontrolliert bleiben.",
+          "loadFactor": 1.08,
+          "id": "W03-S02",
+          "date": "2026-09-17",
+          "weekday": "Donnerstag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Tempo- und Techniklauf",
+          "subtitle": "Woche 3 - 60 Minuten",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "6-8/10",
+            "zone": "wechselnd Zone 2-4",
+            "talkTest": "im Arbeitsintervall nur kurze Sätze"
+          },
+          "objective": "Gezielt an Tempo, Schwelle oder Technik arbeiten, ohne maximal zu trainieren.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen plus Lauf-ABC",
+                  "dose": "12-15 Min.",
+                  "intensity": "RPE 2-4",
+                  "details": "Locker laufen, danach 3 kurze Technikübungen."
+                },
+                {
+                  "title": "Qualitätsblock",
+                  "dose": "5 x 4 Min. zügig / 2 Min. locker",
+                  "intensity": "RPE 6-8",
+                  "details": "Stabiler Rhythmus, die letzte Wiederholung soll technisch so sauber wie die erste sein."
+                },
+                {
+                  "title": "Auslaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker beenden."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.08,
+          "id": "W03-S03",
+          "date": "2026-09-19",
+          "weekday": "Samstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Regenerativer Lauf/Gehmix",
+          "subtitle": "Woche 3 - 40 Minuten",
+          "durationMinutes": 40,
+          "intensity": {
+            "rpe": "2-3/10",
+            "zone": "Zone 1-2",
+            "talkTest": "sehr lockere Unterhaltung"
+          },
+          "objective": "Durchblutung fördern, ohne zusätzliche Ermüdung aufzubauen.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Regenerativer Lauf/Gehmix",
+                  "dose": "35 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Kein Tempodruck. Gehpausen sind Teil der Einheit."
+                },
+                {
+                  "title": "Mobil ausklingen",
+                  "dose": "5 Min.",
+                  "intensity": "sehr locker",
+                  "details": "Waden, Hüfte und Fussgelenke leicht bewegen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.08,
+          "id": "W03-S04",
+          "date": "2026-09-20",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Langer Lauf",
+          "subtitle": "Woche 3 - 125 Minuten",
+          "durationMinutes": 125,
+          "intensity": {
+            "rpe": "3-5/10",
+            "zone": "überwiegend Zone 2",
+            "talkTest": "meist ganze Sätze möglich"
+          },
+          "objective": "Ausdauer, Energieversorgung und mentale Ruhe unter längerer Belastung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker starten."
+                },
+                {
+                  "title": "Langer, ruhiger Hauptteil",
+                  "dose": "110 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Gleichmässig locker laufen; Verpflegung und Trinken frühzeitig üben."
+                },
+                {
+                  "title": "Auslaufen/Gehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Puls und Atmung normalisieren."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 1.08,
+          "id": "W03-S05",
+          "date": "2026-09-21",
+          "weekday": "Montag",
+          "preferredTime": "evening"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 4,
+      "theme": "Entlasten und festigen",
+      "coachNote": "Umfang reduzieren und Anpassung ermöglichen.",
+      "loadFactor": 0.78,
+      "targetMinutes": 300,
+      "sessions": [
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Lockerer Dauerlauf",
+          "subtitle": "Woche 4 - 50 Minuten",
+          "durationMinutes": 50,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Locker einlaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr ruhig beginnen; bei Bedarf Gehpausen."
+                },
+                {
+                  "title": "Ruhiger Dauerlauf",
+                  "dose": "32 Min.",
+                  "intensity": "RPE 3-4",
+                  "details": "Tempo so wählen, dass ganze Sätze möglich bleiben."
+                },
+                {
+                  "title": "Lockeres Auslaufen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Schritte verkürzen und Atmung beruhigen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.78,
+          "id": "W04-S01",
+          "date": "2026-09-22",
+          "weekday": "Dienstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Ganzkörper A - stabile Basis",
+          "subtitle": "Woche 4: Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001324",
+                  "name": "Goblet Squat mit Kurzhantel",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Bewegungsumfang und Belastung konservativ wählen.",
+                    "Nur beschwerdearm ausführen; bei Bedarf Alternative nutzen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001321",
+                      "name": "Frontkniebeuge mit zwei Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001330",
+                      "name": "Kniebeuge mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000703",
+                  "name": "Kurzhantel-Floor-Press",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Trizeps",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10",
+                  "restSeconds": 90,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000699",
+                      "name": "Einarmiger Kurzhantel-Floor-Press"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000722",
+                  "name": "Kurzhantelrudern beidarmig vorgebeugt",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Rhomboiden und mittlerer Rücken",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000715",
+                      "name": "Einarmiges Kurzhantelrudern ohne Abstützen"
+                    },
+                    {
+                      "exerciseId": "EX000710",
+                      "name": "Alternierendes Kurzhantelrudern vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001273",
+                  "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, kontralateral",
+                  "pattern": "Hüftbeuge (Hinge)",
+                  "primaryMuscle": "Hintere Oberschenkelmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001268",
+                      "name": "B-Stance rumänisches Kreuzheben mit Kurzhanteln"
+                    },
+                    {
+                      "exerciseId": "EX001272",
+                      "name": "Einbeiniges rumänisches Kreuzheben mit einer Kurzhantel, ipsilateral"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000134",
+                  "name": "Dead Bug, Grundform",
+                  "pattern": "Anti-Extension",
+                  "primaryMuscle": "Tiefe Rumpfmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Trainingsmatte"
+                  ],
+                  "sets": 2,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000126",
+                      "name": "Dead Bug mit Fersentippen"
+                    },
+                    {
+                      "exerciseId": "EX000167",
+                      "name": "Plank Walk-up"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000069",
+                  "name": "Suitcase March auf der Stelle",
+                  "pattern": "Tragen/Halten",
+                  "primaryMuscle": "Seitliche Bauchmuskulatur",
+                  "equipment": [
+                    "Kurzhantel(n)"
+                  ],
+                  "sets": 2,
+                  "reps": "20-40 Sek. / 20-40 m",
+                  "restSeconds": 60,
+                  "tempo": "kontrolliert",
+                  "targetRpe": "6-8/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000040",
+                      "name": "Farmer's March auf der Stelle"
+                    },
+                    {
+                      "exerciseId": "EX000068",
+                      "name": "Suitcase Carry mit Kurzhantel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Kurzhantel(n)",
+            "Körpergewicht",
+            "Trainingsmatte"
+          ],
+          "adaptations": [
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Lass etwa zwei technisch saubere Wiederholungen im Tank. Belastung nur steigern, wenn alle Sätze kontrolliert bleiben.",
+          "loadFactor": 0.78,
+          "id": "W04-S02",
+          "date": "2026-09-24",
+          "weekday": "Donnerstag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Tempo- und Techniklauf",
+          "subtitle": "Woche 4 - 60 Minuten",
+          "durationMinutes": 60,
+          "intensity": {
+            "rpe": "6-8/10",
+            "zone": "wechselnd Zone 2-4",
+            "talkTest": "im Arbeitsintervall nur kurze Sätze"
+          },
+          "objective": "Gezielt an Tempo, Schwelle oder Technik arbeiten, ohne maximal zu trainieren.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen plus Lauf-ABC",
+                  "dose": "12-15 Min.",
+                  "intensity": "RPE 2-4",
+                  "details": "Locker laufen, danach 3 kurze Technikübungen."
+                },
+                {
+                  "title": "Qualitätsblock",
+                  "dose": "5 x 4 Min. zügig / 2 Min. locker",
+                  "intensity": "RPE 6-8",
+                  "details": "Stabiler Rhythmus, die letzte Wiederholung soll technisch so sauber wie die erste sein."
+                },
+                {
+                  "title": "Auslaufen",
+                  "dose": "8-10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker beenden."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.78,
+          "id": "W04-S03",
+          "date": "2026-09-26",
+          "weekday": "Samstag",
+          "preferredTime": "evening"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Regenerativer Lauf/Gehmix",
+          "subtitle": "Woche 4 - 35 Minuten",
+          "durationMinutes": 35,
+          "intensity": {
+            "rpe": "2-3/10",
+            "zone": "Zone 1-2",
+            "talkTest": "sehr lockere Unterhaltung"
+          },
+          "objective": "Durchblutung fördern, ohne zusätzliche Ermüdung aufzubauen.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Regenerativer Lauf/Gehmix",
+                  "dose": "30 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Kein Tempodruck. Gehpausen sind Teil der Einheit."
+                },
+                {
+                  "title": "Mobil ausklingen",
+                  "dose": "5 Min.",
+                  "intensity": "sehr locker",
+                  "details": "Waden, Hüfte und Fussgelenke leicht bewegen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.78,
+          "id": "W04-S04",
+          "date": "2026-09-27",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Laufen",
+          "title": "Langer Lauf",
+          "subtitle": "Woche 4 - 95 Minuten",
+          "durationMinutes": 95,
+          "intensity": {
+            "rpe": "3-5/10",
+            "zone": "überwiegend Zone 2",
+            "talkTest": "meist ganze Sätze möglich"
+          },
+          "objective": "Ausdauer, Energieversorgung und mentale Ruhe unter längerer Belastung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Einlaufen",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Sehr locker starten."
+                },
+                {
+                  "title": "Langer, ruhiger Hauptteil",
+                  "dose": "80 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Gleichmässig locker laufen; Verpflegung und Trinken frühzeitig üben."
+                },
+                {
+                  "title": "Auslaufen/Gehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Puls und Atmung normalisieren."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Bergabtempo reduzieren und technische, kontrollierte Schritte bevorzugen.",
+            "Keine Sprünge oder harten Sprints; flache, gut kontrollierbare Strecke bevorzugen.",
+            "Knie (rechts): Belastung anpassen; angegebene Intensität 2/10."
+          ],
+          "coachNote": "Die Zielintensität ist wichtiger als Tempo oder Distanz. Passe den Umfang an die Tagesform an.",
+          "loadFactor": 0.78,
+          "id": "W04-S05",
+          "date": "2026-09-28",
+          "weekday": "Montag",
+          "preferredTime": "evening"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    }
+  ],
+  "progressionNotes": [
+    "Woche 1: Ausgangsbelastung finden und Technik kalibrieren.",
+    "Woche 2: Zeit, Wiederholungen oder Gesamtumfang moderat erhöhen.",
+    "Woche 3: stärkster kontrollierter Reiz des Zyklus.",
+    "Woche 4: Umfang reduzieren; keine versäumten Einheiten nachholen.",
+    "Nach dem Block: Rückmeldung zu Verträglichkeit, Leistung und Alltag einholen und den nächsten Block neu berechnen."
+  ],
+  "qualityChecks": {
+    "exerciseDatabaseVersion": "1.0.0",
+    "availableEquipmentCount": 7,
+    "eligibleExercisePool": 270,
+    "restrictionRulesApplied": true,
+    "scheduleFit": true,
+    "generationMode": "deterministic-rule-engine"
+  }
+}

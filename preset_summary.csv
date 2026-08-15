@@ -1,0 +1,14 @@
+﻿preset_id,preset_name_de,available_exercise_count,plan_eligible_count,default_display_count,compound_count
+PRESET_BODY,Kein Equipment,157,119,132,99
+PRESET_BODY_MAT,Körpergewicht + Matte,234,158,207,131
+PRESET_DUMBBELL,Kurzhanteln,265,227,219,175
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,369,326,306,223
+PRESET_BARBELL,Langhantel + Scheiben,227,189,180,152
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,354,312,256,252
+PRESET_KETTLEBELL,Kettlebell,257,218,207,185
+PRESET_PULLUP,Klimmzugstange,183,144,148,118
+PRESET_BANDS,Widerstandsbänder,214,161,183,117
+PRESET_TRX,Schlingentrainer / TRX,188,150,156,116
+PRESET_RINGS,Turnringe,171,133,142,107
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,853,752,671,551
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,1383,1227,1099,899

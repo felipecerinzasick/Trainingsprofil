@@ -1,0 +1,1898 @@
+{
+  "schemaVersion": "1.0",
+  "engineVersion": "1.0.0",
+  "id": "a8055768-eb3d-447f-9fab-3187ad910a81",
+  "title": "Stark im Alltag - 4 Wochen",
+  "subtitle": "Grundlagenphase · 3 Einheiten pro Woche",
+  "status": "active",
+  "createdAt": "2026-08-15T11:19:01.190036+00:00",
+  "startsOn": "2026-09-07",
+  "endsOn": "2026-10-04",
+  "durationWeeks": 4,
+  "sessionsPerWeek": 3,
+  "goalType": "health_strength",
+  "discipline": "strength",
+  "phase": "foundation",
+  "athleteSnapshot": {
+    "firstName": "Elisabeth",
+    "ageGroup": "70+",
+    "goal": "Stark und gesund bleiben",
+    "sports": [
+      "Krafttraining",
+      "Wandern",
+      "Mobilität"
+    ],
+    "experience": "Wiedereinstieg",
+    "currentTrainingDays": 3,
+    "event": null,
+    "equipmentSummary": [
+      "Langes Widerstandsband",
+      "Körpergewicht",
+      "Stabiler Stuhl",
+      "Kurzhantel(n)",
+      "Freie Bodenfläche",
+      "Trainingsmatte",
+      "Miniband/Loop-Band",
+      "Outdoor-Strecke",
+      "Wand"
+    ],
+    "restrictionSummary": [
+      "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+      "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+      "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren."
+    ]
+  },
+  "safety": {
+    "status": "ready",
+    "generationAllowed": true,
+    "notices": [
+      "Ruckartige Belastungen und stark belastete Rumpfbeugung werden konservativ behandelt.",
+      "Bewegungsumfang und Belastung werden nach Verträglichkeit dosiert."
+    ],
+    "disclaimer": "Der Plan ist eine automatisierte Trainingshilfe und keine medizinische Diagnose oder Therapie. Neue, zunehmende oder ungeklärte Beschwerden müssen fachlich abgeklärt werden."
+  },
+  "principles": [
+    "Die geplante Intensität wird über RPE und den Sprechtest gesteuert - nicht über ein starres Tempo.",
+    "Technisch saubere, gut verträgliche Wiederholungen haben Vorrang vor zusätzlichem Gewicht oder Umfang.",
+    "Die vierte Woche jedes Blocks reduziert die Belastung, damit Anpassung und Erholung stattfinden können.",
+    "Last erst steigern, wenn der obere Wiederholungsbereich mit stabiler Technik erreicht wird."
+  ],
+  "planNotes": [
+    "Alltagshinweis: Lieber kurze Einheiten; freitags ist Unterstützung durch eine Freundin möglich.",
+    "Ruckartige Belastungen und stark belastete Rumpfbeugung werden konservativ behandelt.",
+    "Bewegungsumfang und Belastung werden nach Verträglichkeit dosiert."
+  ],
+  "weeks": [
+    {
+      "weekNumber": 1,
+      "theme": "Ankommen und Technik",
+      "coachNote": "Belastung kalibrieren und Bewegungsqualität sichern.",
+      "loadFactor": 0.9,
+      "targetMinutes": 85,
+      "sessions": [
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft A - sicher und stabil",
+          "subtitle": "Woche 1: Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001330",
+                  "name": "Kniebeuge mit Körpergewicht",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001324",
+                      "name": "Goblet Squat mit Kurzhantel"
+                    },
+                    {
+                      "exerciseId": "EX001322",
+                      "name": "Gefangenen-Kniebeuge"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000640",
+                  "name": "Bandrudern im Stand",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000642",
+                      "name": "Einarmiges Bandrudern"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001123",
+                  "name": "Band-Brustpresse im Stand",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001128",
+                      "name": "Einarmige Band-Brustpresse"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001299",
+                  "name": "Split Squat mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001068",
+                      "name": "Ausfallschritt rückwärts mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.9,
+          "id": "W01-S01",
+          "date": "2026-09-07",
+          "weekday": "Montag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Wandern",
+          "title": "Zügiges Gehen/Wandern",
+          "subtitle": "Woche 1 - 25 Minuten",
+          "durationMinutes": 25,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Ruhiger Start",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Tempo langsam aufbauen."
+                },
+                {
+                  "title": "Wander-/Gehteil",
+                  "dose": "15 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Aufrechte Haltung, gleichmässiger Schritt; Anstiege kontrolliert."
+                },
+                {
+                  "title": "Ausgehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Locker auslaufen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.9,
+          "id": "W01-S02",
+          "date": "2026-09-11",
+          "weekday": "Freitag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft B - Haltung und Beine",
+          "subtitle": "Woche 1: Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Technik festigen und eine gut verträgliche Ausgangsbelastung finden.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX000951",
+                  "name": "Einbeiniger Glute Bridge",
+                  "pattern": "Hüftstreckung",
+                  "primaryMuscle": "Gesässmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000958",
+                      "name": "Glute Bridge mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX000955",
+                      "name": "Frog Pumps"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000642",
+                  "name": "Einarmiges Bandrudern",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000640",
+                      "name": "Bandrudern im Stand"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001128",
+                  "name": "Einarmige Band-Brustpresse",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001123",
+                      "name": "Band-Brustpresse im Stand"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001068",
+                  "name": "Ausfallschritt rückwärts mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Technik und passende Startlast finden.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001299",
+                      "name": "Split Squat mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.9,
+          "id": "W01-S03",
+          "date": "2026-09-13",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 2,
+      "theme": "Stabilisieren",
+      "coachNote": "Wiederholungen oder Zeit moderat erweitern.",
+      "loadFactor": 1.0,
+      "targetMinutes": 85,
+      "sessions": [
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft A - sicher und stabil",
+          "subtitle": "Woche 2: Wiederholungen innerhalb des Zielbereichs steigern.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Wiederholungen innerhalb des Zielbereichs steigern.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001330",
+                  "name": "Kniebeuge mit Körpergewicht",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001324",
+                      "name": "Goblet Squat mit Kurzhantel"
+                    },
+                    {
+                      "exerciseId": "EX001322",
+                      "name": "Gefangenen-Kniebeuge"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000640",
+                  "name": "Bandrudern im Stand",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000642",
+                      "name": "Einarmiges Bandrudern"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001123",
+                  "name": "Band-Brustpresse im Stand",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001128",
+                      "name": "Einarmige Band-Brustpresse"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001299",
+                  "name": "Split Squat mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001068",
+                      "name": "Ausfallschritt rückwärts mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.0,
+          "id": "W02-S01",
+          "date": "2026-09-14",
+          "weekday": "Montag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Wandern",
+          "title": "Zügiges Gehen/Wandern",
+          "subtitle": "Woche 2 - 25 Minuten",
+          "durationMinutes": 25,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Ruhiger Start",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Tempo langsam aufbauen."
+                },
+                {
+                  "title": "Wander-/Gehteil",
+                  "dose": "15 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Aufrechte Haltung, gleichmässiger Schritt; Anstiege kontrolliert."
+                },
+                {
+                  "title": "Ausgehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Locker auslaufen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.0,
+          "id": "W02-S02",
+          "date": "2026-09-18",
+          "weekday": "Freitag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft B - Haltung und Beine",
+          "subtitle": "Woche 2: Wiederholungen innerhalb des Zielbereichs steigern.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Wiederholungen innerhalb des Zielbereichs steigern.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX000951",
+                  "name": "Einbeiniger Glute Bridge",
+                  "pattern": "Hüftstreckung",
+                  "primaryMuscle": "Gesässmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000958",
+                      "name": "Glute Bridge mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX000955",
+                      "name": "Frog Pumps"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000642",
+                  "name": "Einarmiges Bandrudern",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000640",
+                      "name": "Bandrudern im Stand"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001128",
+                  "name": "Einarmige Band-Brustpresse",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001123",
+                      "name": "Band-Brustpresse im Stand"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001068",
+                  "name": "Ausfallschritt rückwärts mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Bei sauberer Ausführung 1-2 Wiederholungen pro Satz ergänzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001299",
+                      "name": "Split Squat mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.0,
+          "id": "W02-S03",
+          "date": "2026-09-20",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 3,
+      "theme": "Aufbaureiz",
+      "coachNote": "Stärkste Woche des Zyklus, ohne maximale Belastungen.",
+      "loadFactor": 1.02,
+      "targetMinutes": 90,
+      "sessions": [
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft A - sicher und stabil",
+          "subtitle": "Woche 3: Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001330",
+                  "name": "Kniebeuge mit Körpergewicht",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001324",
+                      "name": "Goblet Squat mit Kurzhantel"
+                    },
+                    {
+                      "exerciseId": "EX001322",
+                      "name": "Gefangenen-Kniebeuge"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000640",
+                  "name": "Bandrudern im Stand",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000642",
+                      "name": "Einarmiges Bandrudern"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001123",
+                  "name": "Band-Brustpresse im Stand",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001128",
+                      "name": "Einarmige Band-Brustpresse"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001299",
+                  "name": "Split Squat mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001068",
+                      "name": "Ausfallschritt rückwärts mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.02,
+          "id": "W03-S01",
+          "date": "2026-09-21",
+          "weekday": "Montag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Wandern",
+          "title": "Zügiges Gehen/Wandern",
+          "subtitle": "Woche 3 - 30 Minuten",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Ruhiger Start",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Tempo langsam aufbauen."
+                },
+                {
+                  "title": "Wander-/Gehteil",
+                  "dose": "15 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Aufrechte Haltung, gleichmässiger Schritt; Anstiege kontrolliert."
+                },
+                {
+                  "title": "Ausgehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Locker auslaufen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.02,
+          "id": "W03-S02",
+          "date": "2026-09-25",
+          "weekday": "Freitag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft B - Haltung und Beine",
+          "subtitle": "Woche 3: Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Den stärksten Trainingsreiz des Blocks setzen, ohne bis zum Muskelversagen zu gehen.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX000951",
+                  "name": "Einbeiniger Glute Bridge",
+                  "pattern": "Hüftstreckung",
+                  "primaryMuscle": "Gesässmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000958",
+                      "name": "Glute Bridge mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX000955",
+                      "name": "Frog Pumps"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000642",
+                  "name": "Einarmiges Bandrudern",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000640",
+                      "name": "Bandrudern im Stand"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001128",
+                  "name": "Einarmige Band-Brustpresse",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001123",
+                      "name": "Band-Brustpresse im Stand"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001068",
+                  "name": "Ausfallschritt rückwärts mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 2,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Kleine Laststeigerung oder einen zusätzlichen Satz nutzen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001299",
+                      "name": "Split Squat mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 1.02,
+          "id": "W03-S03",
+          "date": "2026-09-27",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    },
+    {
+      "weekNumber": 4,
+      "theme": "Entlasten und festigen",
+      "coachNote": "Umfang reduzieren und Anpassung ermöglichen.",
+      "loadFactor": 0.78,
+      "targetMinutes": 85,
+      "sessions": [
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft A - sicher und stabil",
+          "subtitle": "Woche 4: Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX001330",
+                  "name": "Kniebeuge mit Körpergewicht",
+                  "pattern": "Kniebeuge",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 1,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001324",
+                      "name": "Goblet Squat mit Kurzhantel"
+                    },
+                    {
+                      "exerciseId": "EX001322",
+                      "name": "Gefangenen-Kniebeuge"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000640",
+                  "name": "Bandrudern im Stand",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 1,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000642",
+                      "name": "Einarmiges Bandrudern"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001123",
+                  "name": "Band-Brustpresse im Stand",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 1,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001128",
+                      "name": "Einarmige Band-Brustpresse"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001299",
+                  "name": "Split Squat mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 1,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001068",
+                      "name": "Ausfallschritt rückwärts mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.78,
+          "id": "W04-S01",
+          "date": "2026-09-28",
+          "weekday": "Montag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "endurance",
+          "discipline": "Wandern",
+          "title": "Zügiges Gehen/Wandern",
+          "subtitle": "Woche 4 - 25 Minuten",
+          "durationMinutes": 25,
+          "intensity": {
+            "rpe": "3-4/10",
+            "zone": "Zone 2",
+            "talkTest": "ganze Sätze möglich"
+          },
+          "objective": "Aerobe Basis und effiziente, entspannte Bewegung entwickeln.",
+          "warmup": [],
+          "blocks": [
+            {
+              "type": "endurance",
+              "title": "Einheitsablauf",
+              "instructions": "Die Intensität über RPE und Sprechtest steuern.",
+              "items": [
+                {
+                  "title": "Ruhiger Start",
+                  "dose": "10 Min.",
+                  "intensity": "RPE 2-3",
+                  "details": "Tempo langsam aufbauen."
+                },
+                {
+                  "title": "Wander-/Gehteil",
+                  "dose": "15 Min.",
+                  "intensity": "RPE 3-5",
+                  "details": "Aufrechte Haltung, gleichmässiger Schritt; Anstiege kontrolliert."
+                },
+                {
+                  "title": "Ausgehen",
+                  "dose": "5 Min.",
+                  "intensity": "RPE 2",
+                  "details": "Locker auslaufen."
+                }
+              ]
+            }
+          ],
+          "cooldown": [],
+          "equipment": [
+            "Outdoor-Strecke"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.78,
+          "id": "W04-S02",
+          "date": "2026-10-02",
+          "weekday": "Freitag",
+          "preferredTime": "morning"
+        },
+        {
+          "type": "strength",
+          "discipline": "Krafttraining",
+          "title": "Alltagskraft B - Haltung und Beine",
+          "subtitle": "Woche 4: Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "durationMinutes": 30,
+          "intensity": {
+            "rpe": "5-8/10",
+            "zone": "submaximal",
+            "talkTest": "zwischen den Sätzen vollständig erholen"
+          },
+          "objective": "Ermüdung abbauen und Bewegungsqualität erhalten.",
+          "warmup": [
+            {
+              "title": "Allgemein erwärmen",
+              "details": "5-8 Minuten lockere Bewegung oder zügiges Gehen.",
+              "durationMinutes": 6
+            },
+            {
+              "title": "Bewegungen vorbereiten",
+              "details": "Die ersten zwei Übungen je 1-2 leichte Vorbereitungssätze ausführen.",
+              "durationMinutes": 5
+            }
+          ],
+          "blocks": [
+            {
+              "type": "strength",
+              "title": "Kraft-Hauptteil",
+              "instructions": "Übungen nacheinander ausführen. Die angegebenen Pausen vollständig nutzen.",
+              "exercises": [
+                {
+                  "exerciseId": "EX000951",
+                  "name": "Einbeiniger Glute Bridge",
+                  "pattern": "Hüftstreckung",
+                  "primaryMuscle": "Gesässmuskulatur",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 1,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000958",
+                      "name": "Glute Bridge mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX000955",
+                      "name": "Frog Pumps"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX000642",
+                  "name": "Einarmiges Bandrudern",
+                  "pattern": "Horizontal ziehen",
+                  "primaryMuscle": "Latissimus",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 1,
+                  "reps": "6-10 kontrolliert",
+                  "restSeconds": 90,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX000640",
+                      "name": "Bandrudern im Stand"
+                    },
+                    {
+                      "exerciseId": "EX000722",
+                      "name": "Kurzhantelrudern beidarmig vorgebeugt"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001128",
+                  "name": "Einarmige Band-Brustpresse",
+                  "pattern": "Horizontal drücken",
+                  "primaryMuscle": "Brustmuskulatur",
+                  "equipment": [
+                    "Langes Widerstandsband"
+                  ],
+                  "sets": 1,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001123",
+                      "name": "Band-Brustpresse im Stand"
+                    },
+                    {
+                      "exerciseId": "EX001213",
+                      "name": "Liegestütz"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": "EX001068",
+                  "name": "Ausfallschritt rückwärts mit Körpergewicht",
+                  "pattern": "Ausfallschritt/einbeinig",
+                  "primaryMuscle": "Quadrizeps",
+                  "equipment": [
+                    "Körpergewicht",
+                    "Freie Bodenfläche"
+                  ],
+                  "sets": 1,
+                  "reps": "8-12 kontrolliert",
+                  "restSeconds": 75,
+                  "tempo": "3-1-2",
+                  "targetRpe": "5-7/10",
+                  "progression": "Entlastungswoche: weniger Sätze, keine Wiederholung erzwingen.",
+                  "notes": [
+                    "Beide Seiten trainieren; mit der schwächeren oder unsicheren Seite beginnen."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": "EX001299",
+                      "name": "Split Squat mit Körpergewicht"
+                    },
+                    {
+                      "exerciseId": "EX001076",
+                      "name": "Ausfallschritt vorwärts mit Körpergewicht"
+                    }
+                  ]
+                },
+                {
+                  "exerciseId": null,
+                  "name": "Tandemstand mit Haltemöglichkeit",
+                  "pattern": "Gleichgewicht",
+                  "primaryMuscle": "Ganzkörper/Stabilität",
+                  "equipment": [
+                    "Stabiler Stuhl oder Wand"
+                  ],
+                  "sets": 2,
+                  "reps": "20-30 Sek. pro Position",
+                  "restSeconds": 45,
+                  "tempo": "ruhig",
+                  "targetRpe": "3-5/10",
+                  "progression": "Haltekontakt nur reduzieren, wenn der Stand sicher bleibt.",
+                  "notes": [
+                    "Immer in Reichweite einer stabilen Haltemöglichkeit trainieren."
+                  ],
+                  "alternatives": [
+                    {
+                      "exerciseId": null,
+                      "name": "Gewichtsverlagerung im Stand"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cooldown": [
+            {
+              "title": "Ruhig ausklingen",
+              "details": "2-5 Minuten locker bewegen und Atmung normalisieren.",
+              "durationMinutes": 4
+            }
+          ],
+          "equipment": [
+            "Freie Bodenfläche",
+            "Körpergewicht",
+            "Langes Widerstandsband",
+            "Stabiler Stuhl oder Wand"
+          ],
+          "adaptations": [
+            "Schulter (rechts): Belastung vorerst aussparen; angegebene Intensität 3/10.",
+            "Bei geringer Knochendichte: ruckartige Sprünge und stark belastete Rumpfbeugung vermeiden.",
+            "Gelenkbelastung über schmerzarmen Bewegungsumfang und ruhiges Tempo dosieren.",
+            "Ruhige Positionswechsel; keine Eile beim Hinsetzen, Aufstehen oder Gerätewechsel."
+          ],
+          "coachNote": "Ruhig beginnen, saubere Wiederholungen sammeln und jede Einheit mit einem guten Gefühl beenden.",
+          "loadFactor": 0.78,
+          "id": "W04-S03",
+          "date": "2026-10-04",
+          "weekday": "Sonntag",
+          "preferredTime": "morning"
+        }
+      ],
+      "recoveryGuidance": "Mindestens einen vollständigen Ruhetag einplanen. Bei ungewöhnlich hoher Müdigkeit die letzte Zubehörübung oder den letzten Intervallblock streichen."
+    }
+  ],
+  "progressionNotes": [
+    "Woche 1: Ausgangsbelastung finden und Technik kalibrieren.",
+    "Woche 2: Zeit, Wiederholungen oder Gesamtumfang moderat erhöhen.",
+    "Woche 3: stärkster kontrollierter Reiz des Zyklus.",
+    "Woche 4: Umfang reduzieren; keine versäumten Einheiten nachholen.",
+    "Nach dem Block: Rückmeldung zu Verträglichkeit, Leistung und Alltag einholen und den nächsten Block neu berechnen."
+  ],
+  "qualityChecks": {
+    "exerciseDatabaseVersion": "1.0.0",
+    "availableEquipmentCount": 9,
+    "eligibleExercisePool": 105,
+    "restrictionRulesApplied": true,
+    "scheduleFit": true,
+    "generationMode": "deterministic-rule-engine"
+  }
+}

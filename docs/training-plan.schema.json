@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/training-plan-v1.json",
+  "title": "TrainingPlan v1.0",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "engineVersion",
+    "id",
+    "title",
+    "status",
+    "createdAt",
+    "startsOn",
+    "endsOn",
+    "durationWeeks",
+    "sessionsPerWeek",
+    "goalType",
+    "discipline",
+    "phase",
+    "athleteSnapshot",
+    "safety",
+    "weeks",
+    "qualityChecks"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "engineVersion": { "type": "string", "minLength": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "subtitle": { "type": "string" },
+    "status": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "startsOn": { "type": "string", "format": "date" },
+    "endsOn": { "type": "string", "format": "date" },
+    "durationWeeks": { "type": "integer", "enum": [4, 8, 12, 16] },
+    "sessionsPerWeek": { "type": "integer", "minimum": 1, "maximum": 7 },
+    "goalType": { "type": "string" },
+    "discipline": { "type": "string" },
+    "phase": { "type": "string" },
+    "athleteSnapshot": { "$ref": "#/$defs/athleteSnapshot" },
+    "safety": { "$ref": "#/$defs/safety" },
+    "principles": { "type": "array", "items": { "type": "string" } },
+    "planNotes": { "type": "array", "items": { "type": "string" } },
+    "weeks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/week" }
+    },
+    "progressionNotes": { "type": "array", "items": { "type": "string" } },
+    "qualityChecks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "integer", "boolean", "null"]
+      }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string" },
+        "date": { "type": "string" },
+        "distance": { "type": "string" },
+        "target": { "type": "string" }
+      }
+    },
+    "athleteSnapshot": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "firstName",
+        "ageGroup",
+        "goal",
+        "sports",
+        "experience",
+        "currentTrainingDays",
+        "event",
+        "equipmentSummary",
+        "restrictionSummary"
+      ],
+      "properties": {
+        "firstName": { "type": "string" },
+        "ageGroup": { "type": "string" },
+        "goal": { "type": "string" },
+        "sports": { "type": "array", "items": { "type": "string" } },
+        "experience": { "type": "string" },
+        "currentTrainingDays": { "type": "integer", "minimum": 0 },
+        "event": { "$ref": "#/$defs/event" },
+        "equipmentSummary": { "type": "array", "items": { "type": "string" } },
+        "restrictionSummary": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["status", "generationAllowed", "notices", "disclaimer"],
+      "properties": {
+        "status": { "type": "string" },
+        "generationAllowed": { "type": "boolean" },
+        "notices": { "type": "array", "items": { "type": "string" } },
+        "disclaimer": { "type": "string" }
+      }
+    },
+    "intensity": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "rpe": { "type": "string" },
+        "zone": { "type": "string" },
+        "talkTest": { "type": "string" }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name"],
+      "properties": {
+        "exerciseId": { "type": ["string", "null"] },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "exercise": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["exerciseId", "name", "sets", "reps"],
+      "properties": {
+        "exerciseId": { "type": ["string", "null"] },
+        "name": { "type": "string", "minLength": 1 },
+        "pattern": { "type": "string" },
+        "primaryMuscle": { "type": "string" },
+        "equipment": { "type": "array", "items": { "type": "string" } },
+        "sets": { "type": "integer", "minimum": 1 },
+        "reps": { "type": "string" },
+        "restSeconds": { "type": "integer", "minimum": 0 },
+        "tempo": { "type": "string" },
+        "targetRpe": { "type": "string" },
+        "progression": { "type": "string" },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "alternatives": { "type": "array", "items": { "$ref": "#/$defs/alternative" } }
+      }
+    },
+    "enduranceItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "dose": { "type": "string" },
+        "intensity": { "type": "string" },
+        "details": { "type": "string" }
+      }
+    },
+    "block": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["type", "title"],
+      "properties": {
+        "type": { "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "instructions": { "type": "string" },
+        "exercises": { "type": "array", "items": { "$ref": "#/$defs/exercise" } },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/enduranceItem" } }
+      },
+      "anyOf": [
+        { "required": ["exercises"] },
+        { "required": ["items"] }
+      ]
+    },
+    "supportItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string" },
+        "details": { "type": "string" },
+        "durationMinutes": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "date",
+        "weekday",
+        "type",
+        "discipline",
+        "title",
+        "durationMinutes",
+        "intensity",
+        "objective",
+        "blocks"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "weekday": { "type": "string" },
+        "preferredTime": { "type": "string" },
+        "type": { "type": "string" },
+        "discipline": { "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "durationMinutes": { "type": "integer", "minimum": 1 },
+        "intensity": { "$ref": "#/$defs/intensity" },
+        "objective": { "type": "string" },
+        "warmup": { "type": "array", "items": { "$ref": "#/$defs/supportItem" } },
+        "blocks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/block" } },
+        "cooldown": { "type": "array", "items": { "$ref": "#/$defs/supportItem" } },
+        "equipment": { "type": "array", "items": { "type": "string" } },
+        "adaptations": { "type": "array", "items": { "type": "string" } },
+        "coachNote": { "type": "string" },
+        "loadFactor": { "type": "number", "minimum": 0 }
+      }
+    },
+    "week": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "weekNumber",
+        "theme",
+        "coachNote",
+        "loadFactor",
+        "targetMinutes",
+        "sessions",
+        "recoveryGuidance"
+      ],
+      "properties": {
+        "weekNumber": { "type": "integer", "minimum": 1 },
+        "theme": { "type": "string" },
+        "coachNote": { "type": "string" },
+        "loadFactor": { "type": "number", "minimum": 0 },
+        "targetMinutes": { "type": "integer", "minimum": 0 },
+        "sessions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/session" } },
+        "recoveryGuidance": { "type": "string" }
+      }
+    }
+  }
+}

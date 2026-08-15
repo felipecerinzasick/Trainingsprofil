@@ -1,0 +1,33 @@
+﻿pattern_id,pattern_de,exercise_count,compound_count,avg_priority_score
+squat,Kniebeuge,67,67,82.4
+lunge,Ausfallschritt/einbeinig,86,86,81.9
+step,Aufsteigen/Absteigen,29,29,77.9
+hinge,Hüftbeuge (Hinge),92,86,79.7
+hip_extension,Hüftstreckung,30,30,76.3
+knee_flexion,Kniebeugung,19,7,60.3
+knee_extension,Kniestreckung,14,6,62.6
+calf,Sprunggelenk/Wade,17,0,57.1
+hip_abduction,Hüftabduktion,8,0,52.8
+hip_adduction,Hüftadduktion,4,0,52.8
+horizontal_push,Horizontal drücken,115,95,72.0
+vertical_push,Vertikal drücken,49,48,77.1
+horizontal_pull,Horizontal ziehen,64,64,79.3
+vertical_pull,Vertikal ziehen,59,43,69.3
+shoulder_abduction,Schulterabduktion,20,0,54.8
+scapular,Schulterblattführung,56,0,55.0
+elbow_flexion,Ellenbogenbeugung,60,0,59.7
+elbow_extension,Ellenbogenstreckung,60,9,59.8
+wrist_grip,Unterarm/Griff,44,0,52.9
+carry,Tragen/Halten,42,41,85.6
+anti_extension,Anti-Extension,53,39,65.2
+anti_rotation,Anti-Rotation,34,30,67.9
+anti_lateral,Anti-Lateralflexion,30,8,57.2
+trunk_flexion,Rumpfbeugung,50,29,61.8
+trunk_rotation,Rumpfrotation,18,18,74.2
+locomotion,Fortbewegung,31,31,77.0
+olympic,Olympisches Heben,65,65,85.6
+jump,Springen,36,36,68.0
+throw,Werfen/Schlagen,10,10,81.2
+mobility,Mobilität/Dehnung,84,0,46.5
+cardio,Zyklische Ausdauer,35,35,71.9
+neck,Nacken,15,0,38.3

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-08-15T10:30:00.000Z",
+  "identity": {
+    "firstName": "Elisabeth",
+    "ageGroup": "70+",
+    "gender": "Weiblich",
+    "heightCm": "162",
+    "weightKg": "67"
+  },
+  "goals": {
+    "primaryGoal": "healthy_strength",
+    "secondaryGoals": [
+      "mobility"
+    ],
+    "sports": [
+      "strength",
+      "hiking",
+      "mobility"
+    ],
+    "motivation": "Ich möchte Treppen, Einkäufe und längere Spaziergänge weiterhin selbstständig bewältigen.",
+    "event": {
+      "enabled": false,
+      "type": "",
+      "name": "",
+      "date": "",
+      "distance": "",
+      "targetTime": ""
+    }
+  },
+  "experience": {
+    "level": "returning",
+    "currentTrainingDays": 3,
+    "trainingHistoryYears": "1_3",
+    "recentBreak": "3_6m",
+    "currentActivities": [
+      "hiking",
+      "mobility"
+    ],
+    "weeklyRunningKm": "",
+    "longestRunKm": "",
+    "cyclingHours": "",
+    "swimmingMeters": "",
+    "currentRoutine": "Zweimal pro Woche spazieren und gelegentlich leichte Gymnastik."
+  },
+  "schedule": {
+    "desiredSessions": 3,
+    "availableDays": [
+      "mon",
+      "wed",
+      "fri",
+      "sun"
+    ],
+    "sessionDuration": 30,
+    "preferredTimes": [
+      "morning"
+    ],
+    "planStartDate": "2026-09-07",
+    "scheduleNotes": "Lieber kurze Einheiten; freitags ist Unterstützung durch eine Freundin möglich."
+  },
+  "environment": {
+    "locations": [
+      "home",
+      "outdoor"
+    ],
+    "equipmentIds": [
+      "BODY",
+      "FLOOR",
+      "WALL",
+      "MAT",
+      "CHAIR",
+      "BAND",
+      "MINIBAND",
+      "DUMBBELL",
+      "OUTDOOR"
+    ],
+    "equipmentNotes": "Stabiler Stuhl, Matte, Miniband und zwei Kurzhanteln à 2 kg."
+  },
+  "health": {
+    "painFree": false,
+    "restrictions": [
+      {
+        "id": "shoulder-example-1",
+        "region": "shoulder",
+        "side": "right",
+        "intensity": 3,
+        "symptoms": [
+          "pain",
+          "stiffness"
+        ],
+        "duration": "chronic",
+        "triggers": "Arm weit über den Kopf heben.",
+        "strategy": "avoid",
+        "professionalClearance": "yes",
+        "notes": "Überkopfbelastung laut Physiotherapie vorerst vermeiden; Bewegungen unter Schulterhöhe sind gut verträglich."
+      }
+    ],
+    "safetyFlags": [],
+    "safetyConfirmedNone": true,
+    "conditions": [
+      "Arthrose / Gelenkbeschwerden",
+      "Osteoporose / geringe Knochendichte"
+    ],
+    "medicationsNotes": "Blutdruckmedikation; Belastung wurde ärztlich freigegeben.",
+    "healthNotes": "Unsicher bei Übungen auf einem Bein; Haltemöglichkeit einplanen."
+  },
+  "preferences": {
+    "likedStyles": [
+      "bodyweight",
+      "mobility",
+      "outdoor"
+    ],
+    "dislikedStyles": [
+      "intervals"
+    ],
+    "coachingTone": "supportive",
+    "variety": 2,
+    "indoorOutdoor": "balanced",
+    "excludedExercises": "Keine schnellen Bodenwechsel und keine Übungen, bei denen ich ohne Hilfe vom Boden aufstehen muss.",
+    "adherenceBarrier": "Schmerzen oder Unsicherheit"
+  },
+  "recovery": {
+    "sleepHours": 7,
+    "sleepQuality": 3,
+    "stressLevel": 2,
+    "recoveryFeeling": 3,
+    "sedentaryHours": "6_8"
+  },
+  "consent": {
+    "dataProcessing": true,
+    "healthAcknowledgement": true,
+    "optionalContact": true
+  }
+}

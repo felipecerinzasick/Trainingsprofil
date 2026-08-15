@@ -1,0 +1,93 @@
+﻿equipment_id,equipment_name_de,direct_exercise_count,selection_group,full_gym,default_available
+BODY,Körpergewicht,483,Kein Equipment,True,True
+FLOOR,Freie Bodenfläche,353,Kein Equipment,True,True
+MAT,Trainingsmatte,141,Kleinzubehör,True,False
+WALL,Wand,31,Kein Equipment,True,True
+CHAIR,Stabiler Stuhl,1,Haushalt,True,False
+BENCH,Flachbank,141,Trainingsbank,True,False
+ADJ_BENCH,Verstellbare Trainingsbank,48,Trainingsbank,True,False
+BOX,Plyo-Box,58,Functional Training,True,False
+STEP,Step/Erhöhung,16,Kleinzubehör,True,False
+SLIDERS,Gleitpads/Slider,5,Kleinzubehör,True,False
+SLANT_BOARD,Keilbrett/Slant Board,4,Kleinzubehör,True,False
+DUMBBELL,Kurzhantel(n),201,Kurzhanteln,True,False
+BARBELL,Langhantel,184,Langhantel,True,False
+PLATES,Hantelscheiben,268,Langhantel,True,False
+RACK,Kniebeugenständer/Power Rack,90,Langhantel mit Rack,True,False
+EZ_BAR,SZ-Stange,13,Spezialhanteln,True,False
+TRAP_BAR,Trap-/Hex-Bar,7,Spezialhanteln,True,False
+SSB,Safety-Squat-Bar,5,Spezialhanteln,True,False
+SWISS_BAR,Multi-Grip-/Swiss-Bar,4,Spezialhanteln,True,False
+KETTLEBELL,Kettlebell(s),113,Kettlebell,True,False
+WEIGHT_VEST,Gewichtsweste,1,Kleinzubehör,True,False
+ANKLE_WEIGHTS,Fuss-/Knöchelgewichte,1,Kleinzubehör,True,False
+PULLUP_BAR,Klimmzugstange,33,Klimmzugstange,True,False
+DIP_BARS,Dip-Barren/Parallelbarren,7,Dip-Barren,True,False
+PARALLETTES,Parallettes/Liegestützgriffe,6,Kleinzubehör,True,False
+RINGS,Turnringe,17,Turnringe,True,False
+TRX,Schlingentrainer/TRX,31,TRX/Schlingentrainer,True,False
+BAND,Langes Widerstandsband,62,Widerstandsbänder,True,False
+MINIBAND,Miniband/Loop-Band,10,Widerstandsbänder,True,False
+TUBE_BAND,Tube-Band mit Griffen,1,Widerstandsbänder,True,False
+CABLE,Einfacher Kabelzug,98,Kabelzug,True,False
+DUAL_CABLE,Doppel-Kabelzug/Crossover,14,Kabelzug,True,False
+LAT_PULLDOWN,Latzugstation,11,Kabelzug,True,False
+LOW_ROW,Sitzende Ruderzugstation,5,Kabelzug,True,False
+LANDMINE,Landmine-Aufnahme,23,Landmine,True,False
+SMITH,Multipresse/Smith Machine,22,Kraftmaschinen,True,False
+LEG_PRESS,Beinpresse,1,Kraftmaschinen,True,False
+HACK_SQUAT,Hackenschmidt-Maschine,3,Kraftmaschinen,True,False
+BELT_SQUAT,Belt-Squat-Maschine,3,Kraftmaschinen,True,False
+LEG_EXTENSION,Beinstrecker-Maschine,4,Kraftmaschinen,True,False
+LEG_CURL,Beinbeuger-Maschine,3,Kraftmaschinen,True,False
+HIP_THRUST_MACHINE,Hip-Thrust-/Glute-Drive-Maschine,3,Kraftmaschinen,True,False
+CALF_MACHINE,Wadenheben-Maschine,4,Kraftmaschinen,True,False
+HIP_ABD_MACHINE,Abduktoren-Maschine,2,Kraftmaschinen,True,False
+HIP_ADD_MACHINE,Adduktoren-Maschine,1,Kraftmaschinen,True,False
+CHEST_PRESS_MACHINE,Brustpresse,4,Kraftmaschinen,True,False
+SHOULDER_PRESS_MACHINE,Schulterpresse,4,Kraftmaschinen,True,False
+PEC_DECK,Butterfly-/Pec-Deck-Maschine,2,Kraftmaschinen,True,False
+REVERSE_FLY_MACHINE,Reverse-Fly-Maschine,1,Kraftmaschinen,True,False
+ROW_MACHINE,Rudermaschine (Kraft),5,Kraftmaschinen,True,False
+PULLDOWN_MACHINE,Latzugmaschine (Plate-loaded),4,Kraftmaschinen,True,False
+ASSISTED_PULLUP,Unterstützte Klimmzug-/Dip-Maschine,2,Kraftmaschinen,True,False
+BICEPS_MACHINE,Bizepscurl-Maschine,2,Kraftmaschinen,True,False
+TRICEPS_MACHINE,Trizepsstrecker-Maschine,2,Kraftmaschinen,True,False
+AB_MACHINE,Bauchpresse/Crunch-Maschine,2,Kraftmaschinen,True,False
+BACK_EXTENSION_MACHINE,Rückenstrecker-Maschine,1,Kraftmaschinen,True,False
+PREACHER_BENCH,Scottbank,5,Trainingsbank,True,False
+GHD,Glute-Ham-Developer,6,Kraftmaschinen,True,False
+BACK_EXTENSION_BENCH,45°-/90°-Rückenstreckerbank,9,Kraftmaschinen,True,False
+REVERSE_HYPER,Reverse-Hyper-Maschine,1,Kraftmaschinen,True,False
+AB_WHEEL,Bauchroller/Ab-Wheel,4,Kleinzubehör,True,False
+SWISS_BALL,Gymnastikball/Swiss Ball,14,Kleinzubehör,True,False
+BOSU,BOSU-Ball,3,Kleinzubehör,True,False
+FOAM_ROLLER,Faszienrolle,14,Kleinzubehör,True,False
+MED_BALL,Medizinball,13,Functional Training,True,False
+SLAM_BALL,Slam Ball,2,Functional Training,True,False
+SANDBAG,Sandsack (Training),24,Functional Training,True,False
+SLED,Gewichtsschlitten,8,Strongman/Functional,True,False
+FARMER_HANDLES,Farmer-Walk-Griffe,1,Strongman/Functional,True,False
+YOKE,Yoke/Joch,2,Strongman/Functional,True,False
+TIRE,Trainingsreifen,3,Strongman/Functional,True,False
+SLEDGEHAMMER,Vorschlaghammer,2,Strongman/Functional,True,False
+BATTLE_ROPE,Battle Ropes,7,Strongman/Functional,True,False
+ROPE,Kletterseil,4,Strongman/Functional,True,False
+MACE,Steel Mace/Keule,0,Functional Training,True,False
+GRIPPER,Handgripper,3,Kleinzubehör,True,False
+WRIST_ROLLER,Wrist Roller,3,Kleinzubehör,True,False
+NECK_HARNESS,Nackentrainer/Nacken-Geschirr,3,Kleinzubehör,True,False
+JUMP_ROPE,Springseil,5,Cardiogeräte,True,False
+TREADMILL,Laufband,6,Cardiogeräte,True,False
+BIKE,Fahrradergometer/Spinning-Bike,4,Cardiogeräte,True,False
+AIR_BIKE,Air Bike,2,Cardiogeräte,True,False
+ROWER,Ruderergometer,3,Cardiogeräte,True,False
+SKI_ERG,SkiErg,3,Cardiogeräte,True,False
+ELLIPTICAL,Crosstrainer,2,Cardiogeräte,True,False
+STAIR_CLIMBER,Stair Climber/Stepper,3,Cardiogeräte,True,False
+POOL,Schwimmbecken,5,Schwimmen,False,False
+OUTDOOR,Outdoor-Strecke,8,Outdoor,False,False
+SISSY_SQUAT,Sissy-Squat-Station,0,Voll ausgestattetes Fitnessstudio,True,False
+TOWEL,Handtuch,5,Kleingeräte,True,False
+PINCH_BLOCK,Pinch-Block,3,Kleingeräte,True,False
+FAT_GRIP,Griffverdickung,2,Kleingeräte,True,False

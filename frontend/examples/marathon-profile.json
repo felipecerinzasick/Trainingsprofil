@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-08-15T10:30:00.000Z",
+  "identity": {
+    "firstName": "Nora",
+    "ageGroup": "30–39",
+    "gender": "Weiblich",
+    "heightCm": "169",
+    "weightKg": "63"
+  },
+  "goals": {
+    "primaryGoal": "event",
+    "secondaryGoals": [
+      "healthy_strength"
+    ],
+    "sports": [
+      "running",
+      "strength"
+    ],
+    "motivation": "Ich möchte meinen ersten Marathon gesund und mit Freude finishen.",
+    "event": {
+      "enabled": true,
+      "type": "running",
+      "name": "Frühlingsmarathon",
+      "date": "2027-04-18",
+      "distance": "42,2 km",
+      "targetTime": "gesund ankommen, idealerweise unter 4:15"
+    }
+  },
+  "experience": {
+    "level": "regular",
+    "currentTrainingDays": 4,
+    "trainingHistoryYears": "3_5",
+    "recentBreak": "no",
+    "currentActivities": [
+      "running",
+      "strength"
+    ],
+    "weeklyRunningKm": "34",
+    "longestRunKm": "18",
+    "cyclingHours": "",
+    "swimmingMeters": "",
+    "currentRoutine": "Drei Läufe pro Woche und gelegentlich ein kurzes Krafttraining."
+  },
+  "schedule": {
+    "desiredSessions": 5,
+    "availableDays": [
+      "mon",
+      "tue",
+      "thu",
+      "sat",
+      "sun"
+    ],
+    "sessionDuration": 60,
+    "preferredTimes": [
+      "evening",
+      "morning"
+    ],
+    "planStartDate": "2026-09-01",
+    "scheduleNotes": "Der lange Lauf passt am besten am Sonntag; unter der Woche maximal 60 Minuten."
+  },
+  "environment": {
+    "locations": [
+      "home",
+      "outdoor"
+    ],
+    "equipmentIds": [
+      "BODY",
+      "FLOOR",
+      "WALL",
+      "MAT",
+      "DUMBBELL",
+      "BAND",
+      "OUTDOOR"
+    ],
+    "equipmentNotes": "Zwei verstellbare Kurzhanteln bis je 15 kg und ein langes Widerstandsband."
+  },
+  "health": {
+    "painFree": false,
+    "restrictions": [
+      {
+        "id": "knee-example-1",
+        "region": "knee",
+        "side": "right",
+        "intensity": 2,
+        "symptoms": [
+          "pain",
+          "stiffness"
+        ],
+        "duration": "months",
+        "triggers": "Vor allem nach schnellen Bergabläufen.",
+        "strategy": "adapt",
+        "professionalClearance": "yes",
+        "notes": "Physiotherapie empfiehlt progressive Kraftarbeit und vorerst keine harten Downhill-Intervalle."
+      }
+    ],
+    "safetyFlags": [],
+    "safetyConfirmedNone": true,
+    "conditions": [
+      "Keine bekannte Erkrankung"
+    ],
+    "medicationsNotes": "",
+    "healthNotes": "Keine akuten Beschwerden."
+  },
+  "preferences": {
+    "likedStyles": [
+      "steady_cardio",
+      "outdoor",
+      "free_weights"
+    ],
+    "dislikedStyles": [
+      "circuits"
+    ],
+    "coachingTone": "balanced",
+    "variety": 3,
+    "indoorOutdoor": "outdoor",
+    "excludedExercises": "Keine Sprungserien mit hohem Volumen.",
+    "adherenceBarrier": "Zeitmangel"
+  },
+  "recovery": {
+    "sleepHours": 7.5,
+    "sleepQuality": 4,
+    "stressLevel": 3,
+    "recoveryFeeling": 4,
+    "sedentaryHours": "6_8"
+  },
+  "consent": {
+    "dataProcessing": true,
+    "healthAcknowledgement": true,
+    "optionalContact": false
+  }
+}

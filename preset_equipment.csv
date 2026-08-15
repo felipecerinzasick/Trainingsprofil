@@ -1,0 +1,158 @@
+﻿preset_id,preset_name_de,equipment_id,equipment_name_de
+PRESET_BODY,Kein Equipment,BODY,Körpergewicht
+PRESET_BODY,Kein Equipment,FLOOR,Freie Bodenfläche
+PRESET_BODY,Kein Equipment,WALL,Wand
+PRESET_BODY_MAT,Körpergewicht + Matte,BODY,Körpergewicht
+PRESET_BODY_MAT,Körpergewicht + Matte,FLOOR,Freie Bodenfläche
+PRESET_BODY_MAT,Körpergewicht + Matte,MAT,Trainingsmatte
+PRESET_BODY_MAT,Körpergewicht + Matte,WALL,Wand
+PRESET_DUMBBELL,Kurzhanteln,BODY,Körpergewicht
+PRESET_DUMBBELL,Kurzhanteln,DUMBBELL,Kurzhantel(n)
+PRESET_DUMBBELL,Kurzhanteln,FLOOR,Freie Bodenfläche
+PRESET_DUMBBELL,Kurzhanteln,WALL,Wand
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,ADJ_BENCH,Verstellbare Trainingsbank
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,BENCH,Flachbank
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,BODY,Körpergewicht
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,DUMBBELL,Kurzhantel(n)
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,FLOOR,Freie Bodenfläche
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,WALL,Wand
+PRESET_BARBELL,Langhantel + Scheiben,BARBELL,Langhantel
+PRESET_BARBELL,Langhantel + Scheiben,BODY,Körpergewicht
+PRESET_BARBELL,Langhantel + Scheiben,FLOOR,Freie Bodenfläche
+PRESET_BARBELL,Langhantel + Scheiben,PLATES,Hantelscheiben
+PRESET_BARBELL,Langhantel + Scheiben,WALL,Wand
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,ADJ_BENCH,Verstellbare Trainingsbank
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,BARBELL,Langhantel
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,BENCH,Flachbank
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,BODY,Körpergewicht
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,FLOOR,Freie Bodenfläche
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,PLATES,Hantelscheiben
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,RACK,Kniebeugenständer/Power Rack
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,WALL,Wand
+PRESET_KETTLEBELL,Kettlebell,BODY,Körpergewicht
+PRESET_KETTLEBELL,Kettlebell,FLOOR,Freie Bodenfläche
+PRESET_KETTLEBELL,Kettlebell,KETTLEBELL,Kettlebell(s)
+PRESET_KETTLEBELL,Kettlebell,WALL,Wand
+PRESET_PULLUP,Klimmzugstange,BODY,Körpergewicht
+PRESET_PULLUP,Klimmzugstange,FLOOR,Freie Bodenfläche
+PRESET_PULLUP,Klimmzugstange,PULLUP_BAR,Klimmzugstange
+PRESET_PULLUP,Klimmzugstange,WALL,Wand
+PRESET_BANDS,Widerstandsbänder,BAND,Langes Widerstandsband
+PRESET_BANDS,Widerstandsbänder,BODY,Körpergewicht
+PRESET_BANDS,Widerstandsbänder,FLOOR,Freie Bodenfläche
+PRESET_BANDS,Widerstandsbänder,MINIBAND,Miniband/Loop-Band
+PRESET_BANDS,Widerstandsbänder,TUBE_BAND,Tube-Band mit Griffen
+PRESET_BANDS,Widerstandsbänder,WALL,Wand
+PRESET_TRX,Schlingentrainer / TRX,BODY,Körpergewicht
+PRESET_TRX,Schlingentrainer / TRX,FLOOR,Freie Bodenfläche
+PRESET_TRX,Schlingentrainer / TRX,TRX,Schlingentrainer/TRX
+PRESET_TRX,Schlingentrainer / TRX,WALL,Wand
+PRESET_RINGS,Turnringe,BODY,Körpergewicht
+PRESET_RINGS,Turnringe,FLOOR,Freie Bodenfläche
+PRESET_RINGS,Turnringe,RINGS,Turnringe
+PRESET_RINGS,Turnringe,WALL,Wand
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,ADJ_BENCH,Verstellbare Trainingsbank
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,BAND,Langes Widerstandsband
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,BARBELL,Langhantel
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,BENCH,Flachbank
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,BODY,Körpergewicht
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,DUMBBELL,Kurzhantel(n)
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,FLOOR,Freie Bodenfläche
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,KETTLEBELL,Kettlebell(s)
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,MAT,Trainingsmatte
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,MINIBAND,Miniband/Loop-Band
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,PLATES,Hantelscheiben
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,PULLUP_BAR,Klimmzugstange
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,RACK,Kniebeugenständer/Power Rack
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,TRX,Schlingentrainer/TRX
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,WALL,Wand
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,AB_MACHINE,Bauchpresse/Crunch-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,AB_WHEEL,Bauchroller/Ab-Wheel
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ADJ_BENCH,Verstellbare Trainingsbank
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,AIR_BIKE,Air Bike
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ANKLE_WEIGHTS,Fuss-/Knöchelgewichte
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ASSISTED_PULLUP,Unterstützte Klimmzug-/Dip-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BACK_EXTENSION_BENCH,45°-/90°-Rückenstreckerbank
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BACK_EXTENSION_MACHINE,Rückenstrecker-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BAND,Langes Widerstandsband
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BARBELL,Langhantel
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BATTLE_ROPE,Battle Ropes
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BELT_SQUAT,Belt-Squat-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BENCH,Flachbank
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BICEPS_MACHINE,Bizepscurl-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BIKE,Fahrradergometer/Spinning-Bike
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BODY,Körpergewicht
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BOSU,BOSU-Ball
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,BOX,Plyo-Box
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,CABLE,Einfacher Kabelzug
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,CALF_MACHINE,Wadenheben-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,CHAIR,Stabiler Stuhl
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,CHEST_PRESS_MACHINE,Brustpresse
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,DIP_BARS,Dip-Barren/Parallelbarren
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,DUAL_CABLE,Doppel-Kabelzug/Crossover
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,DUMBBELL,Kurzhantel(n)
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ELLIPTICAL,Crosstrainer
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,EZ_BAR,SZ-Stange
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,FARMER_HANDLES,Farmer-Walk-Griffe
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,FAT_GRIP,Griffverdickung
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,FLOOR,Freie Bodenfläche
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,FOAM_ROLLER,Faszienrolle
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,GHD,Glute-Ham-Developer
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,GRIPPER,Handgripper
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,HACK_SQUAT,Hackenschmidt-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,HIP_ABD_MACHINE,Abduktoren-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,HIP_ADD_MACHINE,Adduktoren-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,HIP_THRUST_MACHINE,Hip-Thrust-/Glute-Drive-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,JUMP_ROPE,Springseil
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,KETTLEBELL,Kettlebell(s)
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LANDMINE,Landmine-Aufnahme
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LAT_PULLDOWN,Latzugstation
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LEG_CURL,Beinbeuger-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LEG_EXTENSION,Beinstrecker-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LEG_PRESS,Beinpresse
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,LOW_ROW,Sitzende Ruderzugstation
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,MACE,Steel Mace/Keule
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,MAT,Trainingsmatte
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,MED_BALL,Medizinball
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,MINIBAND,Miniband/Loop-Band
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,NECK_HARNESS,Nackentrainer/Nacken-Geschirr
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PARALLETTES,Parallettes/Liegestützgriffe
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PEC_DECK,Butterfly-/Pec-Deck-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PINCH_BLOCK,Pinch-Block
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PLATES,Hantelscheiben
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PREACHER_BENCH,Scottbank
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PULLDOWN_MACHINE,Latzugmaschine (Plate-loaded)
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,PULLUP_BAR,Klimmzugstange
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,RACK,Kniebeugenständer/Power Rack
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,REVERSE_FLY_MACHINE,Reverse-Fly-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,REVERSE_HYPER,Reverse-Hyper-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,RINGS,Turnringe
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ROPE,Kletterseil
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ROWER,Ruderergometer
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,ROW_MACHINE,Rudermaschine (Kraft)
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SANDBAG,Sandsack (Training)
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SHOULDER_PRESS_MACHINE,Schulterpresse
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SISSY_SQUAT,Sissy-Squat-Station
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SKI_ERG,SkiErg
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SLAM_BALL,Slam Ball
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SLANT_BOARD,Keilbrett/Slant Board
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SLED,Gewichtsschlitten
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SLEDGEHAMMER,Vorschlaghammer
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SLIDERS,Gleitpads/Slider
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SMITH,Multipresse/Smith Machine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SSB,Safety-Squat-Bar
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,STAIR_CLIMBER,Stair Climber/Stepper
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,STEP,Step/Erhöhung
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SWISS_BALL,Gymnastikball/Swiss Ball
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,SWISS_BAR,Multi-Grip-/Swiss-Bar
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TIRE,Trainingsreifen
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TOWEL,Handtuch
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TRAP_BAR,Trap-/Hex-Bar
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TREADMILL,Laufband
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TRICEPS_MACHINE,Trizepsstrecker-Maschine
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TRX,Schlingentrainer/TRX
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,TUBE_BAND,Tube-Band mit Griffen
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,WALL,Wand
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,WEIGHT_VEST,Gewichtsweste
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,WRIST_ROLLER,Wrist Roller
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,YOKE,Yoke/Joch

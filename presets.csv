@@ -1,0 +1,14 @@
+﻿preset_id,name_de,description_de,equipment_ids
+PRESET_BODY,Kein Equipment,"Körpergewicht, freie Bodenfläche und Wand",BODY | FLOOR | WALL
+PRESET_BODY_MAT,Körpergewicht + Matte,Basisausstattung plus Trainingsmatte,BODY | FLOOR | MAT | WALL
+PRESET_DUMBBELL,Kurzhanteln,Basisausstattung plus Kurzhanteln,BODY | DUMBBELL | FLOOR | WALL
+PRESET_DUMBBELL_BENCH,Kurzhanteln + verstellbare Bank,Kurzhanteln und verstellbare Bank; die Bank erfüllt auch die Funktion einer Flachbank,ADJ_BENCH | BENCH | BODY | DUMBBELL | FLOOR | WALL
+PRESET_BARBELL,Langhantel + Scheiben,Basisausstattung plus Langhantel und Gewichtsscheiben,BARBELL | BODY | FLOOR | PLATES | WALL
+PRESET_BARBELL_RACK,Langhantel + Rack + Bank,"Langhantel-Setup mit Scheiben, Rack und verstellbarer Bank",ADJ_BENCH | BARBELL | BENCH | BODY | FLOOR | PLATES | RACK | WALL
+PRESET_KETTLEBELL,Kettlebell,Basisausstattung plus eine oder mehrere Kettlebells,BODY | FLOOR | KETTLEBELL | WALL
+PRESET_PULLUP,Klimmzugstange,Basisausstattung plus Klimmzugstange,BODY | FLOOR | PULLUP_BAR | WALL
+PRESET_BANDS,Widerstandsbänder,"Basisausstattung plus lange Bänder, Minibands und Tubeband",BAND | BODY | FLOOR | MINIBAND | TUBE_BAND | WALL
+PRESET_TRX,Schlingentrainer / TRX,Basisausstattung plus Schlingentrainer,BODY | FLOOR | TRX | WALL
+PRESET_RINGS,Turnringe,Basisausstattung plus Turnringe,BODY | FLOOR | RINGS | WALL
+PRESET_HOME_COMPLETE,Gut ausgestattetes Home Gym,"Kurzhanteln, Langhantel, Rack, Bank, Klimmzugstange, Kettlebells und Bänder",ADJ_BENCH | BAND | BARBELL | BENCH | BODY | DUMBBELL | FLOOR | KETTLEBELL | MAT | MINIBAND | PLATES | PULLUP_BAR | RACK | TRX | WALL
+PRESET_FULL_GYM,Voll ausgestattetes Fitnessstudio,Alle als Studioausstattung markierten Geräte und Basisequipment,AB_MACHINE | AB_WHEEL | ADJ_BENCH | AIR_BIKE | ANKLE_WEIGHTS | ASSISTED_PULLUP | BACK_EXTENSION_BENCH | BACK_EXTENSION_MACHINE | BAND | BARBELL | BATTLE_ROPE | BELT_SQUAT | BENCH | BICEPS_MACHINE | BIKE | BODY | BOSU | BOX | CABLE | CALF_MACHINE | CHAIR | CHEST_PRESS_MACHINE | DIP_BARS | DUAL_CABLE | DUMBBELL | ELLIPTICAL | EZ_BAR | FARMER_HANDLES | FAT_GRIP | FLOOR | FOAM_ROLLER | GHD | GRIPPER | HACK_SQUAT | HIP_ABD_MACHINE | HIP_ADD_MACHINE | HIP_THRUST_MACHINE | JUMP_ROPE | KETTLEBELL | LANDMINE | LAT_PULLDOWN | LEG_CURL | LEG_EXTENSION | LEG_PRESS | LOW_ROW | MACE | MAT | MED_BALL | MINIBAND | NECK_HARNESS | PARALLETTES | PEC_DECK | PINCH_BLOCK | PLATES | PREACHER_BENCH | PULLDOWN_MACHINE | PULLUP_BAR | RACK | REVERSE_FLY_MACHINE | REVERSE_HYPER | RINGS | ROPE | ROWER | ROW_MACHINE | SANDBAG | SHOULDER_PRESS_MACHINE | SISSY_SQUAT | SKI_ERG | SLAM_BALL | SLANT_BOARD | SLED | SLEDGEHAMMER | SLIDERS | SMITH | SSB | STAIR_CLIMBER | STEP | SWISS_BALL | SWISS_BAR | TIRE | TOWEL | TRAP_BAR | TREADMILL | TRICEPS_MACHINE | TRX | TUBE_BAND | WALL | WEIGHT_VEST | WRIST_ROLLER | YOKE

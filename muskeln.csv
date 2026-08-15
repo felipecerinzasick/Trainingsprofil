@@ -1,0 +1,28 @@
+﻿muscle_id,name_de,name_en,latin,region,group_de,size_score,size_class
+QUADS,Quadrizeps,Quadriceps,M. quadriceps femoris,Unterkörper,Vorderer Oberschenkel,5,sehr gross
+GLUTES,Gesässmuskulatur,Glutes,Mm. glutei,Unterkörper,Hüfte/Gesäss,5,sehr gross
+HAMSTRINGS,Hintere Oberschenkelmuskulatur,Hamstrings,Ischiocrurale Muskulatur,Unterkörper,Hinterer Oberschenkel,4,gross
+ADDUCTORS,Adduktoren,Adductors,Adduktorengruppe,Unterkörper,Oberschenkelinnenseite,4,gross
+ABDUCTORS,Hüftabduktoren,Hip Abductors,Gluteus medius/minimus u. a.,Unterkörper,Seitliche Hüfte,3,mittel
+CALVES,Wadenmuskulatur,Calves,M. triceps surae,Unterkörper,Unterschenkel hinten,3,mittel
+TIBIALIS,Schienbeinmuskel,Tibialis Anterior,M. tibialis anterior,Unterkörper,Unterschenkel vorne,1,klein
+HIP_FLEXORS,Hüftbeuger,Hip Flexors,Iliopsoas u. a.,Unterkörper,Vordere Hüfte,2,klein bis mittel
+CHEST,Brustmuskulatur,Chest,M. pectoralis major,Oberkörper,Brust,4,gross
+FRONT_DELTS,Vordere Schulter,Anterior Deltoid,M. deltoideus pars clavicularis,Oberkörper,Schulter,2,klein bis mittel
+SIDE_DELTS,Seitliche Schulter,Lateral Deltoid,M. deltoideus pars acromialis,Oberkörper,Schulter,2,klein bis mittel
+REAR_DELTS,Hintere Schulter,Posterior Deltoid,M. deltoideus pars spinalis,Oberkörper,Schulter,2,klein bis mittel
+LATS,Latissimus,Latissimus Dorsi,M. latissimus dorsi,Oberkörper,Breiter Rücken,4,gross
+TRAPS,Trapezmuskel,Trapezius,M. trapezius,Oberkörper,Oberer/mittlerer Rücken,3,mittel
+RHOMBOIDS,Rhomboiden und mittlerer Rücken,Rhomboids / Mid Back,Mm. rhomboidei,Oberkörper,Mittlerer Rücken,2,klein bis mittel
+ERECTORS,Rückenstrecker,Spinal Erectors,M. erector spinae,Rumpf,Unterer Rücken,4,gross
+BICEPS,Bizeps,Biceps,M. biceps brachii,Oberkörper,Oberarm vorne,2,klein bis mittel
+BRACHIALIS,Brachialis,Brachialis,M. brachialis,Oberkörper,Oberarm vorne,1,klein
+TRICEPS,Trizeps,Triceps,M. triceps brachii,Oberkörper,Oberarm hinten,3,mittel
+FOREARMS,Unterarmmuskulatur,Forearms,Unterarmflexoren/-extensoren,Oberkörper,Unterarm,2,klein bis mittel
+ABS,Gerade Bauchmuskulatur,Rectus Abdominis,M. rectus abdominis,Rumpf,Bauch,3,mittel
+OBLIQUES,Seitliche Bauchmuskulatur,Obliques,Mm. obliqui abdominis,Rumpf,Bauch seitlich,3,mittel
+DEEP_CORE,Tiefe Rumpfmuskulatur,Deep Core,M. transversus abdominis u. a.,Rumpf,Rumpfstabilität,2,klein bis mittel
+SERRATUS,Sägemuskel,Serratus Anterior,M. serratus anterior,Oberkörper,Schulterblatt/Brustkorb,2,klein bis mittel
+ROTATOR_CUFF,Rotatorenmanschette,Rotator Cuff,SITS-Muskulatur,Oberkörper,Schulterstabilisatoren,1,klein
+NECK,Nackenmuskulatur,Neck Muscles,Halsmuskulatur,Oberkörper,Nacken/Hals,2,klein bis mittel
+FULL_BODY,Ganzkörper,Full Body,Mehrere Muskelgruppen,Ganzkörper,Ganzkörper,5,sehr gross

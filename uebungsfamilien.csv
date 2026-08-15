@@ -1,0 +1,66 @@
+﻿family_id,family_de,exercise_count,categories,category_ids,patterns,pattern_ids,primary_muscles,default_display_count,compound_count,min_difficulty,max_difficulty,average_priority_score
+FAM_ADDUCTOR_MOBILITY,Adduktoren-Mobilität,6,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Adduktoren,6,0,1,3,50.5
+FAM_ANKLE_MOBILITY,Sprunggelenk-Mobilität,8,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Schienbeinmuskel | Wadenmuskulatur,8,0,1,2,43.2
+FAM_ARM_MOBILITY,Arm-Mobilität,2,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Bizeps | Trizeps,2,0,1,1,43
+FAM_BACK_EXTENSION,Rücken- und Hüftstreckung,25,Krafttraining,strength,Hüftbeuge (Hinge),hinge,Gesässmuskulatur | Rückenstrecker,22,20,1,5,68.2
+FAM_BARBELL_ROW,Langhantel-/Landmine-Rudern,16,Krafttraining,strength,Horizontal ziehen,horizontal_pull,Hintere Schulter | Latissimus | Rhomboiden und mittlerer Rücken,11,16,2,4,83.8
+FAM_BENCH_PRESS,Bankdrücken,18,Krafttraining,strength,Horizontal drücken,horizontal_push,Brustmuskulatur | Trizeps,8,18,3,5,81.8
+FAM_BW_VERTICAL_PRESS,Vertikales Drücken mit Körpergewicht,10,Krafttraining | Rumpftraining,core | strength,Vertikal drücken,vertical_push,Vordere Schulter,6,9,2,5,59.7
+FAM_CABLE_ROW,Kabel-/Maschinenrudern,15,Krafttraining,strength,Horizontal ziehen,horizontal_pull,Hintere Schulter | Latissimus | Rhomboiden und mittlerer Rücken,15,15,1,2,82.9
+FAM_CALF,Wade/Sprunggelenk,18,Krafttraining | Plyometrie,plyometric | strength,Springen | Sprunggelenk/Wade,calf | jump,Schienbeinmuskel | Wadenmuskulatur,18,1,1,3,57.5
+FAM_CARDIO,Ausdauer und Cardio,35,Ausdauer,cardio,Zyklische Ausdauer,cardio,Ganzkörper | Gesässmuskulatur | Latissimus | Quadrizeps,34,35,1,5,71.9
+FAM_CARRY,Loaded Carries und Halteübungen,40,Kondition/Functional | Krafttraining,conditioning | strength,Tragen/Halten,carry,Ganzkörper | Seitliche Bauchmuskulatur | Unterarmmuskulatur,32,39,2,5,85.0
+FAM_CHEST_FLY,Brust-Flys,20,Krafttraining,strength,Horizontal drücken,horizontal_push,Brustmuskulatur,19,0,1,4,57.1
+FAM_CHEST_MOBILITY,Brust- und Schulter-Mobilität,3,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Brustmuskulatur,3,0,1,1,43.7
+FAM_CONDITIONING,Kondition und Arbeitskapazität,35,Kondition/Functional,conditioning,Fortbewegung | Horizontal ziehen | Hüftbeuge (Hinge) | Tragen/Halten | Vertikal ziehen | Werfen/Schlagen,carry | hinge | horizontal_pull | locomotion | throw | vertical_pull,Ganzkörper | Gesässmuskulatur | Hüftabduktoren | Latissimus | Quadrizeps | Seitliche Bauchmuskulatur | Vordere Schulter | Wadenmuskulatur,33,35,2,5,77.9
+FAM_DB_PRESS,Kurzhantel-/Kettlebell-Drücken,17,Krafttraining,strength,Horizontal drücken,horizontal_push,Brustmuskulatur | Rotatorenmanschette | Trizeps,16,17,2,5,79.6
+FAM_DB_ROW,Kurzhantel-/Kettlebell-Rudern,17,Kondition/Functional | Krafttraining,conditioning | strength,Horizontal ziehen,horizontal_pull,Ganzkörper | Hintere Schulter | Latissimus | Rhomboiden und mittlerer Rücken,16,17,2,5,80.1
+FAM_DEADBUG_BIRDDOG,Dead Bug und Bird Dog,25,Rumpftraining,core,Anti-Extension | Anti-Rotation | Rumpfrotation,anti_extension | anti_rotation | trunk_rotation,Gerade Bauchmuskulatur | Gesässmuskulatur | Latissimus | Seitliche Bauchmuskulatur | Tiefe Rumpfmuskulatur,24,24,1,5,67.3
+FAM_DEADLIFT,Kreuzheben,36,Krafttraining,strength,Hüftbeuge (Hinge),hinge,Gesässmuskulatur | Hintere Oberschenkelmuskulatur | Quadrizeps | Rückenstrecker,17,36,1,5,86.6
+FAM_DIP,Dips,10,Krafttraining,strength,Horizontal drücken,horizontal_push,Brustmuskulatur | Trizeps,7,10,1,5,72.8
+FAM_DYNAMIC_LOWER_MOBILITY,Dynamische Unterkörper-Mobilität,4,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Adduktoren | Hüftbeuger,4,0,2,3,57.5
+FAM_ELBOW_EXTENSION,Trizeps- und Armstreckung,60,Krafttraining,strength,Ellenbogenstreckung,elbow_extension,Trizeps,53,9,1,5,59.8
+FAM_ELBOW_FLEXION,Bizeps- und Armbeugung,60,Krafttraining,strength,Ellenbogenbeugung,elbow_flexion,Bizeps | Brachialis | Unterarmmuskulatur,55,0,1,4,59.7
+FAM_FOREARM_GRIP,Unterarm und Griffkraft,44,Krafttraining,strength,Unterarm/Griff,wrist_grip,Unterarmmuskulatur,31,0,1,5,52.9
+FAM_FRONT_RAISE,Frontheben,7,Krafttraining,strength,Schulterabduktion,shoulder_abduction,Vordere Schulter,7,0,1,2,54
+FAM_HAMSTRING_MOBILITY,Hamstring-Mobilität,4,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Hintere Oberschenkelmuskulatur,4,0,1,2,47.2
+FAM_HINGE_ASSIST,Hüftbeuge-Assistenz,9,Krafttraining | Prehab/Stabilisation,prehab | strength,Hüftbeuge (Hinge),hinge,Hintere Oberschenkelmuskulatur,6,8,1,5,73.7
+FAM_HIP_FLEXOR_MOBILITY,Hüftbeuger-Mobilität,5,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Hüftbeuger | Quadrizeps,5,0,1,2,46.6
+FAM_HIP_ISOLATION,Hüftabduktion/-adduktion,12,Prehab/Stabilisation | Rumpftraining,core | prehab,Hüftabduktion | Hüftadduktion,hip_abduction | hip_adduction,Adduktoren | Hüftabduktoren,11,0,1,5,52.8
+FAM_HIP_MOBILITY,Hüftmobilität,10,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Adduktoren | Gesässmuskulatur,10,0,1,4,48.1
+FAM_HIP_THRUST,Hip Thrust/Glute Bridge,30,Krafttraining,strength,Hüftstreckung,hip_extension,Gesässmuskulatur,17,30,1,4,76.3
+FAM_INVERTED_ROW,Inverses Rudern,15,Krafttraining,strength,Horizontal ziehen,horizontal_pull,Hintere Schulter | Latissimus | Rhomboiden und mittlerer Rücken,10,15,2,5,69.3
+FAM_KETTLEBELL_POWER,Kettlebell-Ballistik und Komplexe,30,Schnellkraft/Olympisches Heben,power,Fortbewegung | Hüftbeuge (Hinge) | Kniebeuge | Olympisches Heben | Rumpfrotation | Vertikal drücken,hinge | locomotion | olympic | squat | trunk_rotation | vertical_push,Ganzkörper | Gesässmuskulatur | Seitliche Bauchmuskulatur | Vordere Schulter,29,30,3,5,86.1
+FAM_KNEE_EXTENSION,Kniestreckung/Quadrizeps,14,Krafttraining,strength,Kniestreckung,knee_extension,Quadrizeps,13,6,1,3,62.6
+FAM_KNEE_FLEXION,Beinbeugung,19,Krafttraining,strength,Kniebeugung,knee_flexion,Hintere Oberschenkelmuskulatur,14,7,1,5,60.3
+FAM_LATERAL_RAISE,Seitheben/Y-Raise,13,Krafttraining,strength,Schulterabduktion,shoulder_abduction,Seitliche Schulter | Trapezmuskel,13,0,1,3,55.2
+FAM_LAT_MOBILITY,Latissimus-Mobilität,4,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Latissimus,4,0,1,2,45.5
+FAM_LAT_PULLDOWN,Latzug,18,Krafttraining,strength,Vertikal ziehen,vertical_pull,Latissimus,17,18,2,4,77.3
+FAM_LUNGE,Ausfallschritt,64,Krafttraining,strength,Ausfallschritt/einbeinig,lunge,Quadrizeps,43,64,1,5,80.8
+FAM_MACHINE_PRESS,Brustpresse,13,Krafttraining,strength,Horizontal drücken,horizontal_push,Brustmuskulatur,13,13,1,3,82.5
+FAM_MISC_POWER,Kurzhantel- und Sandsack-Schnellkraft,20,Schnellkraft/Olympisches Heben,power,Olympisches Heben,olympic,Ganzkörper | Vordere Schulter,19,20,3,5,87.2
+FAM_NECK,Nackentraining,15,Prehab/Stabilisation,prehab,Nacken,neck,Nackenmuskulatur,6,0,1,5,38.3
+FAM_NECK_MOBILITY,Nacken-Mobilität,4,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Nackenmuskulatur | Trapezmuskel,4,0,1,1,43
+FAM_OLYMPIC,Olympisches Gewichtheben,34,Schnellkraft/Olympisches Heben,power,Olympisches Heben,olympic,Ganzkörper,27,34,5,5,84.1
+FAM_OVERHEAD_PRESS,Schulterdrücken,34,Krafttraining | Schnellkraft/Olympisches Heben,power | strength,Vertikal drücken,vertical_push,Rotatorenmanschette | Vordere Schulter,28,34,1,5,81.2
+FAM_PLANK,Plank und Anti-Extension,39,Rumpftraining,core,Anti-Extension | Anti-Rotation | Fortbewegung | Rumpfrotation,anti_extension | anti_rotation | locomotion | trunk_rotation,Ganzkörper | Gerade Bauchmuskulatur | Gesässmuskulatur | Latissimus | Seitliche Bauchmuskulatur | Tiefe Rumpfmuskulatur,36,24,1,5,65
+FAM_PLYOMETRIC,Sprünge und Würfe,46,Plyometrie,plyometric,Horizontal drücken | Springen | Werfen/Schlagen,horizontal_push | jump | throw,Brustmuskulatur | Ganzkörper | Gesässmuskulatur | Quadrizeps | Seitliche Bauchmuskulatur | Wadenmuskulatur,39,46,2,5,69.4
+FAM_PULLOVER,Pullover / gerader Armzug,15,Krafttraining,strength,Vertikal ziehen,vertical_pull,Latissimus,14,0,2,4,57
+FAM_PULLUP,Klimmzug,24,Kondition/Functional | Krafttraining | Rumpftraining,conditioning | core | strength,Vertikal ziehen,vertical_pull,Ganzkörper | Latissimus,14,23,1,5,71.1
+FAM_PUSHUP,Liegestütz,34,Krafttraining | Plyometrie | Prehab/Stabilisation,plyometric | prehab | strength,Horizontal drücken,horizontal_push,Brustmuskulatur | Sägemuskel | Trizeps | Vordere Schulter,25,34,1,5,69.2
+FAM_REAR_DELT,Hintere Schulter,12,Krafttraining | Prehab/Stabilisation,prehab | strength,Schulterblattführung,scapular,Hintere Schulter,12,0,1,3,52.6
+FAM_ROLLOUT,Rollout und Anti-Extension,15,Rumpftraining,core,Anti-Extension,anti_extension,Gerade Bauchmuskulatur | Seitliche Bauchmuskulatur,10,15,3,5,66.5
+FAM_ROTATION,Anti-Rotation und Rumpfrotation,35,Rumpftraining,core,Anti-Lateralflexion | Anti-Rotation | Rumpfbeugung | Rumpfrotation,anti_lateral | anti_rotation | trunk_flexion | trunk_rotation,Seitliche Bauchmuskulatur,35,24,2,4,70.0
+FAM_SELF_MYOFASCIAL,Selbstmassage mit Foam Roller,12,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Adduktoren | Brustmuskulatur | Gesässmuskulatur | Hintere Oberschenkelmuskulatur | Hüftabduktoren | Latissimus | Quadrizeps | Schienbeinmuskel | Trapezmuskel | Trizeps | Unterarmmuskulatur | Wadenmuskulatur,12,0,1,1,43
+FAM_SHOULDER_MOBILITY,Schulter-Mobilität,7,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Brustmuskulatur | Hintere Schulter | Rotatorenmanschette | Trapezmuskel,7,0,1,3,45.4
+FAM_SHOULDER_PREHAB,Schulterblatt/Rotatorenmanschette,18,Prehab/Stabilisation,prehab,Schulterblattführung,scapular,Hintere Schulter | Latissimus | Rotatorenmanschette | Sägemuskel | Trapezmuskel,18,0,1,2,52.8
+FAM_SHRUG,Schulterheben / Scapula-Kontrolle,26,Krafttraining,strength,Schulterblattführung,scapular,Trapezmuskel,20,0,1,4,57.6
+FAM_SIDE_PLANK,Seitstütz und Anti-Lateralflexion,25,Rumpftraining,core,Anti-Lateralflexion,anti_lateral,Adduktoren | Hüftabduktoren | Seitliche Bauchmuskulatur,14,8,1,5,55.7
+FAM_SINGLE_LEG_RDL,Einbeinige Hüftbeuge,13,Krafttraining,strength,Hüftbeuge (Hinge),hinge,Hintere Oberschenkelmuskulatur,12,13,2,5,82.2
+FAM_SPINE_MOBILITY,Wirbelsäulen-Mobilität,6,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Latissimus | Rückenstrecker | Seitliche Bauchmuskulatur,6,0,1,3,48.8
+FAM_SPLIT_SQUAT,Split Squat,22,Krafttraining,strength,Ausfallschritt/einbeinig,lunge,Quadrizeps,15,22,1,4,85.1
+FAM_SQUAT,Kniebeuge,65,Krafttraining,strength,Kniebeuge,squat,Quadrizeps,19,65,1,5,82.1
+FAM_STEP,Step-up/Step-down,29,Krafttraining,strength,Aufsteigen/Absteigen,step,Quadrizeps,14,29,1,4,77.9
+FAM_THORACIC_MOBILITY,Brustwirbelsäulen-Mobilität,5,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Rückenstrecker | Seitliche Bauchmuskulatur,5,0,1,2,49.8
+FAM_TRUNK_FLEXION,Rumpfbeugung und Beinheben,46,Rumpftraining,core,Rumpfbeugung,trunk_flexion,Gerade Bauchmuskulatur | Hüftbeuger | Seitliche Bauchmuskulatur,41,29,1,5,62.0
+FAM_WRIST_MOBILITY,Handgelenk-Mobilität,4,Mobilität/Dehnung,mobility,Mobilität/Dehnung,mobility,Unterarmmuskulatur,4,0,1,2,43.5
