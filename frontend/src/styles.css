@@ -242,9 +242,21 @@ strong {
   display: grid;
   place-items: center;
   border-radius: 13px;
-  color: var(--accent);
-  background: var(--ink);
+  background: #fff;
   box-shadow: 0 6px 14px rgba(18, 60, 59, 0.16);
+  overflow: hidden;
+}
+
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-logo--compact {
+  width: 25px;
+  height: 25px;
 }
 
 /* Landing */
@@ -1600,8 +1612,7 @@ select {
 }
 
 .brand--sidebar .brand__mark {
-  background: var(--accent);
-  color: var(--ink);
+  background: #fff;
 }
 
 .sidebar-intro {

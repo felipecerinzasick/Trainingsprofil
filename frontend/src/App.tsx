@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { api, ApiError, authStore } from "./api/client";
 import type { AuthResponse, AuthUser, PlanRecord } from "./api/types";
 import { AuthPage } from "./components/AuthPage";
+import { BrandLogo } from "./components/BrandLogo";
 import { CompletePage } from "./components/CompletePage";
 import { DashboardPage } from "./components/DashboardPage";
 import { Icon } from "./components/Icon";
@@ -28,7 +29,7 @@ function initialRoute(): { view: AppView; planId?: string } {
 function StatusScreen({ title, text, onHome }: { title: string; text: string; onHome: () => void }) {
   return (
     <div className="status-screen page-shell">
-      <button type="button" className="brand" onClick={onHome}><span className="brand__mark"><Icon name="leaf" size={22} /></span><span>trainingsprofil</span></button>
+      <button type="button" className="brand" onClick={onHome}><span className="brand__mark"><BrandLogo /></span><span>trainingsprofil</span></button>
       <span className="loading-orb" />
       <h1>{title}</h1>
       <p>{text}</p>

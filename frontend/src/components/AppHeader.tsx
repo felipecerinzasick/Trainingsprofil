@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { AuthUser } from "../api/types";
+import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 
 interface AppHeaderProps {
@@ -15,7 +16,7 @@ export function AppHeader({ user, onHome, onDashboard, onLogout, action }: AppHe
     <header className="app-header">
       <div className="page-shell app-header__inner">
         <button type="button" className="brand" onClick={onHome}>
-          <span className="brand__mark"><Icon name="leaf" size={22} /></span>
+          <span className="brand__mark"><BrandLogo /></span>
           <span>trainingsprofil</span>
         </button>
         <div className="app-header__actions">

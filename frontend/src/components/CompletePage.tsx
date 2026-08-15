@@ -3,6 +3,7 @@ import { EQUIPMENT } from "../data/equipment";
 import { PRIMARY_GOALS, SPORTS } from "../data/options";
 import type { TrainingProfile } from "../types";
 import { downloadProfile } from "../utils/profile";
+import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 
 interface CompletePageProps {
@@ -30,7 +31,7 @@ export function CompletePage({ profile, onEdit, onReset, onGenerate, generating,
     <div className="complete-page">
       <header className="complete-header page-shell">
         <button type="button" className="brand" onClick={onEdit}>
-          <span className="brand__mark"><Icon name="leaf" size={22} /></span>
+          <span className="brand__mark"><BrandLogo /></span>
           <span>trainingsprofil</span>
         </button>
         <div className="complete-header__actions">

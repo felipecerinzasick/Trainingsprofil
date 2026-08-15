@@ -1,3 +1,4 @@
+import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 
 interface LandingPageProps {
@@ -11,7 +12,7 @@ interface LandingPageProps {
 function Brand() {
   return (
     <a className="brand" href="#top" aria-label="Trainingsprofil Startseite">
-      <span className="brand__mark"><Icon name="leaf" size={22} /></span>
+      <span className="brand__mark"><BrandLogo /></span>
       <span>trainingsprofil</span>
     </a>
   );

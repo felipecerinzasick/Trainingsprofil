@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { api, ApiError } from "../api/client";
 import type { AuthResponse } from "../api/types";
+import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
@@ -127,7 +128,7 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
     <div className="auth-page">
       <header className="auth-page__header page-shell">
         <button type="button" className="brand" onClick={onBack}>
-          <span className="brand__mark"><Icon name="leaf" size={22} /></span>
+          <span className="brand__mark"><BrandLogo /></span>
           <span>trainingsprofil</span>
         </button>
         <button type="button" className="button button--ghost button--small" onClick={onBack}>

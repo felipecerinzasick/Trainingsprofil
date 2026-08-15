@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import type { TrainingProfile } from "../types";
+import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 import { GoalsStep } from "./steps/GoalsStep";
 import { ExperienceStep } from "./steps/ExperienceStep";
@@ -143,14 +144,14 @@ export function Onboarding({ profile, setProfile, onExit, onComplete }: Onboardi
     <div className="onboarding-page">
       <header className="onboarding-mobile-header">
         <button type="button" className="mobile-brand" onClick={onExit} aria-label="Zur Startseite">
-          <span><Icon name="leaf" size={18} /></span> trainingsprofil
+          <span><BrandLogo compact /></span> trainingsprofil
         </button>
         <div className="mobile-step-count">{currentStep + 1}/{STEPS.length}</div>
       </header>
 
       <aside className="onboarding-sidebar">
         <button type="button" className="brand brand--sidebar" onClick={onExit} aria-label="Zur Startseite">
-          <span className="brand__mark"><Icon name="leaf" size={22} /></span>
+          <span className="brand__mark"><BrandLogo /></span>
           <span>trainingsprofil</span>
         </button>
 
