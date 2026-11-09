@@ -102,7 +102,11 @@ export function ExerciseDetailModal({ exerciseId, fallbackName, onClose }: Exerc
       .then((result) => { if (!cancelled) setDetail(result); })
       .catch((reason) => {
         if (cancelled) return;
-        setError(reason instanceof ApiError ? reason.message : "Die Übungsdetails konnten nicht geladen werden.");
+        if (reason instanceof ApiError && reason.status === 404) {
+          setError("Die Übungsdetails sind auf dem Server noch nicht verfügbar. Bitte später erneut versuchen.");
+        } else {
+          setError(reason instanceof ApiError ? reason.message : "Die Übungsdetails konnten nicht geladen werden.");
+        }
       })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
