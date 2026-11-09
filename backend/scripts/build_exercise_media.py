@@ -433,12 +433,31 @@ def build(fed_path: Path) -> dict[str, Any]:
     return {"source": SOURCE, "exercises": mapping, "sources": sources}
 
 
+def dump_compact(payload: dict[str, Any]) -> str:
+    """One line per exercise and per source: small diffs when the mapping is rebuilt."""
+
+    lines = ['{', ' "source": ' + json.dumps(payload["source"], ensure_ascii=False) + ',', ' "exercises": {']
+    exercises = payload["exercises"]
+    for index, (exercise_id, entry) in enumerate(exercises.items()):
+        comma = "," if index < len(exercises) - 1 else ""
+        lines.append(f'  {json.dumps(exercise_id)}: {json.dumps(entry, ensure_ascii=False)}{comma}')
+    lines.append(' },')
+    lines.append(' "sources": {')
+    sources = payload["sources"]
+    for index, (source_id, entry) in enumerate(sources.items()):
+        comma = "," if index < len(sources) - 1 else ""
+        lines.append(f'  {json.dumps(source_id)}: {json.dumps(entry, ensure_ascii=False)}{comma}')
+    lines.append(' }')
+    lines.append('}')
+    return "\n".join(lines) + "\n"
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 2:
         print(__doc__, file=sys.stderr)
         return 2
     payload = build(Path(argv[1]))
-    OUTPUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    OUTPUT_PATH.write_text(dump_compact(payload), encoding="utf-8")
     print(f"written {OUTPUT_PATH}", file=sys.stderr)
     return 0
 
