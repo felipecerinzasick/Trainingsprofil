@@ -136,19 +136,9 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
       </header>
 
       <main className="auth-layout page-shell">
-        <section className="auth-intro">
+        <section className="auth-heading">
           <span className="eyebrow"><Icon name="spark" size={16} /> Dein persönlicher Bereich</span>
-          <h1>{profileReady ? "Speichere dein Profil und erstelle deinen Plan." : "Deine Pläne. Sicher an einem Ort."}</h1>
-          <p>
-            Mit einem Konto kannst du dein Trainingsprofil speichern, neue Trainingsblöcke erstellen,
-            bestehende Pläne öffnen und jeden Plan als PDF herunterladen.
-          </p>
-          <div className="auth-benefits">
-            <span><Icon name="save" size={20} /><div><strong>Profil behalten</strong><small>Später weiterbearbeiten, statt neu zu beginnen.</small></div></span>
-            <span><Icon name="calendar" size={20} /><div><strong>Pläne online verfügbar</strong><small>Alle erstellten Trainingsblöcke im persönlichen Dashboard.</small></div></span>
-            <span><Icon name="download" size={20} /><div><strong>PDF-Export</strong><small>Sauber formatiert für Smartphone, Ausdruck oder Reise.</small></div></span>
-          </div>
-          <div className="auth-local-note"><Icon name="info" size={18} /> Mit einem Konto werden Profil und Pläne serverseitig gespeichert und bleiben im Dashboard verfügbar.</div>
+          <h1>{profileReady ? "Konto erstellen oder anmelden – dann wird dein Plan erstellt." : "Anmelden oder Konto erstellen."}</h1>
         </section>
 
         <section className="auth-card" aria-labelledby="auth-title">
@@ -194,6 +184,12 @@ export function AuthPage({ defaultMode = "register", firstName = "", onSuccess, 
             </button>
             <small className="auth-card__legal">Mit einem Konto werden Profil und Trainingspläne in der Datenbank gespeichert. Trainingshinweise ersetzen keine medizinische Beratung.</small>
           </form>
+        </section>
+
+        <section className="auth-benefits auth-benefits--compact" aria-label="Vorteile eines Kontos">
+          <span><Icon name="save" size={17} /> Profil bleibt gespeichert</span>
+          <span><Icon name="calendar" size={17} /> Pläne im Dashboard</span>
+          <span><Icon name="download" size={17} /> PDF-Export</span>
         </section>
       </main>
     </div>

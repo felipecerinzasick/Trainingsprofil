@@ -27,8 +27,8 @@ export function GoalsStep({ profile, updateSection, setProfile }: StepProps) {
     <div className="step-content">
       <SectionHeading
         eyebrow="Dein Ausgangspunkt"
-        title="Was möchtest du erreichen?"
-        text="Wähle zuerst dein wichtigstes Ziel. Weitere Ziele kannst du danach ergänzen."
+        title="Was ist dein primäres Ziel?"
+        text="Wähle genau ein primäres Ziel – es bestimmt die Ausrichtung deines Plans. Weitere Ziele kannst du danach ergänzen."
       />
 
       <div className="choice-grid choice-grid--goals">
@@ -45,7 +45,7 @@ export function GoalsStep({ profile, updateSection, setProfile }: StepProps) {
       </div>
 
       <div className="form-section">
-        <Field label="Was ist dir zusätzlich wichtig?" hint="Mehrfachauswahl möglich" optional>
+        <Field label="Was ist dir zusätzlich wichtig?" hint="Sekundäre Ziele, Mehrfachauswahl möglich" optional>
           <div className="chip-group">
             {PRIMARY_GOALS.filter((goal) => goal.id !== goals.primaryGoal).map((goal) => (
               <Chip
