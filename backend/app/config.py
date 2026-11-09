@@ -37,6 +37,8 @@ class Settings(BaseSettings):
         ]
     )
     exercise_database_path: Path = BACKEND_DIR / "app" / "data" / "fitness_exercise_database_de.json"
+    exercise_media_path: Path = BACKEND_DIR / "app" / "data" / "exercise_media.json"
+    exercise_media_base_url: str = "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/"
 
     @field_validator("cors_origins", mode="before")
     @classmethod
@@ -45,7 +47,7 @@ class Settings(BaseSettings):
             return [item.strip() for item in value.split(",") if item.strip()]
         return value
 
-    @field_validator("exercise_database_path", mode="before")
+    @field_validator("exercise_database_path", "exercise_media_path", mode="before")
     @classmethod
     def resolve_exercise_path(cls, value: object) -> Path:
         path = Path(str(value))

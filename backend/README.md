@@ -44,5 +44,7 @@ pytest -q
 - `app/services/restrictions.py` – Beschwerden und Anpassungen
 - `app/services/safety.py` – Red-Flag-Gate
 - `app/services/pdf_renderer.py` – PDF
+- `app/services/exercise_media.py` – Übungsdetails inkl. Technikhinweisen und Abbildungen (Free Exercise DB, Public Domain)
+- `scripts/build_exercise_media.py` – ordnet den Übungskatalog dem Bilddatensatz zu und schreibt `app/data/exercise_media.json`
 
 Die vollständige Dokumentation liegt in `../README.md` und `../docs/`.

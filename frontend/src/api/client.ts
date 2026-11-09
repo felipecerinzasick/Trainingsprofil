@@ -1,5 +1,5 @@
 import type { TrainingProfile } from "../types";
-import type { ApiProblem, AuthResponse, AuthUser, PlanListItem, PlanRecord } from "./types";
+import type { ApiProblem, AuthResponse, AuthUser, ExerciseDetail, PlanListItem, PlanRecord } from "./types";
 
 const configuredApiUrl = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://127.0.0.1:8000/api";
 const normalizedApiUrl = configuredApiUrl.replace(/\/+$/, "");
@@ -121,6 +121,8 @@ export const api = {
   listPlans: () => request<PlanListItem[]>("/plans"),
 
   getPlan: (id: string) => request<PlanRecord>(`/plans/${encodeURIComponent(id)}`),
+
+  getExercise: (id: string) => request<ExerciseDetail>(`/exercises/${encodeURIComponent(id)}`, {}, false),
 
   deletePlan: (id: string) => request<{ message: string }>(`/plans/${encodeURIComponent(id)}`, { method: "DELETE" }),
 

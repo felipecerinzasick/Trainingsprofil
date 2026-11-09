@@ -1,9 +1,32 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import { api, ApiError } from "../api/client";
 import type { AuthUser, PlanBlock, PlanRecord, PlanSession } from "../api/types";
 import { AppHeader } from "./AppHeader";
+import { ExerciseDetailModal } from "./ExerciseDetailModal";
 import { Icon } from "./Icon";
+
+const PRINCIPLES_DISMISSED_KEY = "trainingsprofil-principles-dismissed-v1";
+
+type ExerciseSelection = { exerciseId: string; name: string } | null;
+type OpenExercise = (exerciseId: string | null | undefined, name: string) => void;
+
+function readPrinciplesOpen() {
+  try {
+    return localStorage.getItem(PRINCIPLES_DISMISSED_KEY) !== "1";
+  } catch {
+    return true;
+  }
+}
+
+function storePrinciplesOpen(open: boolean) {
+  try {
+    if (open) localStorage.removeItem(PRINCIPLES_DISMISSED_KEY);
+    else localStorage.setItem(PRINCIPLES_DISMISSED_KEY, "1");
+  } catch {
+    // Browser storage is a convenience only.
+  }
+}
 
 interface PlanPageProps {
   user: AuthUser;
@@ -28,7 +51,7 @@ const formatDate = (value: string, long = false) => new Intl.DateTimeFormat("de-
   ? { weekday: "long", day: "2-digit", month: "long", year: "numeric" }
   : { day: "2-digit", month: "short", year: "numeric" }).format(new Date(`${value}T12:00:00`));
 
-function SessionBlock({ block }: { block: PlanBlock }) {
+function SessionBlock({ block, onOpenExercise }: { block: PlanBlock; onOpenExercise: OpenExercise }) {
   return (
     <section className="session-block">
       <div className="session-block__heading">
@@ -39,12 +62,23 @@ function SessionBlock({ block }: { block: PlanBlock }) {
       {block.exercises && block.exercises.length > 0 && (
         <div className="exercise-list">
           {block.exercises.map((exercise, index) => (
-            <article className="exercise-row" key={`${exercise.exerciseId ?? exercise.name}-${index}`}>
+            <article
+              className={`exercise-row ${exercise.exerciseId ? "exercise-row--clickable" : ""}`}
+              key={`${exercise.exerciseId ?? exercise.name}-${index}`}
+              onClick={exercise.exerciseId ? () => onOpenExercise(exercise.exerciseId, exercise.name) : undefined}
+            >
               <div className="exercise-row__number">{String(index + 1).padStart(2, "0")}</div>
               <div className="exercise-row__main">
                 <span>{exercise.pattern}</span>
-                <h5>{exercise.name}</h5>
+                <h5>
+                  {exercise.exerciseId ? (
+                    <button type="button" className="exercise-row__title" onClick={(event) => { event.stopPropagation(); onOpenExercise(exercise.exerciseId, exercise.name); }}>
+                      {exercise.name}
+                    </button>
+                  ) : exercise.name}
+                </h5>
                 <small>{[exercise.primaryMuscle, ...(exercise.equipment ?? [])].filter(Boolean).join(" · ")}</small>
+                {exercise.exerciseId && <span className="exercise-row__hint"><Icon name="search" size={13} /> Ausführung &amp; Abbildung ansehen</span>}
               </div>
               <div className="exercise-dose">
                 <strong>{exercise.sets} × {exercise.reps}</strong>
@@ -54,7 +88,21 @@ function SessionBlock({ block }: { block: PlanBlock }) {
               <div className="exercise-guidance">
                 {exercise.progression && <p>{exercise.progression}</p>}
                 {(exercise.notes ?? []).map((note) => <small key={note}><Icon name="info" size={14} />{note}</small>)}
-                {(exercise.alternatives ?? []).length > 0 && <small><b>Alternativen:</b> {exercise.alternatives?.map((item) => item.name).join(", ")}</small>}
+                {(exercise.alternatives ?? []).length > 0 && (
+                  <small className="exercise-alternatives">
+                    <b>Alternativen:</b>
+                    <span>
+                      {exercise.alternatives?.map((item, altIndex) => (
+                        <span key={`${item.exerciseId ?? item.name}-${altIndex}`}>
+                          {altIndex > 0 && ", "}
+                          {item.exerciseId
+                            ? <button type="button" className="exercise-alternative" onClick={(event) => { event.stopPropagation(); onOpenExercise(item.exerciseId, item.name); }}>{item.name}</button>
+                            : item.name}
+                        </span>
+                      ))}
+                    </span>
+                  </small>
+                )}
               </div>
             </article>
           ))}
@@ -77,7 +125,7 @@ function SessionBlock({ block }: { block: PlanBlock }) {
   );
 }
 
-function SessionCard({ session }: { session: PlanSession }) {
+function SessionCard({ session, onOpenExercise }: { session: PlanSession; onOpenExercise: OpenExercise }) {
   const [open, setOpen] = useState(true);
   return (
     <article className={`session-card ${open ? "is-open" : ""}`}>
@@ -109,7 +157,7 @@ function SessionCard({ session }: { session: PlanSession }) {
           </div>
 
           {session.coachNote && <div className="coach-callout"><Icon name="spark" size={19} /><div><strong>Coaching-Hinweis</strong><p>{session.coachNote}</p></div></div>}
-          {session.blocks.map((block, index) => <SessionBlock key={`${block.title}-${index}`} block={block} />)}
+          {session.blocks.map((block, index) => <SessionBlock key={`${block.title}-${index}`} block={block} onOpenExercise={onOpenExercise} />)}
 
           {(session.adaptations ?? []).length > 0 && (
             <div className="adaptation-callout">
@@ -128,6 +176,18 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
   const [selectedWeek, setSelectedWeek] = useState(1);
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState("");
+  const [principlesOpen, setPrinciplesOpen] = useState(readPrinciplesOpen);
+  const [selectedExercise, setSelectedExercise] = useState<ExerciseSelection>(null);
+  const openExercise = useCallback<OpenExercise>((exerciseId, name) => {
+    if (exerciseId) setSelectedExercise({ exerciseId, name });
+  }, []);
+  const closeExercise = useCallback(() => setSelectedExercise(null), []);
+  const togglePrinciples = () => {
+    setPrinciplesOpen((value) => {
+      storePrinciplesOpen(!value);
+      return !value;
+    });
+  };
   const week = useMemo(() => plan.weeks.find((item) => item.weekNumber === selectedWeek) ?? plan.weeks[0], [plan.weeks, selectedWeek]);
 
   const download = async () => {
@@ -189,9 +249,18 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
               <span><small>Phase</small><strong>{PHASE_LABELS[plan.phase] ?? plan.phase}</strong></span>
             </div>
           </div>
-          <aside className="plan-principles">
-            <h3>Leitlinien für den Block</h3>
-            <ul>{plan.principles.map((item) => <li key={item}><Icon name="check-circle" size={17} />{item}</li>)}</ul>
+          <aside className={`plan-principles ${principlesOpen ? "is-open" : "is-collapsed"}`}>
+            <div className="plan-principles__header">
+              <h3>Leitlinien für den Block</h3>
+              <button type="button" className="text-button plan-principles__toggle" onClick={togglePrinciples} aria-expanded={principlesOpen} aria-controls="plan-principles-list">
+                {principlesOpen ? <><Icon name="x" size={15} /> Ausblenden</> : <><Icon name="chevron-down" size={15} /> Anzeigen</>}
+              </button>
+            </div>
+            {principlesOpen ? (
+              <ul id="plan-principles-list">{plan.principles.map((item) => <li key={item}><Icon name="check-circle" size={17} />{item}</li>)}</ul>
+            ) : (
+              <p className="plan-principles__summary">{plan.principles.length} Grundsätze zu Intensität, Technik und Erholung.</p>
+            )}
           </aside>
         </section>
 
@@ -225,7 +294,7 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
           </div>
 
           <div className="session-list">
-            {week.sessions.map((session) => <SessionCard key={session.id} session={session} />)}
+            {week.sessions.map((session) => <SessionCard key={session.id} session={session} onOpenExercise={openExercise} />)}
           </div>
         </section>
 
@@ -239,6 +308,10 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
           <div><strong>Wichtiger Hinweis</strong><p>{plan.safety.disclaimer}</p></div>
         </section>
       </main>
+
+      {selectedExercise && (
+        <ExerciseDetailModal exerciseId={selectedExercise.exerciseId} fallbackName={selectedExercise.name} onClose={closeExercise} />
+      )}
     </div>
   );
 }

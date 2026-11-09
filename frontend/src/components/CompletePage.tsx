@@ -47,15 +47,13 @@ export function CompletePage({ profile, onEdit, onReset, onGenerate, generating,
           </div>
           <span className="eyebrow">Trainingsprofil abgeschlossen</span>
           <h1>{profile.identity.firstName ? `${profile.identity.firstName}, dein Profil ist bereit.` : "Dein Profil ist bereit."}</h1>
-          <p>Deine Ziele, Trainingsmöglichkeiten, Ausstattung und persönlichen Einschränkungen sind strukturiert erfasst. Daraus kann jetzt dein erster Trainingsblock entstehen.</p>
+          <p>Deine Ziele, Trainingsmöglichkeiten, Ausstattung und Einschränkungen sind erfasst. Jetzt kannst du daraus deinen ersten Trainingsplan erstellen.</p>
 
           <div className="complete-actions">
-            <button type="button" className="button button--primary button--large" onClick={() => setShowGenerate(true)}>
+            <button type="button" className="button button--primary button--large complete-cta" onClick={() => setShowGenerate(true)}>
               Trainingsplan erstellen <Icon name="arrow-right" size={19} />
             </button>
-            <button type="button" className="button button--ghost button--large" onClick={() => downloadProfile(profile)}>
-              <Icon name="download" size={18} /> Profildaten exportieren
-            </button>
+            <small className="complete-actions__hint">Du wählst gleich noch die Länge deines ersten Blocks.</small>
           </div>
         </section>
 
@@ -101,6 +99,7 @@ export function CompletePage({ profile, onEdit, onReset, onGenerate, generating,
 
         <div className="complete-footer-actions">
           <button type="button" className="text-button" onClick={onEdit}><Icon name="edit" size={16} /> Angaben ändern</button>
+          <button type="button" className="text-button" onClick={() => downloadProfile(profile)}><Icon name="download" size={16} /> Profildaten exportieren</button>
           <button type="button" className="text-button text-button--danger" onClick={() => {
             if (window.confirm("Möchtest du das aktuelle Trainingsprofil wirklich löschen und neu beginnen?")) onReset();
           }}><Icon name="refresh" size={16} /> Neues Profil beginnen</button>
@@ -122,7 +121,6 @@ export function CompletePage({ profile, onEdit, onReset, onGenerate, generating,
                 </button>
               ))}
             </div>
-            <div className="generate-recommendation"><Icon name="info" size={17} /> {profile.goals.event.enabled ? "Für ein Wettkampfziel sind 12–16 Wochen meist die bessere Ausgangsbasis." : "Für Kraft, Gesundheit und allgemeinen Aufbau sind 8 Wochen ein guter erster Block."}</div>
             {generationError && <div className="auth-error"><Icon name="alert" size={18} /><div><strong>Plan konnte noch nicht erstellt werden.</strong><p>{generationError}</p></div></div>}
             <div className="handoff-modal__actions">
               <button type="button" className="button button--primary button--large" onClick={() => onGenerate(duration)} disabled={generating}>

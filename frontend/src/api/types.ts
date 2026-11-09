@@ -144,6 +144,49 @@ export interface PlanRecord extends PlanListItem {
   profileSnapshot: TrainingProfile;
 }
 
+export interface ExerciseMediaAttribution {
+  name: string;
+  url: string;
+  license: string;
+}
+
+export interface ExerciseMedia {
+  sourceId: string;
+  sourceName?: string | null;
+  match: "exact" | "similar" | "variant" | string;
+  images: string[];
+  instructions: string[];
+  instructionsLanguage: string;
+  level?: string | null;
+  attribution: ExerciseMediaAttribution;
+}
+
+export interface ExerciseDetail {
+  exerciseId: string;
+  name: string;
+  nameEn?: string | null;
+  aliases: string[];
+  family?: string | null;
+  category?: string | null;
+  pattern?: string | null;
+  patternId: string;
+  force?: string | null;
+  mechanic?: string | null;
+  primaryMuscle?: string | null;
+  secondaryMuscles: string[];
+  bodyRegion?: string | null;
+  equipment: string[];
+  difficulty?: string | null;
+  difficultyLevel: number;
+  unilateral: boolean;
+  bodyweight: boolean;
+  requiresCoaching: boolean;
+  trainingGoals: string[];
+  notes: string[];
+  cues: string[];
+  media: ExerciseMedia | null;
+}
+
 export interface ApiProblem {
   status: number;
   message: string;

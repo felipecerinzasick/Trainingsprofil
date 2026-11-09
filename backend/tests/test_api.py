@@ -122,3 +122,32 @@ def test_plan_generation_returns_structured_safety_block(client: TestClient) -> 
     detail = response.json()["detail"]
     assert detail["code"] == "MEDICAL_CLEARANCE_REQUIRED"
     assert any("Schwindel" in notice for notice in detail["notices"])
+
+
+def test_exercise_detail_is_public_and_includes_media(client: TestClient) -> None:
+    response = client.get("/api/exercises/EX001213")  # Standard-Liegestütz
+    assert response.status_code == 200, response.text
+    detail = response.json()
+    assert detail["name"] == "Liegestütz"
+    assert detail["pattern"] == "Horizontal drücken"
+    assert detail["equipment"]
+    assert detail["cues"]
+    assert detail["media"] is not None
+    assert len(detail["media"]["images"]) == 2
+    assert detail["media"]["images"][0].startswith("https://")
+    assert detail["media"]["instructions"]
+    assert detail["media"]["attribution"]["license"].startswith("Unlicense")
+    assert response.headers["cache-control"].startswith("public")
+
+
+def test_exercise_detail_without_media_still_describes_exercise(client: TestClient) -> None:
+    response = client.get("/api/exercises/ex000640")  # Bandrudern im Stand, keine Abbildung
+    assert response.status_code == 200, response.text
+    detail = response.json()
+    assert detail["exerciseId"] == "EX000640"
+    assert detail["media"] is None
+    assert detail["cues"]
+
+
+def test_unknown_exercise_returns_404(client: TestClient) -> None:
+    assert client.get("/api/exercises/EX999999").status_code == 404
