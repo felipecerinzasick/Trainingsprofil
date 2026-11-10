@@ -131,7 +131,7 @@ def test_exercise_detail_is_public_and_includes_media(client: TestClient) -> Non
     assert detail["name"] == "Liegestütz"
     assert detail["pattern"] == "Horizontal drücken"
     assert detail["equipment"]
-    assert "cues" not in detail
+    assert detail["cues"]
     assert detail["media"] is not None
     assert len(detail["media"]["images"]) == 2
     assert detail["media"]["images"][0].startswith("https://")
@@ -146,7 +146,7 @@ def test_exercise_detail_without_media_still_describes_exercise(client: TestClie
     detail = response.json()
     assert detail["exerciseId"] == "EX000640"
     assert detail["media"] is None
-    assert detail["primaryMuscle"]
+    assert detail["cues"]
 
 
 def test_unknown_exercise_returns_404(client: TestClient) -> None:

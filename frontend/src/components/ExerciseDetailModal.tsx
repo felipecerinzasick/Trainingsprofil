@@ -41,7 +41,7 @@ function ExerciseAnimation({ detail }: { detail: ExerciseDetail }) {
       <div className="exercise-figure exercise-figure--empty">
         <span><Icon name={PATTERN_ICONS[detail.patternId] ?? "dumbbell"} size={34} /></span>
         <strong>Noch keine Abbildung</strong>
-        <small>Für diese Übung liegt noch kein freies Bildmaterial vor.</small>
+        <small>Für diese Übung liegt noch kein freies Bildmaterial vor. Die Beschreibung unten hilft bei der Ausführung.</small>
       </div>
     );
   }
@@ -158,12 +158,12 @@ export function ExerciseDetailModal({ exerciseId, fallbackName, onClose }: Exerc
               {detail.trainingGoals.length > 0 && <div><dt>Geeignet für</dt><dd>{detail.trainingGoals.join(", ")}</dd></div>}
             </dl>
 
-            {(detail.requiresCoaching || detail.notes.length > 0) && (
-              <div className="exercise-notes">
-                {detail.requiresCoaching && <p className="exercise-section__note"><Icon name="alert" size={15} /> Technisch anspruchsvoll: Lass die Ausführung am besten einmal von einer Fachperson prüfen.</p>}
-                {detail.notes.map((note) => <p key={note} className="exercise-section__note"><Icon name="info" size={15} /> {note}</p>)}
-              </div>
-            )}
+            <section className="exercise-section">
+              <h3><Icon name="check-circle" size={18} /> Worauf du achten solltest</h3>
+              <ul>{detail.cues.map((cue) => <li key={cue}>{cue}</li>)}</ul>
+              {detail.requiresCoaching && <p className="exercise-section__note"><Icon name="alert" size={15} /> Technisch anspruchsvoll: Lass die Ausführung am besten einmal von einer Fachperson prüfen.</p>}
+              {detail.notes.map((note) => <p key={note} className="exercise-section__note"><Icon name="info" size={15} /> {note}</p>)}
+            </section>
 
             {media && media.instructions.length > 0 && (
               <section className="exercise-section">

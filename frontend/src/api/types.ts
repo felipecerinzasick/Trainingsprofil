@@ -183,6 +183,7 @@ export interface ExerciseDetail {
   requiresCoaching: boolean;
   trainingGoals: string[];
   notes: string[];
+  cues: string[];
   media: ExerciseMedia | null;
 }
 
