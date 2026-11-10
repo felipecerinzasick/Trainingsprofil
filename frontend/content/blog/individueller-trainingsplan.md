@@ -17,13 +17,6 @@ takeaways:
   - "Standardpläne scheitern meist daran, dass Belastung, Zeitbedarf oder Übungen nicht zum eigenen Leben passen."
   - "Ein solider Plan, den du durchhältst, bringt mehr als ein perfekter, den du nach drei Wochen abbrichst."
   - "Ein guter Plan steigert die Belastung schrittweise, plant Erholung fest ein und lässt sich anpassen."
-cover:
-  - target | Ziel | 10 km in 16 Wochen
-  - pulse | Trainingsstand | 10 km pro Woche
-  - calendar | Alltag und Zeit | 3 Einheiten, sicher
-  - dumbbell | Ausstattung | Kurzhanteln, Band
-  - shield | Körper | Knie sensibel
-  - heart | Vorlieben | Rad statt Laufband
 sources:
   - "Weltgesundheitsorganisation (WHO): Physical activity, Fact Sheet | https://www.who.int/news-room/fact-sheets/detail/physical-activity"
 ---

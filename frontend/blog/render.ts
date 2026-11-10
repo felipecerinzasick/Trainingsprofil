@@ -35,19 +35,12 @@ export interface PostSummary {
   readingMinutes: number;
 }
 
-interface CoverItem {
-  icon: string;
-  label: string;
-  value: string;
-}
-
 interface Post extends PostSummary {
   metaTitle: string;
   updated: string;
   updatedLabel: string;
   keywords: string[];
   takeaways: string[];
-  cover: CoverItem[];
   sources: Array<{ label: string; url: string }>;
   body: string;
   html: string;
@@ -334,10 +327,6 @@ function loadPosts(config: BlogConfig): Post[] {
       category: text(data, "category", fileName, "Training"),
       keywords: list(data, "keywords"),
       takeaways: list(data, "takeaways"),
-      cover: list(data, "cover").map((entry) => {
-        const [iconName = "spark", label = "", value = ""] = entry.split("|").map((part) => part.trim());
-        return { icon: iconName, label, value };
-      }),
       sources: list(data, "sources").map((entry) => {
         const [label = "", url = ""] = entry.split("|").map((part) => part.trim());
         return { label, url };
@@ -433,24 +422,9 @@ function ctaBand(): string {
 </section>`;
 }
 
-function cover(post: Post, variant: "full" | "mini", showValues = variant === "full"): string {
-  if (post.cover.length === 0) {
-    return `<div class="cover cover--${variant} cover--plain" aria-hidden="true">${icon("spark", 44)}</div>`;
-  }
-  const label = post.cover.map((item) => (item.value ? `${item.label}: ${item.value}` : item.label)).join("; ");
-  const tiles = post.cover
-    .map(
-      (item, index) =>
-        `<div class="cover__tile cover__tile--${(index % 3) + 1}"><span class="cover__icon">${icon(item.icon, variant === "full" ? 22 : 18)}</span><div><small>${escapeHtml(item.label)}</small>${showValues && item.value ? `<strong>${escapeHtml(item.value)}</strong>` : ""}</div></div>`,
-    )
-    .join("");
-  return `<div class="cover cover--${variant}" role="img" aria-label="${escapeHtml(`Beispiel: ${label}`)}">${tiles}</div>`;
-}
-
 function postCard(post: Post, featured: boolean): string {
   const heading = featured ? "h2" : "h3";
   return `<article class="post-card${featured ? " post-card--featured" : ""}">
-  <a class="post-card__visual" href="${post.url}" tabindex="-1" aria-hidden="true">${cover(post, "mini", featured)}</a>
   <div class="post-card__copy">
     <span class="eyebrow">${escapeHtml(post.category)}</span>
     <${heading}><a href="${post.url}">${escapeHtml(post.title)}</a></${heading}>
@@ -635,8 +609,6 @@ ${siteNav("post")}
         </div>
       </div>
     </header>
-
-    <div class="shell">${cover(post, "full")}</div>
 
     <div class="shell post-layout">
       <aside class="post-aside">

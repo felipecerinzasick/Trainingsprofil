@@ -10,14 +10,12 @@ class ExerciseMediaAttribution(BaseModel):
 
 
 class ExerciseMediaOut(BaseModel):
-    """Pictures and instructions from an openly licensed exercise dataset."""
+    """Pictures from an openly licensed exercise dataset."""
 
     sourceId: str
     sourceName: str | None = None
     match: str = Field(description="exact, similar or variant")
     images: list[str] = Field(default_factory=list)
-    instructions: list[str] = Field(default_factory=list)
-    instructionsLanguage: str = "en"
     level: str | None = None
     attribution: ExerciseMediaAttribution
 

@@ -165,18 +165,11 @@ export function ExerciseDetailModal({ exerciseId, fallbackName, onClose }: Exerc
               {detail.notes.map((note) => <p key={note} className="exercise-section__note"><Icon name="info" size={15} /> {note}</p>)}
             </section>
 
-            {media && media.instructions.length > 0 && (
-              <section className="exercise-section">
-                <h3><Icon name="steps" size={18} /> Schritt für Schritt <span className="exercise-section__lang">{media.instructionsLanguage === "en" ? "Englisch" : media.instructionsLanguage.toUpperCase()}</span></h3>
-                <ol>{media.instructions.map((step, index) => <li key={`${index}-${step.slice(0, 20)}`}>{step}</li>)}</ol>
-              </section>
-            )}
-
             {media && (
               <footer className="exercise-modal__source">
                 {showsVariant && <p>Die Abbildung zeigt die verwandte Grundform «{media.sourceName}».</p>}
                 <p>
-                  Abbildungen und Schritt-für-Schritt-Anleitung: {media.attribution.url
+                  Abbildungen: {media.attribution.url
                     ? <a href={media.attribution.url} target="_blank" rel="noreferrer">{media.attribution.name}</a>
                     : media.attribution.name}
                   {media.attribution.license ? ` · ${media.attribution.license}` : ""}

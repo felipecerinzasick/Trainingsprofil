@@ -2233,7 +2233,6 @@ select {
 
 .exercise-section h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--ink); font-size: 1.05rem; }
 .exercise-section h3 svg { color: var(--accent-strong); }
-.exercise-section__lang { margin-left: auto; padding: 3px 8px; border-radius: 999px; background: var(--sky); color: var(--ink-soft); font-size: .62rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
 .exercise-section ul,
 .exercise-section ol { display: grid; gap: 8px; margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: .88rem; line-height: 1.5; }
 .exercise-section ul li::marker { color: var(--accent-strong); }
