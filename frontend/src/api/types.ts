@@ -155,8 +155,6 @@ export interface ExerciseMedia {
   sourceName?: string | null;
   match: "exact" | "similar" | "variant" | string;
   images: string[];
-  instructions: string[];
-  instructionsLanguage: string;
   level?: string | null;
   attribution: ExerciseMediaAttribution;
 }

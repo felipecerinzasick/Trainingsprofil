@@ -40,7 +40,7 @@ Authorization: Bearer <access-token>
 
 ## Übungsdetails
 
-`GET /api/exercises/EX001213` liefert die deutschen Katalogdaten einer Übung (Bewegungsmuster, Haupt- und Nebenmuskeln, Equipment, Schwierigkeit, Technikhinweise pro Bewegungsmuster) sowie unter `media` zwei Fotos (Ausgangs- und Endposition) und eine englische Schritt-für-Schritt-Anleitung aus der gemeinfreien [Free Exercise DB](https://github.com/yuhonas/free-exercise-db) (Unlicense). `media` ist `null`, wenn für eine Übung kein passendes Bildmaterial vorliegt; `media.match` ist `exact`, `similar` oder `variant` (Abbildung zeigt die Grundform der Übung). Die Zuordnung wird mit `backend/scripts/build_exercise_media.py` erzeugt und in `backend/app/data/exercise_media.json` gespeichert. Die Bild-URL-Basis ist über `TRAINING_EXERCISE_MEDIA_BASE_URL` konfigurierbar.
+`GET /api/exercises/EX001213` liefert die deutschen Katalogdaten einer Übung (Bewegungsmuster, Haupt- und Nebenmuskeln, Equipment, Schwierigkeit, Technikhinweise pro Bewegungsmuster) sowie unter `media` zwei Fotos (Ausgangs- und Endposition) aus der gemeinfreien [Free Exercise DB](https://github.com/yuhonas/free-exercise-db) (Unlicense). `media` ist `null`, wenn für eine Übung kein passendes Bildmaterial vorliegt; `media.match` ist `exact`, `similar` oder `variant` (Abbildung zeigt die Grundform der Übung). Die Zuordnung wird mit `backend/scripts/build_exercise_media.py` erzeugt und in `backend/app/data/exercise_media.json` gespeichert. Die Datei enthält zusätzlich die englischen Schritt-für-Schritt-Anleitungen des Datensatzes; sie werden derzeit nicht ausgeliefert. Die Bild-URL-Basis ist über `TRAINING_EXERCISE_MEDIA_BASE_URL` konfigurierbar.
 
 ## Registrierung
 

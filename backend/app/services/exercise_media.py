@@ -1,6 +1,6 @@
 """Exercise detail pages: catalogue facts, German technique cues and pictures.
 
-Pictures and English step-by-step instructions come from the public domain
+Pictures come from the public domain
 Free Exercise DB (see ``scripts/build_exercise_media.py``). The mapping file is
 optional: without it the endpoint still returns the German catalogue data.
 """
@@ -194,8 +194,6 @@ class ExerciseMedia:
             "sourceName": source.get("name"),
             "match": mapping.get("match", "variant"),
             "images": [self.image_base_url + image for image in source.get("images", [])],
-            "instructions": list(source.get("instructions", [])),
-            "instructionsLanguage": self.source_info.get("instructionsLanguage", "en"),
             "level": source.get("level"),
             "attribution": {
                 "name": self.source_info.get("name", "Free Exercise DB"),

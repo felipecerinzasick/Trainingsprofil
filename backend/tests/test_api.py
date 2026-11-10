@@ -135,7 +135,7 @@ def test_exercise_detail_is_public_and_includes_media(client: TestClient) -> Non
     assert detail["media"] is not None
     assert len(detail["media"]["images"]) == 2
     assert detail["media"]["images"][0].startswith("https://")
-    assert detail["media"]["instructions"]
+    assert "instructions" not in detail["media"]
     assert detail["media"]["attribution"]["license"].startswith("Unlicense")
     assert response.headers["cache-control"].startswith("public")
 
