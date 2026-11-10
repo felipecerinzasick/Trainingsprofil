@@ -44,5 +44,4 @@ class ExerciseDetailOut(BaseModel):
     requiresCoaching: bool = False
     trainingGoals: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
-    cues: list[str] = Field(default_factory=list)
     media: ExerciseMediaOut | None = None
