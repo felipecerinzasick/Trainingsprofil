@@ -397,7 +397,7 @@ Render verwendet dabei:
 
 Der Blog wird beim Build als statische, suchmaschinenlesbare HTML-Seiten erzeugt (ohne JavaScript im Browser) und liegt unter `/blog/`.
 
-- Artikel: `frontend/content/blog/<slug>.md` (Markdown mit Frontmatter: `title`, `metaTitle`, `description`, `date`, `updated`, `author`, `category`, `keywords`, `takeaways`, `cover`, `sources`; `draft: true` blendet einen Artikel aus)
+- Artikel: `frontend/content/blog/<slug>.md` (Markdown mit Frontmatter: `title`, `metaTitle`, `description`, `date`, `updated`, `author`, `category`, `keywords`, `takeaways`, `sources`; `draft: true` blendet einen Artikel aus)
 - Generator und Vite-Plugin: `frontend/blog/render.ts`, `frontend/blog/plugin.ts`, Gestaltung in `frontend/blog/blog.css`
 - Vorschaubild für soziale Netzwerke (1200 × 630): `frontend/public/blog/og/<slug>.jpg`, sonst `default.jpg`
 - Zusätzlich erzeugt: `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/blog/feed.xml` und je Artikel eine Markdown-Fassung `/blog/<slug>.md`
