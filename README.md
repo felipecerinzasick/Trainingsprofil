@@ -393,6 +393,20 @@ Render verwendet dabei:
 - `TRAINING_GOOGLE_CLIENT_ID` für die Anmeldung mit Google
 - automatisch verdrahtete öffentliche URLs für Frontend, API und CORS
 
+## Blog
+
+Der Blog wird beim Build als statische, suchmaschinenlesbare HTML-Seiten erzeugt (ohne JavaScript im Browser) und liegt unter `/blog/`.
+
+- Artikel: `frontend/content/blog/<slug>.md` (Markdown mit Frontmatter: `title`, `metaTitle`, `description`, `date`, `updated`, `author`, `category`, `keywords`, `takeaways`, `cover`, `sources`; `draft: true` blendet einen Artikel aus)
+- Generator und Vite-Plugin: `frontend/blog/render.ts`, `frontend/blog/plugin.ts`, Gestaltung in `frontend/blog/blog.css`
+- Vorschaubild für soziale Netzwerke (1200 × 630): `frontend/public/blog/og/<slug>.jpg`, sonst `default.jpg`
+- Zusätzlich erzeugt: `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/blog/feed.xml` und je Artikel eine Markdown-Fassung `/blog/<slug>.md`
+- Strukturierte Daten: `BlogPosting`, `BreadcrumbList` und, wenn der Artikel einen Abschnitt „Häufige Fragen …“ mit `###`-Fragen enthält, automatisch `FAQPage`
+
+Konventionen im Markdown: Ein Absatz, der nur aus einem fett gesetzten Link besteht, wird zum Button. Zitatblöcke (`>`) werden zu Hinweisboxen. Überschriften der Form `### 1. Titel` erhalten eine Nummernplakette.
+
+Die öffentliche Adresse für kanonische URLs und Sitemap stammt aus `SITE_URL`, sonst aus `RENDER_EXTERNAL_URL`. Bei einer eigenen Domain `SITE_URL` im Web-Service setzen.
+
 ## Google-Anmeldung
 
 Die Anmeldung nutzt Google Identity Services mit einem ID-Token. Dafür wird der öffentliche Client-ID-Wert in Frontend und Backend konfiguriert; der Google-Client-Schlüssel wird nicht im Code oder in Render benötigt.

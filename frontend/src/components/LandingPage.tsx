@@ -287,7 +287,7 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
         <div className="page-shell landing-footer__inner">
           <Brand />
           <p>Trainingsprofil speichert Konto, Profil und Pläne zur Bereitstellung des Dienstes. Trainingshinweise sind allgemeine Empfehlungen und keine medizinische Beratung.</p>
-          <div><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
+          <div><a href="/blog/">Blog</a><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
         </div>
       </footer>
     </div>

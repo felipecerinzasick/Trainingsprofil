@@ -16,8 +16,9 @@ function getInitialProfile() {
   return loadDraft() ?? createEmptyProfile();
 }
 
-function initialRoute(): { view: AppView; planId?: string } {
+function initialRoute(): { view: AppView; planId?: string; register?: boolean } {
   const hash = window.location.hash;
+  if (hash === "#registrieren") return { view: "auth", register: true };
   if (hash === "#profil") return { view: "onboarding" };
   if (hash === "#fertig") return { view: "complete" };
   if (hash === "#anmelden") return { view: "auth" };
@@ -49,6 +50,9 @@ export default function App() {
   const [pendingDuration, setPendingDuration] = useState<number | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generationError, setGenerationError] = useState("");
+  // Visitors arriving via "#registrieren" (e.g. from the blog) create an account
+  // first and continue straight into the Trainings-Check.
+  const [registerFirst, setRegisterFirst] = useState(Boolean(route.register));
 
   const profileHasContent = useMemo(() => Boolean(
     profile.goals.primaryGoal
@@ -81,6 +85,11 @@ export default function App() {
           setProfile(storedProfile);
           saveDraft(storedProfile);
           setHasStoredDraft(true);
+        }
+        if (route.register) {
+          // Already signed in: skip the form and continue where the link intended.
+          setRegisterFirst(false);
+          setView(storedProfile ? "dashboard" : "onboarding");
         }
         if (route.planId) await openPlan(route.planId, currentUser);
       } catch {
@@ -191,6 +200,7 @@ export default function App() {
       await createPlan(duration);
       return;
     }
+    let hasProfile = profileHasContent;
     try {
       if (profileHasContent) {
         const savedProfile = await api.saveProfile(profile);
@@ -203,6 +213,7 @@ export default function App() {
           setProfile(storedProfile);
           saveDraft(storedProfile);
           setHasStoredDraft(true);
+          hasProfile = true;
         }
       }
     } catch {
@@ -212,12 +223,15 @@ export default function App() {
           setProfile(storedProfile);
           saveDraft(storedProfile);
           setHasStoredDraft(true);
+          hasProfile = true;
         }
       } catch {
         // The dashboard can still open and display a useful API error.
       }
     }
-    setView("dashboard");
+    const startCheck = registerFirst && !hasProfile;
+    setRegisterFirst(false);
+    setView(startCheck ? "onboarding" : "dashboard");
   };
   async function openPlan(id: string, currentUser = user) {
     if (!currentUser) {
@@ -290,7 +304,7 @@ export default function App() {
   if (view === "auth") {
     return (
       <AuthPage
-        defaultMode={pendingDuration !== null ? "register" : "login"}
+        defaultMode={pendingDuration !== null || registerFirst ? "register" : "login"}
         firstName={profile.identity.firstName}
         profileReady={pendingDuration !== null || profileHasContent}
         onSuccess={finishAuth}
