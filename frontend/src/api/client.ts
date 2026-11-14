@@ -5,6 +5,9 @@ const configuredApiUrl = (import.meta.env.VITE_API_URL as string | undefined) ??
 const normalizedApiUrl = configuredApiUrl.replace(/\/+$/, "");
 const API_BASE = normalizedApiUrl.endsWith("/api") ? normalizedApiUrl : `${normalizedApiUrl}/api`;
 const TOKEN_KEY = "trainingsplan-access-token-v1";
+// Set once someone signed in on this device; lets the landing page lead with "Anmelden"
+// after the access token expired instead of pushing them back into the Trainings-Check.
+const KNOWN_ACCOUNT_KEY = "trainingsprofil-known-account-v1";
 
 export class ApiError extends Error {
   status: number;
@@ -22,8 +25,13 @@ export class ApiError extends Error {
 
 export const authStore = {
   getToken: () => localStorage.getItem(TOKEN_KEY),
-  setToken: (token: string) => localStorage.setItem(TOKEN_KEY, token),
+  setToken: (token: string) => {
+    localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem(KNOWN_ACCOUNT_KEY, "1");
+  },
   clear: () => localStorage.removeItem(TOKEN_KEY),
+  hasKnownAccount: () => localStorage.getItem(KNOWN_ACCOUNT_KEY) === "1",
+  forgetAccount: () => localStorage.removeItem(KNOWN_ACCOUNT_KEY),
 };
 
 async function parseProblem(response: Response): Promise<ApiProblem> {

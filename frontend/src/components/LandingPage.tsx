@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/client";
-import type { PriceCatalog } from "../api/types";
+import type { AuthUser, PriceCatalog } from "../api/types";
 import { FALLBACK_PRICES } from "../utils/billing";
 import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
 import { PricingTiers, type BillingInterval } from "./PricingTiers";
 
 interface LandingPageProps {
+  /** Signed-in user, if any: the page then leads to the personal area instead of the check. */
+  user?: AuthUser | null;
+  /** Someone signed in on this device before but the session expired: lead with login. */
+  knownAccount?: boolean;
+  onDashboard: () => void;
+  onLogin: () => void;
+  onEditProfile: () => void;
   onStart: () => void;
   hasDraft: boolean;
   onResume: () => void;
@@ -55,8 +62,23 @@ function HeroVisual() {
   );
 }
 
-export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePlus, onLegal, accountLabel }: LandingPageProps) {
+export function LandingPage({ user, knownAccount = false, onDashboard, onLogin, onEditProfile, onStart, hasDraft, onResume, onAccount, onChoosePlus, onLegal, accountLabel }: LandingPageProps) {
   const scrollToHow = () => document.getElementById("so-funktionierts")?.scrollIntoView({ behavior: "smooth" });
+
+  // Primary call to action depends on where the visitor is in their journey.
+  const primary = user
+    ? { label: "Zu meinen Trainingsplänen", action: onDashboard }
+    : knownAccount
+      ? { label: "Anmelden und Pläne öffnen", action: onLogin }
+      : hasDraft
+        ? { label: "Trainingsprofil fortsetzen", action: onResume }
+        : { label: "Trainingsprofil starten", action: onStart };
+  const secondary = user
+    ? { label: "Profil bearbeiten", action: onEditProfile }
+    : knownAccount
+      ? { label: hasDraft ? "Profil fortsetzen" : "Neues Profil starten", action: hasDraft ? onResume : onStart }
+      : { label: "So funktioniert’s", action: scrollToHow };
+  const compactPrimaryLabel = user ? "Mein Bereich" : knownAccount ? "Anmelden" : hasDraft ? "Profil fortsetzen" : "Profil starten";
   const [prices, setPrices] = useState<PriceCatalog>(FALLBACK_PRICES);
   const [interval, setInterval] = useState<BillingInterval>("month");
 
@@ -80,11 +102,19 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
             <a href="#datenschutz">Deine Daten</a>
           </nav>
           <div className="landing-nav__actions">
-            <button type="button" className="button button--small button--ghost" onClick={onAccount}>
-              <Icon name="user" size={16} /> {accountLabel ?? "Anmelden"}
-            </button>
-            <button className="button button--small button--dark" onClick={hasDraft ? onResume : onStart}>
-              {hasDraft ? "Profil fortsetzen" : "Profil starten"}
+            {!user && !knownAccount && (
+              <button type="button" className="button button--small button--ghost" onClick={onAccount}>
+                <Icon name="user" size={16} /> {accountLabel ?? "Anmelden"}
+              </button>
+            )}
+            {user && (
+              <button type="button" className="button button--small button--ghost" onClick={onEditProfile}>
+                <Icon name="edit" size={16} /> Profil
+              </button>
+            )}
+            <button className="button button--small button--dark" onClick={primary.action}>
+              {user && <Icon name="user" size={16} />}
+              {compactPrimaryLabel}
               <Icon name="arrow-right" size={17} />
             </button>
           </div>
@@ -94,26 +124,47 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
       <main>
         <section className="hero page-shell">
           <div className="hero__copy">
-            <div className="hero__eyebrow"><span /><Icon name="spark" size={16} /> Dein persönlicher Trainings-Check</div>
+            <div className="hero__eyebrow">
+              <span /><Icon name="spark" size={16} />
+              {user ? `Willkommen zurück${user.firstName ? `, ${user.firstName}` : ""}` : knownAccount ? "Schön, dass du wieder da bist" : "Dein persönlicher Trainings-Check"}
+            </div>
             <h1>Dein Plan beginnt mit dir.</h1>
             <p className="hero__lead">
-              Mit deinen Zielen, deinem Alltag und deinen Möglichkeiten.
-              <br />
-              Erzähl uns, was du erreichen möchtest, wie du trainierst, welche Ausstattung dir zur Verfügung steht und was wir berücksichtigen sollten. Daraus entsteht die Grundlage für deinen Trainingsplan.
+              {user ? (
+                <>Deine gespeicherten Trainingspläne und dein Profil warten in deinem Bereich. Dort erstellst du mit einem Klick einen neuen Block oder passt dein Profil an.</>
+              ) : knownAccount ? (
+                <>Melde dich an, um deine gespeicherten Trainingspläne zu öffnen und neue Blöcke zu erstellen. Dein Profil ist in deinem Konto hinterlegt.</>
+              ) : (
+                <>
+                  Mit deinen Zielen, deinem Alltag und deinen Möglichkeiten.
+                  <br />
+                  Erzähl uns, was du erreichen möchtest, wie du trainierst, welche Ausstattung dir zur Verfügung steht und was wir berücksichtigen sollten. Daraus entsteht die Grundlage für deinen Trainingsplan.
+                </>
+              )}
             </p>
             <div className="hero__actions">
-              <button className="button button--primary button--large" onClick={hasDraft ? onResume : onStart}>
-                {hasDraft ? "Trainingsprofil fortsetzen" : "Trainingsprofil starten"}
+              <button className="button button--primary button--large" onClick={primary.action}>
+                {primary.label}
                 <Icon name="arrow-right" size={20} />
               </button>
-              <button className="button button--ghost button--large" onClick={scrollToHow}>
-                So funktioniert’s
+              <button className="button button--ghost button--large" onClick={secondary.action}>
+                {secondary.label}
               </button>
             </div>
             <div className="hero__meta">
-              <span><Icon name="clock" size={17} /> etwa 6–8 Minuten</span>
-              <span><Icon name="save" size={17} /> Profil und Pläne im Konto</span>
-              <span><Icon name="shield" size={17} /> jederzeit anpassbar</span>
+              {user || knownAccount ? (
+                <>
+                  <span><Icon name="save" size={17} /> Profil und Pläne im Konto</span>
+                  <span><Icon name="edit" size={17} /> Profil jederzeit anpassbar</span>
+                  <span><Icon name="spark" size={17} /> neuer Block in Sekunden</span>
+                </>
+              ) : (
+                <>
+                  <span><Icon name="clock" size={17} /> etwa 6–8 Minuten</span>
+                  <span><Icon name="save" size={17} /> Profil und Pläne im Konto</span>
+                  <span><Icon name="shield" size={17} /> jederzeit anpassbar</span>
+                </>
+              )}
             </div>
           </div>
           <HeroVisual />
@@ -268,8 +319,8 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
               prices={prices}
               interval={interval}
               onIntervalChange={setInterval}
-              onFree={hasDraft ? onResume : onStart}
-              freeLabel={hasDraft ? "Profil fortsetzen" : "Kostenlos starten"}
+              onFree={user ? onDashboard : knownAccount ? onLogin : hasDraft ? onResume : onStart}
+              freeLabel={user ? "Zu meinen Plänen" : knownAccount ? "Anmelden" : hasDraft ? "Profil fortsetzen" : "Kostenlos starten"}
               onPlus={onChoosePlus}
               plusLabel="Plus wählen"
               singleHint="Nach dem Trainings-Check direkt im Plan freischaltbar."
@@ -302,11 +353,15 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
 
         <section className="final-cta page-shell">
           <div className="final-cta__content">
-            <span className="eyebrow">Bereit?</span>
+            <span className="eyebrow">{user || knownAccount ? "Weiter geht’s" : "Bereit?"}</span>
             <h2>Ein guter Trainingsplan kennt zuerst den Menschen dahinter.</h2>
-            <p>Starte deinen Trainings-Check und lege die Grundlage für einen Plan, den du auch wirklich umsetzen kannst.</p>
-            <button className="button button--primary button--large" onClick={hasDraft ? onResume : onStart}>
-              {hasDraft ? "Profil fortsetzen" : "Trainingsprofil starten"}
+            <p>
+              {user || knownAccount
+                ? "Deine Pläne und dein Profil sind gespeichert. Öffne deinen Bereich und erstelle deinen nächsten Block."
+                : "Starte deinen Trainings-Check und lege die Grundlage für einen Plan, den du auch wirklich umsetzen kannst."}
+            </p>
+            <button className="button button--primary button--large" onClick={primary.action}>
+              {user ? "Zu meinen Trainingsplänen" : knownAccount ? "Anmelden" : hasDraft ? "Profil fortsetzen" : "Trainingsprofil starten"}
               <Icon name="arrow-right" size={20} />
             </button>
           </div>
