@@ -25,6 +25,7 @@ export interface PlanListItem {
   endDate: string;
   durationWeeks: number;
   createdAt: string;
+  accessLevel: AccessLevel;
 }
 
 export interface PlanIntensity {
@@ -142,6 +143,7 @@ export interface TrainingPlan {
 export interface PlanRecord extends PlanListItem {
   plan: TrainingPlan;
   profileSnapshot: TrainingProfile;
+  access: PlanAccess;
 }
 
 export interface ExerciseMediaAttribution {
@@ -183,6 +185,52 @@ export interface ExerciseDetail {
   notes: string[];
   cues: string[];
   media: ExerciseMedia | null;
+}
+
+export type ProductKey = "plus_monthly" | "plus_yearly" | "single_block";
+export type Tier = "free" | "plus";
+export type AccessLevel = "full" | "preview";
+
+export interface PriceInfo {
+  /** Amount in the smallest currency unit (e.g. Cent). */
+  amount: number;
+  currency: string;
+  type: "recurring" | "one_time";
+  interval: string | null;
+  intervalCount: number;
+  priceId: string | null;
+  source: "stripe" | "fallback";
+}
+
+export interface PriceCatalog {
+  plusMonthly: PriceInfo;
+  plusYearly: PriceInfo;
+  singleBlock: PriceInfo;
+}
+
+export interface PlanAccess {
+  level: AccessLevel;
+  previewWeeks: number;
+  totalWeeks: number;
+  unlockedAt: string | null;
+}
+
+export interface BillingStatus {
+  tier: Tier;
+  hasFullAccess: boolean;
+  paywallEnabled: boolean;
+  paymentsConfigured: boolean;
+  previewWeeks: number;
+  subscriptionStatus: string | null;
+  subscriptionInterval: string | null;
+  cancelAtPeriodEnd: boolean;
+  currentPeriodEnd: string | null;
+  prices: PriceCatalog;
+}
+
+export interface CompleteCheckoutResponse {
+  status: BillingStatus;
+  unlockedPlanId: string | null;
 }
 
 export interface ApiProblem {

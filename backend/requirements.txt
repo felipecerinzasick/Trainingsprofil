@@ -10,3 +10,4 @@ reportlab==4.4.9
 psycopg[binary]==3.3.4
 google-auth==2.45.0
 requests==2.34.2
+stripe==16.1.0

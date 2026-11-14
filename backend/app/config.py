@@ -30,6 +30,18 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 720
     google_client_id: str = ""
+    # Public URL of the frontend; used for Stripe redirects. Falls back to the first CORS origin.
+    frontend_url: str = ""
+    # Paywall. Free accounts see a preview (the first ``preview_weeks`` weeks) of every plan;
+    # full plans and PDFs need Plus or a one-time unlock of the plan.
+    paywall_enabled: bool = True
+    preview_weeks: int = 2
+    # Stripe. Prices are resolved by lookup key so no price IDs have to be configured.
+    stripe_secret_key: str = ""
+    stripe_webhook_secret: str = ""
+    stripe_lookup_key_plus_monthly: str = "trainingsprofil_plus_monthly"
+    stripe_lookup_key_plus_yearly: str = "trainingsprofil_plus_yearly"
+    stripe_lookup_key_single_block: str = "trainingsprofil_single_block"
     cors_origins: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: [
             "http://localhost:5173",
@@ -46,6 +58,15 @@ class Settings(BaseSettings):
         if isinstance(value, str):
             return [item.strip() for item in value.split(",") if item.strip()]
         return value
+
+    @property
+    def public_frontend_url(self) -> str:
+        base = self.frontend_url.strip() or (self.cors_origins[0] if self.cors_origins else "http://localhost:5173")
+        return base.rstrip("/")
+
+    @property
+    def stripe_configured(self) -> bool:
+        return bool(self.stripe_secret_key)
 
     @field_validator("exercise_database_path", "exercise_media_path", mode="before")
     @classmethod

@@ -324,15 +324,37 @@ TRAINING_DATABASE_URL=sqlite:///./data/trainingsplan.db
 TRAINING_JWT_SECRET_KEY=replace-with-a-long-random-secret-before-deployment
 TRAINING_ACCESS_TOKEN_EXPIRE_MINUTES=720
 TRAINING_CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+TRAINING_PAYWALL_ENABLED=true
+TRAINING_PREVIEW_WEEKS=2
+TRAINING_STRIPE_SECRET_KEY=
+TRAINING_STRIPE_WEBHOOK_SECRET=
 ```
 
 Für den lokalen Test funktionieren die Defaults. Vor jeder echten Bereitstellung muss mindestens der JWT-Schlüssel ersetzt werden.
 
-Einen starken Schlüssel kannst du beispielsweise erzeugen mit:
+### Preismodell und Stripe
 
-```bash
-python -c "import secrets; print(secrets.token_urlsafe(64))"
-```
+| Tarif | Preis | Inhalt |
+| --- | --- | --- |
+| Kostenlos | 0 € | Konto, Trainings-Check, beliebig viele Pläne – jeweils als Vorschau der ersten `TRAINING_PREVIEW_WEEKS` Wochen (Standard: 2) |
+| Plus | 9,99 € pro Monat oder 59,99 € pro Jahr | vollständige Pläne und PDF-Export |
+| Einzelner Trainingsblock | 24,99 € einmalig | schaltet genau einen Plan dauerhaft frei |
+| Coach-Tarif | später (ca. 49–79 € pro Monat) | wird auf der Startseite als „in Vorbereitung“ angezeigt, ist nicht buchbar |
+
+Technisch: `GET /api/plans/{id}` liefert Konten ohne Freischaltung nur die Vorschau-Wochen und ein `access`-Objekt (`level: preview`, `previewWeeks`, `totalWeeks`). `GET /api/plans/{id}/pdf` antwortet dann mit `402 UPGRADE_REQUIRED`. Plan erstellen, auflisten, Profil und Löschen bleiben immer möglich. `TRAINING_PAYWALL_ENABLED=false` deaktiviert die Sperre (z. B. lokal).
+
+Die Preise werden nicht als IDs konfiguriert, sondern über Stripe-Lookup-Keys aufgelöst (`trainingsprofil_plus_monthly`, `trainingsprofil_plus_yearly`, `trainingsprofil_single_block`; änderbar über `TRAINING_STRIPE_LOOKUP_KEY_*`). Die Produkte und Preise sind im Stripe-Konto angelegt. Ist Stripe nicht erreichbar oder nicht konfiguriert, zeigt die Anwendung die Werte aus dem Preismodell als Fallback an; kaufen lässt sich dann nichts (`503`).
+
+Einrichtung:
+
+1. Den geheimen API-Schlüssel (`sk_live_...` bzw. `sk_test_...`) als `TRAINING_STRIPE_SECRET_KEY` setzen. Für eine Testumgebung die gleichen Produkte mit denselben Lookup-Keys im Stripe-Testmodus anlegen.
+2. Unter *Developers → Webhooks* einen Endpunkt auf `https://<api-domain>/api/billing/webhook` anlegen und diese Events auswählen: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`. Das Signing Secret (`whsec_...`) als `TRAINING_STRIPE_WEBHOOK_SECRET` setzen.
+3. Das Stripe-Kundenportal (*Settings → Billing → Customer portal*) aktivieren, damit Plus-Mitglieder Zahlungsmethode, Intervall und Kündigung selbst verwalten können.
+4. `TRAINING_FRONTEND_URL` auf die öffentliche Frontend-URL setzen (auf Render automatisch verdrahtet); dorthin leitet Stripe nach dem Bezahlen zurück.
+
+Lokal lässt sich der Webhook mit der Stripe CLI testen: `stripe listen --forward-to 127.0.0.1:8000/api/billing/webhook`. Das dabei ausgegebene Secret in `backend/.env` eintragen.
+
+Ablauf im Frontend: Die Startseite zeigt die Tarife unter `#preise` (Preise kommen von `GET /api/billing/prices`). Im Plan sind Wochen ab der dritten als gesperrt markiert; „Vollständig freischalten“ öffnet die Tarifseite (`#abo`) mit Plus und dem Einzelkauf genau dieses Plans. Nach erfolgreicher Zahlung kehrt der Browser mit `?checkout=success&session_id=...` zurück; das Frontend bestätigt die Sitzung über `POST /api/billing/checkout/complete`, sodass der Zugang sofort frei ist, auch wenn der Webhook noch unterwegs ist.
 
 ## Frontend: `frontend/.env`
 
@@ -391,7 +413,8 @@ Render verwendet dabei:
 - `TRAINING_DATABASE_URL` aus der internen Render-Postgres-Verbindung
 - automatisch generierten `TRAINING_JWT_SECRET_KEY`
 - `TRAINING_GOOGLE_CLIENT_ID` für die Anmeldung mit Google
-- automatisch verdrahtete öffentliche URLs für Frontend, API und CORS
+- `TRAINING_STRIPE_SECRET_KEY` und `TRAINING_STRIPE_WEBHOOK_SECRET` als im Render-Dashboard hinterlegte Secrets (`sync: false`)
+- automatisch verdrahtete öffentliche URLs für Frontend, API, CORS und Stripe-Redirects
 
 ## Blog
 

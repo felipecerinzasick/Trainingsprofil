@@ -3,7 +3,8 @@ from __future__ import annotations
 from collections.abc import Generator
 from pathlib import Path
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
+from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from .config import get_settings
@@ -53,8 +54,46 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-def init_db() -> None:
+def ensure_columns(bind: Engine) -> list[str]:
+    """Add columns that exist on the models but not yet in the database.
+
+    The project has no migration framework yet; ``create_all`` only creates missing
+    tables. This additive step keeps existing SQLite/PostgreSQL databases usable when
+    nullable or defaulted columns are introduced (e.g. the billing fields on ``users``).
+    """
+
+    inspector = inspect(bind)
+    existing_tables = set(inspector.get_table_names())
+    added: list[str] = []
+    for table in Base.metadata.sorted_tables:
+        if table.name not in existing_tables:
+            continue
+        present = {column["name"] for column in inspector.get_columns(table.name)}
+        for column in table.columns:
+            if column.name in present:
+                continue
+            column_type = column.type.compile(dialect=bind.dialect)
+            ddl = f'ALTER TABLE {table.name} ADD COLUMN {column.name} {column_type}'
+            if not column.nullable:
+                default = column.default.arg if column.default is not None and not callable(column.default.arg) else None
+                if default is None:
+                    raise RuntimeError(
+                        f"Cannot add NOT NULL column {table.name}.{column.name} without a static default."
+                    )
+                literal = "TRUE" if default is True else "FALSE" if default is False else repr(default)
+                if bind.dialect.name == "sqlite" and isinstance(default, bool):
+                    literal = "1" if default else "0"
+                ddl += f" NOT NULL DEFAULT {literal}"
+            with bind.begin() as connection:
+                connection.execute(text(ddl))
+            added.append(f"{table.name}.{column.name}")
+    return added
+
+
+def init_db(bind: Engine | None = None) -> None:
     # Importing models registers the tables on Base.metadata.
     from . import models  # noqa: F401
 
-    Base.metadata.create_all(bind=engine)
+    target = bind or engine
+    Base.metadata.create_all(bind=target)
+    ensure_columns(target)

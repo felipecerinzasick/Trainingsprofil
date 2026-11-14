@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api import auth, exercises, plans, profile
+from .api import auth, billing, exercises, plans, profile
 from .config import get_settings
 from .database import init_db
 from .services.exercise_catalog import get_exercise_catalog
@@ -44,6 +44,7 @@ app.include_router(auth.router, prefix=settings.api_prefix)
 app.include_router(profile.router, prefix=settings.api_prefix)
 app.include_router(plans.router, prefix=settings.api_prefix)
 app.include_router(exercises.router, prefix=settings.api_prefix)
+app.include_router(billing.router, prefix=settings.api_prefix)
 
 
 @app.get(f"{settings.api_prefix}/health", tags=["system"])

@@ -1,4 +1,4 @@
-export type AppView = "landing" | "onboarding" | "complete" | "auth" | "dashboard" | "plan";
+export type AppView = "landing" | "onboarding" | "complete" | "auth" | "dashboard" | "plan" | "billing";
 
 export type RestrictionStrategy = "avoid" | "adapt" | "monitor";
 

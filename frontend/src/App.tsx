@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { api, ApiError, authStore } from "./api/client";
-import type { AuthResponse, AuthUser, PlanRecord } from "./api/types";
+import type { AuthResponse, AuthUser, BillingStatus, PlanRecord } from "./api/types";
 import { AuthPage } from "./components/AuthPage";
+import { BillingPage, type BillingPlanContext } from "./components/BillingPage";
 import { BrandLogo } from "./components/BrandLogo";
 import { CompletePage } from "./components/CompletePage";
 import { DashboardPage } from "./components/DashboardPage";
@@ -16,15 +17,33 @@ function getInitialProfile() {
   return loadDraft() ?? createEmptyProfile();
 }
 
-function initialRoute(): { view: AppView; planId?: string; register?: boolean } {
-  const hash = window.location.hash;
+interface InitialRoute {
+  view: AppView;
+  planId?: string;
+  register?: boolean;
+  /** Stripe Checkout session id when the browser returns from a successful payment. */
+  checkoutSessionId?: string;
+}
+
+function routeFromHash(hash: string): InitialRoute {
   if (hash === "#registrieren") return { view: "auth", register: true };
   if (hash === "#profil") return { view: "onboarding" };
   if (hash === "#fertig") return { view: "complete" };
   if (hash === "#anmelden") return { view: "auth" };
   if (hash === "#konto") return { view: "dashboard" };
+  if (hash === "#abo") return { view: "billing" };
   if (hash.startsWith("#plan/")) return { view: "plan", planId: hash.slice("#plan/".length) };
   return { view: "landing" };
+}
+
+function initialRoute(): InitialRoute {
+  const route = routeFromHash(window.location.hash);
+  // Stripe sends the browser back to "?checkout=success&session_id=…#konto" or "…#plan/<id>".
+  const query = new URLSearchParams(window.location.search);
+  if (query.get("checkout") === "success" && query.get("session_id")) {
+    return { ...route, view: route.view === "landing" ? "dashboard" : route.view, checkoutSessionId: query.get("session_id") ?? undefined };
+  }
+  return route;
 }
 
 function StatusScreen({ title, text, onHome }: { title: string; text: string; onHome: () => void }) {
@@ -50,6 +69,15 @@ export default function App() {
   const [pendingDuration, setPendingDuration] = useState<number | null>(null);
   const [generating, setGenerating] = useState(false);
   const [generationError, setGenerationError] = useState("");
+  const [billing, setBilling] = useState<BillingStatus | null>(null);
+  const [billingNotice, setBillingNotice] = useState("");
+  // A completed Stripe Checkout that still has to be confirmed with the API (e.g. the
+  // visitor had to sign in again after returning from Stripe).
+  const [pendingCheckout, setPendingCheckout] = useState<string | null>(route.checkoutSessionId ?? null);
+  // Plan the visitor wants to unlock; shown as the one-time option on the billing page.
+  const [billingPlan, setBillingPlan] = useState<BillingPlanContext | null>(null);
+  // Visitors who picked Plus on the landing page sign in first and then land on the billing page.
+  const [afterAuth, setAfterAuth] = useState<"billing" | null>(null);
   // Visitors arriving via "#registrieren" (e.g. from the blog) create an account
   // first and continue straight into the Trainings-Check.
   const [registerFirst, setRegisterFirst] = useState(Boolean(route.register));
@@ -60,6 +88,35 @@ export default function App() {
     || profile.environment.locations.length
     || profile.health.painFree !== null,
   ), [profile]);
+
+  const refreshBilling = async () => {
+    try {
+      setBilling(await api.billingStatus());
+    } catch {
+      // Access is enforced by the API; the UI simply falls back to showing no banner.
+    }
+  };
+
+  /** Load the billing status and, if the browser just came back from Stripe, confirm the checkout. */
+  const syncBilling = async (checkoutSessionId: string | null) => {
+    if (checkoutSessionId) {
+      try {
+        const result = await api.completeCheckout(checkoutSessionId);
+        setBilling(result.status);
+        setBillingNotice(result.unlockedPlanId
+          ? "Vielen Dank! Dein Trainingsblock ist vollständig freigeschaltet."
+          : "Vielen Dank! Plus ist aktiv – alle deine Pläne sind jetzt vollständig sichtbar.");
+        setPendingCheckout(null);
+        return;
+      } catch (reason) {
+        setPendingCheckout(null);
+        setBillingNotice(reason instanceof ApiError && reason.status !== 403
+          ? "Deine Zahlung wird gerade verarbeitet. Dein Zugang wird in Kürze automatisch freigeschaltet."
+          : "");
+      }
+    }
+    await refreshBilling();
+  };
 
   useEffect(() => {
     if (!profileHasContent) return;
@@ -75,12 +132,13 @@ export default function App() {
       const token = authStore.getToken();
       if (!token) {
         setAuthReady(true);
-        if (view === "dashboard" || view === "plan") setView("auth");
+        if (view === "dashboard" || view === "plan" || view === "billing") setView("auth");
         return;
       }
       try {
         const [currentUser, storedProfile] = await Promise.all([api.me(), api.getProfile()]);
         setUser(currentUser);
+        await syncBilling(route.checkoutSessionId ?? null);
         if (storedProfile) {
           setProfile(storedProfile);
           saveDraft(storedProfile);
@@ -95,7 +153,7 @@ export default function App() {
       } catch {
         authStore.clear();
         setUser(null);
-        if (view === "dashboard" || view === "plan") setView("auth");
+        if (view === "dashboard" || view === "plan" || view === "billing") setView("auth");
       } finally {
         setAuthReady(true);
       }
@@ -114,10 +172,13 @@ export default function App() {
           ? "#anmelden"
           : view === "dashboard"
             ? "#konto"
-            : view === "plan" && selectedPlan
-              ? `#plan/${selectedPlan.id}`
-              : "";
-    window.history.replaceState(null, "", hash || window.location.pathname);
+            : view === "billing"
+              ? "#abo"
+              : view === "plan" && selectedPlan
+                ? `#plan/${selectedPlan.id}`
+                : "";
+    // Always rewrite the full path so Stripe's return query parameters disappear.
+    window.history.replaceState(null, "", `${window.location.pathname}${hash}`);
 
     const titles: Record<AppView, string> = {
       landing: "Trainingsprofil – dein Plan beginnt mit dir",
@@ -126,6 +187,7 @@ export default function App() {
       auth: "Anmelden · Trainingsprofil",
       dashboard: "Meine Trainingspläne · Trainingsprofil",
       plan: selectedPlan ? `${selectedPlan.title} · Trainingsprofil` : "Trainingsplan · Trainingsprofil",
+      billing: "Abo · Trainingsprofil",
     };
     document.title = titles[view];
   }, [view, selectedPlan]);
@@ -195,6 +257,7 @@ export default function App() {
 
   const finishAuth = async (result: AuthResponse) => {
     setUser(result.user);
+    await syncBilling(pendingCheckout);
     const duration = pendingDuration;
     if (duration !== null) {
       await createPlan(duration);
@@ -231,7 +294,9 @@ export default function App() {
     }
     const startCheck = registerFirst && !hasProfile;
     setRegisterFirst(false);
-    setView(startCheck ? "onboarding" : "dashboard");
+    const next = afterAuth;
+    setAfterAuth(null);
+    setView(next === "billing" ? "billing" : startCheck ? "onboarding" : "dashboard");
   };
   async function openPlan(id: string, currentUser = user) {
     if (!currentUser) {
@@ -268,7 +333,26 @@ export default function App() {
     setUser(null);
     setSelectedPlan(null);
     setPendingDuration(null);
+    setBilling(null);
+    setBillingNotice("");
+    setBillingPlan(null);
+    setAfterAuth(null);
     setView("landing");
+  };
+
+  const openBilling = (planContext: BillingPlanContext | null = null) => {
+    setGenerationError("");
+    setBillingPlan(planContext);
+    setView("billing");
+  };
+
+  const choosePlus = () => {
+    if (user) {
+      openBilling();
+      return;
+    }
+    setAfterAuth("billing");
+    setView("auth");
   };
 
   if (!authReady || loadingPlan) {
@@ -304,11 +388,39 @@ export default function App() {
   if (view === "auth") {
     return (
       <AuthPage
-        defaultMode={pendingDuration !== null || registerFirst ? "register" : "login"}
+        defaultMode={pendingDuration !== null || registerFirst || afterAuth === "billing" ? "register" : "login"}
         firstName={profile.identity.firstName}
         profileReady={pendingDuration !== null || profileHasContent}
         onSuccess={finishAuth}
-        onBack={() => setView(pendingDuration !== null ? "complete" : "landing")}
+        onBack={() => { setAfterAuth(null); setView(pendingDuration !== null ? "complete" : "landing"); }}
+      />
+    );
+  }
+
+  if (view === "billing" && !user) {
+    return (
+      <AuthPage
+        defaultMode={afterAuth === "billing" ? "register" : "login"}
+        firstName={profile.identity.firstName}
+        profileReady={profileHasContent}
+        onSuccess={finishAuth}
+        onBack={() => setView("landing")}
+      />
+    );
+  }
+
+  if (view === "billing" && user) {
+    return (
+      <BillingPage
+        user={user}
+        status={billing}
+        planContext={billingPlan}
+        notice={billingNotice}
+        onHome={goHome}
+        onDashboard={() => { setBillingNotice(""); setView("dashboard"); }}
+        onOpenPlan={(id) => { setBillingNotice(""); void openPlan(id); }}
+        onLogout={logout}
+        onRefresh={refreshBilling}
       />
     );
   }
@@ -318,6 +430,9 @@ export default function App() {
       <DashboardPage
         user={user}
         profile={profile}
+        billing={billing}
+        notice={billingNotice}
+        onBilling={() => openBilling()}
         onHome={goHome}
         onEditProfile={() => void editSavedProfile()}
         onOpenPlan={(id) => void openPlan(id)}
@@ -338,6 +453,7 @@ export default function App() {
         onDashboard={() => setView("dashboard")}
         onEditProfile={() => void editSavedProfile()}
         onLogout={logout}
+        onUnlock={() => openBilling({ id: selectedPlan.id, title: selectedPlan.title })}
       />
     );
   }
@@ -346,6 +462,7 @@ export default function App() {
     <LandingPage
       onStart={start}
       onResume={start}
+      onChoosePlus={choosePlus}
       hasDraft={hasStoredDraft && profileHasContent}
       onAccount={() => setView(user ? "dashboard" : "auth")}
       accountLabel={user ? user.firstName || "Mein Bereich" : "Anmelden"}

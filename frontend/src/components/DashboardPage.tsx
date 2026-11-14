@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 import { api, ApiError } from "../api/client";
-import type { AuthUser, PlanListItem } from "../api/types";
+import type { AuthUser, BillingStatus, PlanListItem } from "../api/types";
 import type { TrainingProfile } from "../types";
 import { PRIMARY_GOALS } from "../data/options";
 import { AppHeader } from "./AppHeader";
 import { Icon } from "./Icon";
+import { UpgradeBanner } from "./UpgradeBanner";
 
 interface DashboardPageProps {
   user: AuthUser;
   profile: TrainingProfile;
+  billing: BillingStatus | null;
+  notice?: string;
+  onBilling: () => void;
   onHome: () => void;
   onEditProfile: () => void;
   onOpenPlan: (id: string) => void;
@@ -20,7 +24,7 @@ interface DashboardPageProps {
 
 const formatDate = (value: string) => new Intl.DateTimeFormat("de-CH", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(`${value}T12:00:00`));
 
-export function DashboardPage({ user, profile, onHome, onEditProfile, onOpenPlan, onGenerate, onLogout, generating, generationError }: DashboardPageProps) {
+export function DashboardPage({ user, profile, billing, notice, onBilling, onHome, onEditProfile, onOpenPlan, onGenerate, onLogout, generating, generationError }: DashboardPageProps) {
   const [plans, setPlans] = useState<PlanListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -65,8 +69,16 @@ export function DashboardPage({ user, profile, onHome, onEditProfile, onOpenPlan
             <h1>{user.firstName ? `Hallo ${user.firstName}.` : "Willkommen."} Was möchtest du als Nächstes erreichen?</h1>
             <p>Dein Profil bildet die Grundlage. Jeder neue Trainingsblock wird daraus neu gefiltert und geplant.</p>
           </div>
-          <button type="button" className="button button--ghost" onClick={onEditProfile}><Icon name="edit" size={17} /> Profil bearbeiten</button>
+          <div className="dashboard-welcome__actions">
+            <button type="button" className="button button--soft" onClick={onBilling}>
+              <Icon name={billing?.tier === "plus" ? "check-circle" : "spark"} size={17} /> {billing?.tier === "plus" ? "Plus verwalten" : "Tarife"}
+            </button>
+            <button type="button" className="button button--ghost" onClick={onEditProfile}><Icon name="edit" size={17} /> Profil bearbeiten</button>
+          </div>
         </section>
+
+        {notice && <div className="notice notice--success dashboard-notice"><Icon name="check-circle" size={20} /><div>{notice}</div></div>}
+        {billing && <UpgradeBanner status={billing} onUpgrade={onBilling} />}
 
         <section className="dashboard-grid">
           <article className="profile-card">
@@ -128,7 +140,9 @@ export function DashboardPage({ user, profile, onHome, onEditProfile, onOpenPlan
                 <article className="plan-card" key={plan.id}>
                   <div className="plan-card__top">
                     <span className="plan-card__icon"><Icon name={plan.sportFocus === "strength" ? "dumbbell" : plan.sportFocus === "triathlon" ? "triathlon" : "run"} size={22} /></span>
-                    <span className="status-pill"><i /> {plan.status === "active" ? "aktiv" : plan.status}</span>
+                    {plan.accessLevel === "preview"
+                      ? <span className="status-pill status-pill--preview"><Icon name="lock" size={12} /> Vorschau</span>
+                      : <span className="status-pill"><i /> {plan.status === "active" ? "aktiv" : plan.status}</span>}
                   </div>
                   <small>{plan.durationWeeks} Wochen · {formatDate(plan.startDate)}–{formatDate(plan.endDate)}</small>
                   <h3>{plan.title}</h3>

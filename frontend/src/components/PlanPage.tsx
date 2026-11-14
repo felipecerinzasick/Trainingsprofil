@@ -5,6 +5,7 @@ import type { AuthUser, PlanBlock, PlanRecord, PlanSession } from "../api/types"
 import { AppHeader } from "./AppHeader";
 import { ExerciseDetailModal } from "./ExerciseDetailModal";
 import { Icon } from "./Icon";
+import { UPGRADE_REQUIRED } from "../utils/billing";
 
 const PRINCIPLES_DISMISSED_KEY = "trainingsprofil-principles-dismissed-v1";
 
@@ -35,6 +36,8 @@ interface PlanPageProps {
   onDashboard: () => void;
   onEditProfile: () => void;
   onLogout: () => void;
+  /** Opens the upgrade options (Plus or one-time unlock) for this plan. */
+  onUnlock: () => void;
 }
 
 
@@ -171,8 +174,30 @@ function SessionCard({ session, onOpenExercise }: { session: PlanSession; onOpen
   );
 }
 
-export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onLogout }: PlanPageProps) {
+function LockedWeekPanel({ weekNumber, previewWeeks, totalWeeks, onUnlock }: { weekNumber: number; previewWeeks: number; totalWeeks: number; onUnlock: () => void }) {
+  return (
+    <div className="locked-week">
+      <span className="locked-week__icon"><Icon name="lock" size={26} /></span>
+      <span className="eyebrow">Woche {weekNumber} von {totalWeeks}</span>
+      <h3>Die Vorschau endet nach Woche {previewWeeks}.</h3>
+      <p>
+        Diese Woche ist bereits fertig geplant – mit Einheiten, Übungen und Progression, die auf deinem Profil aufbauen.
+        Schalte den ganzen Block frei: mit Plus für alle deine Pläne oder einmalig nur für diesen Trainingsblock.
+      </p>
+      <div className="locked-week__actions">
+        <button type="button" className="button button--primary" onClick={onUnlock}>Vollständig freischalten <Icon name="arrow-right" size={17} /></button>
+        <small>Plus ab 9,99 € pro Monat · Einzelner Block 24,99 € einmalig</small>
+      </div>
+    </div>
+  );
+}
+
+export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onLogout, onUnlock }: PlanPageProps) {
   const plan = record.plan;
+  const access = record.access;
+  const locked = access.level === "preview";
+  const totalWeeks = access.totalWeeks || plan.durationWeeks;
+  const allWeekNumbers = useMemo(() => Array.from({ length: totalWeeks }, (_, index) => index + 1), [totalWeeks]);
   const [selectedWeek, setSelectedWeek] = useState(1);
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState("");
@@ -188,14 +213,24 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
       return !value;
     });
   };
-  const week = useMemo(() => plan.weeks.find((item) => item.weekNumber === selectedWeek) ?? plan.weeks[0], [plan.weeks, selectedWeek]);
+  const availableWeek = useMemo(() => plan.weeks.find((item) => item.weekNumber === selectedWeek), [plan.weeks, selectedWeek]);
+  const weekLocked = !availableWeek;
+  const week = availableWeek ?? plan.weeks[0];
 
   const download = async () => {
+    if (locked) {
+      onUnlock();
+      return;
+    }
     setDownloading(true);
     setError("");
     try {
       await api.downloadPlanPdf(record.id, plan.title);
     } catch (reason) {
+      if (reason instanceof ApiError && (reason.status === 402 || reason.code === UPGRADE_REQUIRED)) {
+        onUnlock();
+        return;
+      }
       setError(reason instanceof ApiError ? reason.message : "Das PDF konnte nicht erstellt werden.");
     } finally {
       setDownloading(false);
@@ -209,7 +244,7 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
         onHome={onHome}
         onDashboard={onDashboard}
         onLogout={onLogout}
-        action={<button type="button" className="button button--soft button--small" onClick={() => void download()} disabled={downloading}><Icon name="download" size={17} /> {downloading ? "PDF wird erstellt …" : "PDF herunterladen"}</button>}
+        action={<button type="button" className="button button--soft button--small" onClick={() => void download()} disabled={downloading}><Icon name={locked ? "lock" : "download"} size={17} /> {downloading ? "PDF wird erstellt …" : locked ? "PDF mit Plus" : "PDF herunterladen"}</button>}
       />
 
       <main>
@@ -234,6 +269,16 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
                 <p>{plan.qualityChecks.eligibleExercisePool} passende Übungen im gefilterten Pool</p>
               </div>
             </div>
+            {locked && (
+              <div className="plan-preview-banner" role="status">
+                <Icon name="lock" size={19} />
+                <div>
+                  <strong>Vorschau: Woche 1–{access.previewWeeks} von {totalWeeks} sichtbar.</strong>
+                  <span> Der komplette Block mit allen {totalWeeks} Wochen und PDF-Export wartet hinter Plus oder dem einmaligen Freischalten.</span>
+                </div>
+                <button type="button" className="button button--primary button--small" onClick={onUnlock}>Vollständig freischalten <Icon name="arrow-right" size={15} /></button>
+              </div>
+            )}
             {error && <div className="dashboard-error"><Icon name="alert" size={18} />{error}</div>}
           </div>
         </section>
@@ -274,28 +319,51 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
 
         <section className="week-section page-shell">
           <div className="week-section__heading">
-            <div><span className="eyebrow">Wochenplan</span><h2>Woche {week.weekNumber}: {week.theme}</h2><p>{week.coachNote}</p></div>
-            <div className="week-load"><span style={{ "--week-load": `${Math.min(100, Math.round(week.loadFactor * 80))}%` } as CSSProperties} /><small>Zielumfang</small><strong>{week.targetMinutes} Min.</strong></div>
+            {weekLocked ? (
+              <div><span className="eyebrow">Wochenplan</span><h2>Woche {selectedWeek}</h2><p>Diese Woche gehört zum vollständigen Trainingsblock.</p></div>
+            ) : (
+              <>
+                <div><span className="eyebrow">Wochenplan</span><h2>Woche {week.weekNumber}: {week.theme}</h2><p>{week.coachNote}</p></div>
+                <div className="week-load"><span style={{ "--week-load": `${Math.min(100, Math.round(week.loadFactor * 80))}%` } as CSSProperties} /><small>Zielumfang</small><strong>{week.targetMinutes} Min.</strong></div>
+              </>
+            )}
           </div>
 
           <div className="week-tabs" role="tablist" aria-label="Trainingswoche wählen">
-            {plan.weeks.map((item) => (
-              <button key={item.weekNumber} type="button" role="tab" aria-selected={item.weekNumber === week.weekNumber} className={item.weekNumber === week.weekNumber ? "is-active" : ""} onClick={() => setSelectedWeek(item.weekNumber)}>
-                <span>W{item.weekNumber}</span><small>{item.theme}</small>
-              </button>
-            ))}
+            {allWeekNumbers.map((number) => {
+              const item = plan.weeks.find((candidate) => candidate.weekNumber === number);
+              const active = number === selectedWeek;
+              if (!item) {
+                return (
+                  <button key={number} type="button" role="tab" aria-selected={active} className={`is-locked ${active ? "is-active" : ""}`} onClick={() => setSelectedWeek(number)}>
+                    <span><Icon name="lock" size={13} /> W{number}</span><small>Freischalten</small>
+                  </button>
+                );
+              }
+              return (
+                <button key={number} type="button" role="tab" aria-selected={active} className={active ? "is-active" : ""} onClick={() => setSelectedWeek(number)}>
+                  <span>W{number}</span><small>{item.theme}</small>
+                </button>
+              );
+            })}
           </div>
 
-          <div className="week-summary-strip">
-            <span><Icon name="calendar" size={18} /><strong>{week.sessions.length}</strong> Einheiten</span>
-            <span><Icon name="clock" size={18} /><strong>{week.targetMinutes}</strong> Minuten</span>
-            <span><Icon name="pulse" size={18} /><strong>{Math.round(week.loadFactor * 100)}%</strong> Belastungsfaktor</span>
-            <p>{week.recoveryGuidance}</p>
-          </div>
+          {weekLocked ? (
+            <LockedWeekPanel weekNumber={selectedWeek} previewWeeks={access.previewWeeks} totalWeeks={totalWeeks} onUnlock={onUnlock} />
+          ) : (
+            <>
+              <div className="week-summary-strip">
+                <span><Icon name="calendar" size={18} /><strong>{week.sessions.length}</strong> Einheiten</span>
+                <span><Icon name="clock" size={18} /><strong>{week.targetMinutes}</strong> Minuten</span>
+                <span><Icon name="pulse" size={18} /><strong>{Math.round(week.loadFactor * 100)}%</strong> Belastungsfaktor</span>
+                <p>{week.recoveryGuidance}</p>
+              </div>
 
-          <div className="session-list">
-            {week.sessions.map((session) => <SessionCard key={session.id} session={session} onOpenExercise={openExercise} />)}
-          </div>
+              <div className="session-list">
+                {week.sessions.map((session) => <SessionCard key={session.id} session={session} onOpenExercise={openExercise} />)}
+              </div>
+            </>
+          )}
         </section>
 
         <section className="progression-section page-shell">
