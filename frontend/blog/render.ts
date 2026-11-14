@@ -404,6 +404,7 @@ function siteFooter(): string {
       <a href="/">Startseite</a>
       <a href="/blog/">Blog</a>
       <a href="${CHECK_URL}">Trainings-Check</a>
+      <a href="/#rechtliches">Datenschutz &amp; Rechtliches</a>
       <a href="/blog/feed.xml">RSS</a>
     </nav>
   </div>
