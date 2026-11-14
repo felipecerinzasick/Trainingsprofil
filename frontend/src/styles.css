@@ -2438,7 +2438,7 @@ select {
 
 @media (max-width: 420px) {
   .page-shell { width: calc(100% - 24px); }
-  .landing-nav__inner .button svg { display: none; }
+  .landing-nav__inner .button--dark svg { display: none; }
   .landing-nav__inner { gap: 10px; }
   .landing-nav__inner .brand-logo { height: 36px; gap: 5px; }
   .landing-nav__inner .brand-logo__wordmark { font-size: 1.02rem; }
@@ -3469,7 +3469,9 @@ select {
 }
 
 @media (max-width: 820px) {
-  .landing-nav__actions .button--ghost { display: none; }
+  /* Keep the sign-in / profile button on phones, as an icon-only button. */
+  .landing-nav__actions .button--ghost span { display: none; }
+  .landing-nav__actions .button--ghost { padding-inline: 12px; }
   .auth-card { width: 100%; justify-self: center; }
   .dashboard-welcome { align-items: flex-start; flex-direction: column; }
   .plan-hero__content { grid-template-columns: 1fr; }

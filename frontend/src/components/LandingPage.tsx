@@ -103,13 +103,13 @@ export function LandingPage({ user, knownAccount = false, onDashboard, onLogin, 
           </nav>
           <div className="landing-nav__actions">
             {!user && !knownAccount && (
-              <button type="button" className="button button--small button--ghost" onClick={onAccount}>
-                <Icon name="user" size={16} /> {accountLabel ?? "Anmelden"}
+              <button type="button" className="button button--small button--ghost" onClick={onAccount} aria-label={accountLabel ?? "Anmelden"}>
+                <Icon name="user" size={16} /> <span>{accountLabel ?? "Anmelden"}</span>
               </button>
             )}
             {user && (
-              <button type="button" className="button button--small button--ghost" onClick={onEditProfile}>
-                <Icon name="edit" size={16} /> Profil
+              <button type="button" className="button button--small button--ghost" onClick={onEditProfile} aria-label="Profil bearbeiten">
+                <Icon name="edit" size={16} /> <span>Profil</span>
               </button>
             )}
             <button className="button button--small button--dark" onClick={primary.action}>

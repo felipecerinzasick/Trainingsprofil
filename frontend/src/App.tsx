@@ -340,7 +340,12 @@ export default function App() {
 
   const logout = () => {
     authStore.clear();
-    authStore.forgetAccount();
+    // The profile lives in the account; leaving a copy in this browser would show
+    // "Profil fortsetzen" (and the previous person's data) to whoever uses the device next.
+    clearDraft();
+    localStorage.removeItem("trainingsprofil-current-step-v1");
+    setProfile(createEmptyProfile());
+    setHasStoredDraft(false);
     setUser(null);
     setSelectedPlan(null);
     setPendingDuration(null);
