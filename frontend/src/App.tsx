@@ -330,11 +330,17 @@ export default function App() {
         // Keep the locally stored draft as fallback.
       }
     }
+    // A finished profile opens on the overview so people can jump straight to the
+    // section they want to change instead of clicking through all seven steps.
+    if (profileHasContent && profile.consent.dataProcessing) {
+      localStorage.setItem("trainingsprofil-current-step-v1", "6");
+    }
     setView("onboarding");
   };
 
   const logout = () => {
     authStore.clear();
+    authStore.forgetAccount();
     setUser(null);
     setSelectedPlan(null);
     setPendingDuration(null);
@@ -369,7 +375,7 @@ export default function App() {
       <Onboarding
         profile={profile}
         setProfile={setProfile}
-        onExit={() => setView("landing")}
+        onExit={() => setView(user ? "dashboard" : "landing")}
         onComplete={() => void completeProfile()}
       />
     );
@@ -476,6 +482,11 @@ export default function App() {
 
   return (
     <LandingPage
+      user={user}
+      knownAccount={!user && authStore.hasKnownAccount()}
+      onDashboard={() => setView("dashboard")}
+      onLogin={() => setView("auth")}
+      onEditProfile={() => void editSavedProfile()}
       onStart={start}
       onResume={start}
       onChoosePlus={choosePlus}
