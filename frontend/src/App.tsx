@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { api, ApiError, authStore } from "./api/client";
 import type { AuthResponse, AuthUser, BillingStatus, PlanRecord } from "./api/types";
 import { AuthPage } from "./components/AuthPage";
@@ -164,6 +164,18 @@ export default function App() {
     // Route and view are intentionally read only once during initial restoration.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Each view is a separate page from the visitor's point of view: start it at the top.
+  // The very first render keeps the browser's own position so anchor links such as
+  // "#preise" still land on their section.
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [view, selectedPlan]);
 
   useEffect(() => {
     const hash = view === "onboarding"
