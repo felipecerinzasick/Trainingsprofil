@@ -54,29 +54,29 @@ export function Icon({ name, size = 20, ...props }: IconProps) {
     case "heart":
       return <svg {...common}><path d="M20.8 5.8a5 5 0 0 0-7.1 0L12 7.5l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21l8.8-8.1a5 5 0 0 0 0-7.1Z" /></svg>;
     case "dumbbell":
-      return <svg {...common}><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10" /></svg>;
+      return <svg {...common}><path d="M2 12h1M21 12h1M9 12h6" /><path d="M6 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2M18 8h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2" /><rect x="6" y="6" width="3" height="12" rx="1" /><rect x="15" y="6" width="3" height="12" rx="1" /></svg>;
     case "pulse":
       return <svg {...common}><path d="M3 12h4l2-5 4 10 2-5h6" /></svg>;
     case "flag":
       return <svg {...common}><path d="M5 21V4m0 1h11l-2 4 2 4H5" /></svg>;
     case "mobility":
-      return <svg {...common}><circle cx="12" cy="4.5" r="2" /><path d="m8 10 4-2 4 2m-4-2v6m0 0-4 6m4-6 4 6M7 13l5 1 5-1" /></svg>;
+      return <svg {...common}><circle cx="16" cy="5" r="1" /><path d="M5 20l5-.5 1-2" /><path d="M18 20v-5h-5.5l2.5-6.5-5.5 1 1.5 2" /></svg>;
     case "refresh":
       return <svg {...common}><path d="M20 7v5h-5M4 17v-5h5" /><path d="M6.1 8a7 7 0 0 1 11.7-1L20 9M4 15l2.2 2a7 7 0 0 0 11.7-1" /></svg>;
     case "scale":
-      return <svg {...common}><path d="M5 20h14l-1-12H6L5 20Z" /><path d="M9 8a3 3 0 0 1 6 0m-3 0 2-2" /></svg>;
+      return <svg {...common}><path d="M7 20h10M12 3v17M6 6l6-1 6 1" /><path d="M9 12 6 6l-3 6a3 3 0 0 0 6 0ZM21 12l-3-6-3 6a3 3 0 0 0 6 0Z" /></svg>;
     case "run":
-      return <svg {...common}><circle cx="15" cy="4" r="2" /><path d="m12 8 3 2 3 1M12 8 9 12l3 2 2 6m-2-6-5 1-3 4m11-9-2 4" /></svg>;
+      return <svg {...common}><circle cx="13" cy="4" r="1" /><path d="M4 17l5 1 .75-1.5" /><path d="M15 21v-4l-4-3 1-6" /><path d="M7 12V9l5-1 3 3 3 1" /></svg>;
     case "mountain":
-      return <svg {...common}><path d="m3 20 7-12 4 6 2-3 5 9H3Z" /><path d="m8 12 2 1 2-2" /></svg>;
+      return <svg {...common}><path d="M3 20h18L14.08 5.39a2.3 2.3 0 0 0-4.16 0L3 20Z" /><path d="M7.5 11l2 2.5 2.5-2.5 2 3 2.5-2" /></svg>;
     case "bike":
-      return <svg {...common}><circle cx="6" cy="17" r="4" /><circle cx="18" cy="17" r="4" /><path d="m6 17 4-8h4l4 8m-8-8-2-3H5m5 3 4 8H6m8-11h3" /></svg>;
+      return <svg {...common}><circle cx="5" cy="18" r="3" /><circle cx="19" cy="18" r="3" /><circle cx="17" cy="5" r="1" /><path d="M12 19v-4l-3-3 5-4 2 3h3" /></svg>;
     case "swim":
-      return <svg {...common}><path d="M2 15c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 19c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2" /><circle cx="15" cy="6" r="2" /><path d="m5 12 5-4 5 2" /></svg>;
+      return <svg {...common}><circle cx="16" cy="9" r="1" /><path d="M6 11l4-2 3.5 3-1.5 2" /><path d="M3 16.75a2.4 2.4 0 0 0 1 .25 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 1-.25" /></svg>;
     case "triathlon":
-      return <svg {...common}><circle cx="6" cy="17" r="3" /><circle cx="17" cy="17" r="3" /><path d="m6 17 3-6h4l4 6m-8-6-1-2m6-5h.01M13 7l2 2 3 1" /></svg>;
+      return <svg {...common}><circle cx="12" cy="6" r="3" /><circle cx="6" cy="17" r="3" /><circle cx="18" cy="17" r="3" /><path d="M10.5 8.6 7.5 14.2M13.5 8.6l3 5.6M9 17h6" /></svg>;
     case "steps":
-      return <svg {...common}><path d="M4 20h5v-5h5v-5h6V4" /></svg>;
+      return <svg {...common}><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" /><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" /><path d="M16 17h4M4 13h4" /></svg>;
     case "home":
       return <svg {...common}><path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10M9 20v-6h6v6" /></svg>;
     case "building":
