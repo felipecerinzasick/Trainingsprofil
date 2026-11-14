@@ -38,6 +38,8 @@ interface PlanPageProps {
   onLogout: () => void;
   /** Opens the upgrade options (Plus or one-time unlock) for this plan. */
   onUnlock: () => void;
+  /** Opens the general tariff page from the account menu. */
+  onBilling?: () => void;
 }
 
 
@@ -192,7 +194,7 @@ function LockedWeekPanel({ weekNumber, previewWeeks, totalWeeks, onUnlock }: { w
   );
 }
 
-export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onLogout, onUnlock }: PlanPageProps) {
+export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onLogout, onUnlock, onBilling }: PlanPageProps) {
   const plan = record.plan;
   const access = record.access;
   const locked = access.level === "preview";
@@ -243,6 +245,7 @@ export function PlanPage({ user, record, onHome, onDashboard, onEditProfile, onL
         user={user}
         onHome={onHome}
         onDashboard={onDashboard}
+        onBilling={onBilling}
         onLogout={onLogout}
         action={<button type="button" className="button button--soft button--small" onClick={() => void download()} disabled={downloading}><Icon name={locked ? "lock" : "download"} size={17} /> {downloading ? "PDF wird erstellt …" : locked ? "PDF mit Plus" : "PDF herunterladen"}</button>}
       />
