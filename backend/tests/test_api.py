@@ -23,7 +23,9 @@ def auth_headers(client: TestClient) -> dict[str, str]:
     return {"Authorization": f"Bearer {response.json()['accessToken']}"}
 
 
-def test_account_profile_plan_and_pdf_flow(client: TestClient) -> None:
+def test_account_profile_plan_and_pdf_flow(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    # The paywall (preview weeks, PDF behind Plus) is covered in test_billing.py.
+    monkeypatch.setattr("app.services.billing.settings.paywall_enabled", False)
     headers = auth_headers(client)
     profile = load_profile()
 

@@ -33,12 +33,10 @@ services:
           envVarKey: RENDER_EXTERNAL_URL
       - key: TRAINING_PAYWALL_ENABLED
         value: "true"
-      - key: TRAINING_TRIAL_DAYS
-        value: "14"
+      - key: TRAINING_PREVIEW_WEEKS
+        value: "2"
       # Stripe credentials are entered in the Render dashboard, never committed.
       - key: TRAINING_STRIPE_SECRET_KEY
-        sync: false
-      - key: TRAINING_STRIPE_PRICE_ID
         sync: false
       - key: TRAINING_STRIPE_WEBHOOK_SECRET
         sync: false

@@ -15,7 +15,7 @@ from ..schemas.common import MessageResponse
 from ..schemas.plan import GeneratePlanRequest, PlanListItem, PlanRecordOut
 from ..schemas.profile import TrainingProfile
 from ..security import get_current_user
-from ..services.billing import require_active_access
+from ..services import billing
 from ..services.pdf_renderer import render_plan_pdf
 from ..services.plan_engine import generate_training_plan
 from ..services.safety import SafetyGateError
@@ -35,8 +35,9 @@ def _recommended_duration(profile: TrainingProfile) -> int:
     return 4
 
 
-def _list_item(record: TrainingPlanRecord) -> PlanListItem:
+def _list_item(record: TrainingPlanRecord, user: User) -> PlanListItem:
     return PlanListItem(
+        accessLevel=billing.plan_access(user, record).level,
         id=record.id,
         title=record.title,
         goalLabel=record.goal_label,
@@ -50,11 +51,16 @@ def _list_item(record: TrainingPlanRecord) -> PlanListItem:
     )
 
 
-def _record_out(record: TrainingPlanRecord) -> PlanRecordOut:
+def _record_out(record: TrainingPlanRecord, user: User) -> PlanRecordOut:
+    """Serialize a plan; free accounts only receive the preview weeks."""
+
+    access = billing.plan_access(user, record)
+    plan = record.payload if access.level == "full" else billing.preview_payload(record.payload, access.previewWeeks)
     return PlanRecordOut(
-        **_list_item(record).model_dump(),
-        plan=record.payload,
+        **_list_item(record, user).model_dump(),
+        plan=plan,
         profileSnapshot=TrainingProfile.model_validate(record.profile_snapshot),
+        access=access,
     )
 
 
@@ -77,7 +83,7 @@ def _load_saved_profile(db: Session, user_id: str) -> TrainingProfileRecord | No
 @router.post("/generate", response_model=PlanRecordOut, status_code=status.HTTP_201_CREATED)
 def generate_plan(
     request: GeneratePlanRequest,
-    user: User = Depends(require_active_access),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> PlanRecordOut:
     saved_profile = _load_saved_profile(db, user.id)
@@ -145,12 +151,12 @@ def generate_plan(
     db.add(record)
     db.commit()
     db.refresh(record)
-    return _record_out(record)
+    return _record_out(record, user)
 
 
 @router.get("", response_model=list[PlanListItem])
 def list_plans(
-    user: User = Depends(require_active_access),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> list[PlanListItem]:
     records = db.scalars(
@@ -158,25 +164,26 @@ def list_plans(
         .where(TrainingPlanRecord.user_id == user.id)
         .order_by(TrainingPlanRecord.created_at.desc())
     ).all()
-    return [_list_item(record) for record in records]
+    return [_list_item(record, user) for record in records]
 
 
 @router.get("/{plan_id}", response_model=PlanRecordOut)
 def get_plan(
     plan_id: str,
-    user: User = Depends(require_active_access),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> PlanRecordOut:
-    return _record_out(_owned_plan(db, user.id, plan_id))
+    return _record_out(_owned_plan(db, user.id, plan_id), user)
 
 
 @router.get("/{plan_id}/pdf")
 def download_plan_pdf(
     plan_id: str,
-    user: User = Depends(require_active_access),
+    user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> StreamingResponse:
     record = _owned_plan(db, user.id, plan_id)
+    billing.require_plan_unlocked(user, record)
     pdf = render_plan_pdf(record.payload)
     safe_name = re.sub(r"[^a-zA-Z0-9_-]+", "-", record.title).strip("-") or "trainingsplan"
     headers = {"Content-Disposition": f'attachment; filename="{safe_name}.pdf"'}

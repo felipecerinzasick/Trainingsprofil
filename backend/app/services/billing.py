@@ -1,43 +1,87 @@
-"""Trial and subscription paywall.
+"""Pricing model and paywall.
 
-Every account can use the app for free for ``settings.trial_days`` days after
-registration. Afterwards, plan generation and plan access require an active Stripe
-subscription. The subscription state is mirrored onto the ``users`` table by the Stripe
-webhook (and by the checkout completion endpoint), so authorization never has to call
-Stripe on the request path.
+Tiers (see ``Preismodell``):
+
+* **Kostenlos** – account, Trainings-Check and a preview of every plan: the first
+  ``settings.preview_weeks`` weeks. No time limit.
+* **Plus** – 9,99 € / month or 59,99 € / year: complete plans and PDF export.
+* **Einzelner Trainingsblock** – one-time purchase that unlocks a single plan.
+
+Stripe is the source of truth for prices (resolved by lookup key) and for the
+subscription state, which is mirrored onto the ``users`` / ``training_plans`` tables by
+the webhook and by the checkout completion endpoint. Authorization therefore never
+calls Stripe on the request path.
 """
 
 from __future__ import annotations
 
+import copy
 import logging
-import math
+import time
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from typing import Any, Mapping
 
 import stripe
-from fastapi import Depends, HTTPException, status
+from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..config import get_settings
-from ..models import User
-from ..schemas.billing import BillingStatus, PriceInfo
-from ..security import get_current_user
+from ..models import TrainingPlanRecord, User
+from ..schemas.billing import BillingStatus, PriceCatalog, PriceInfo, ProductKey
+from ..schemas.plan import PlanAccess
 
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
 
-# Stripe subscription statuses that keep the account unlocked. ``past_due`` is included
-# so that a single failed card payment does not lock people out while Stripe retries.
+# Stripe subscription statuses that keep Plus unlocked. ``past_due`` is included so that
+# a single failed card payment does not lock people out while Stripe retries.
 ACTIVE_SUBSCRIPTION_STATUSES = frozenset({"active", "trialing", "past_due"})
 
-SUBSCRIPTION_REQUIRED_CODE = "SUBSCRIPTION_REQUIRED"
+UPGRADE_REQUIRED_CODE = "UPGRADE_REQUIRED"
+PRICE_CACHE_SECONDS = 600
 
 
 class StripeNotConfiguredError(RuntimeError):
     pass
+
+
+@dataclass(frozen=True)
+class ProductSpec:
+    key: ProductKey
+    lookup_key: str
+    mode: str  # "subscription" | "payment"
+    fallback: PriceInfo
+
+
+def _products() -> dict[str, ProductSpec]:
+    return {
+        "plus_monthly": ProductSpec(
+            "plus_monthly",
+            settings.stripe_lookup_key_plus_monthly,
+            "subscription",
+            PriceInfo(amount=999, currency="EUR", type="recurring", interval="month"),
+        ),
+        "plus_yearly": ProductSpec(
+            "plus_yearly",
+            settings.stripe_lookup_key_plus_yearly,
+            "subscription",
+            PriceInfo(amount=5999, currency="EUR", type="recurring", interval="year"),
+        ),
+        "single_block": ProductSpec(
+            "single_block",
+            settings.stripe_lookup_key_single_block,
+            "payment",
+            PriceInfo(amount=2499, currency="EUR", type="one_time"),
+        ),
+    }
+
+
+# --------------------------------------------------------------------------------------
+# Helpers
+# --------------------------------------------------------------------------------------
 
 
 def _aware(value: datetime | None) -> datetime | None:
@@ -57,60 +101,6 @@ def _from_timestamp(value: Any) -> datetime | None:
         return None
 
 
-def trial_end(user: User) -> datetime:
-    explicit = _aware(user.trial_ends_at)
-    if explicit is not None:
-        return explicit
-    created = _aware(user.created_at) or datetime.now(timezone.utc)
-    return created + timedelta(days=settings.trial_days)
-
-
-def has_active_subscription(user: User) -> bool:
-    return (user.subscription_status or "") in ACTIVE_SUBSCRIPTION_STATUSES
-
-
-@dataclass(frozen=True)
-class AccessInfo:
-    state: str  # trial | active | expired
-    has_access: bool
-    trial_ends_at: datetime
-    trial_days_left: int
-
-
-def access_for(user: User, now: datetime | None = None) -> AccessInfo:
-    current = now or datetime.now(timezone.utc)
-    ends = trial_end(user)
-    remaining = ends - current
-    days_left = math.ceil(remaining.total_seconds() / 86400) if remaining.total_seconds() > 0 else 0
-
-    if has_active_subscription(user):
-        return AccessInfo("active", True, ends, days_left)
-    if current < ends:
-        return AccessInfo("trial", True, ends, days_left)
-    return AccessInfo("expired", not settings.paywall_enabled, ends, 0)
-
-
-def require_active_access(user: User = Depends(get_current_user)) -> User:
-    """Dependency for endpoints that are only available during the trial or with a subscription."""
-
-    info = access_for(user)
-    if info.has_access:
-        return user
-    raise HTTPException(
-        status_code=status.HTTP_402_PAYMENT_REQUIRED,
-        detail={
-            "code": SUBSCRIPTION_REQUIRED_CODE,
-            "message": "Deine kostenlose Testphase ist abgelaufen. Mit einem Abo kannst du weiter Trainingspläne erstellen und öffnen.",
-            "trialEndsAt": info.trial_ends_at.isoformat(),
-        },
-    )
-
-
-# --------------------------------------------------------------------------------------
-# Stripe gateway. Thin wrappers so tests can monkeypatch a single module.
-# --------------------------------------------------------------------------------------
-
-
 def _plain(value: Any) -> dict[str, Any]:
     """Stripe resources are not dicts; convert them so the rest of the code can use Mapping access."""
 
@@ -119,10 +109,140 @@ def _plain(value: Any) -> dict[str, Any]:
     return dict(value)
 
 
+def _id_of(value: Any) -> str | None:
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return value
+    if isinstance(value, Mapping):
+        identifier = value.get("id")
+        return str(identifier) if identifier else None
+    return str(value)
+
+
 def _ensure_stripe() -> None:
     if not settings.stripe_configured:
         raise StripeNotConfiguredError("Stripe ist nicht konfiguriert.")
     stripe.api_key = settings.stripe_secret_key
+
+
+# --------------------------------------------------------------------------------------
+# Access rules
+# --------------------------------------------------------------------------------------
+
+
+def is_plus(user: User) -> bool:
+    return (user.subscription_status or "") in ACTIVE_SUBSCRIPTION_STATUSES
+
+
+def plan_is_unlocked(user: User, record: TrainingPlanRecord) -> bool:
+    if not settings.paywall_enabled:
+        return True
+    return is_plus(user) or record.unlocked_at is not None
+
+
+def plan_access(user: User, record: TrainingPlanRecord) -> PlanAccess:
+    total = int(record.duration_weeks)
+    if plan_is_unlocked(user, record):
+        return PlanAccess(level="full", previewWeeks=total, totalWeeks=total, unlockedAt=_aware(record.unlocked_at))
+    return PlanAccess(level="preview", previewWeeks=min(settings.preview_weeks, total), totalWeeks=total)
+
+
+def preview_payload(payload: Mapping[str, Any], preview_weeks: int) -> dict[str, Any]:
+    """Return a copy of the plan JSON that only contains the first ``preview_weeks`` weeks."""
+
+    plan = copy.deepcopy(dict(payload))
+    weeks = plan.get("weeks") or []
+    plan["weeks"] = [week for week in weeks if int(week.get("weekNumber", 0)) <= preview_weeks]
+    return plan
+
+
+def require_plan_unlocked(user: User, record: TrainingPlanRecord) -> None:
+    if plan_is_unlocked(user, record):
+        return
+    raise HTTPException(
+        status_code=status.HTTP_402_PAYMENT_REQUIRED,
+        detail={
+            "code": UPGRADE_REQUIRED_CODE,
+            "message": (
+                f"Im kostenlosen Tarif siehst du die ersten {settings.preview_weeks} Wochen als Vorschau. "
+                "Mit Plus oder dem Kauf dieses Trainingsblocks schaltest du den vollständigen Plan und das PDF frei."
+            ),
+            "planId": record.id,
+        },
+    )
+
+
+# --------------------------------------------------------------------------------------
+# Prices
+# --------------------------------------------------------------------------------------
+
+
+_price_cache: dict[str, tuple[float, PriceInfo]] = {}
+# After a failed Stripe call, fall back silently for a while instead of retrying on every request.
+_price_retry_after = 0.0
+PRICE_FAILURE_BACKOFF_SECONDS = 60
+
+
+def _price_from_stripe(price: Mapping[str, Any]) -> PriceInfo:
+    recurring = price.get("recurring") or None
+    return PriceInfo(
+        amount=int(price.get("unit_amount") or 0),
+        currency=str(price.get("currency", "eur")).upper(),
+        type="recurring" if recurring else "one_time",
+        interval=str(recurring.get("interval")) if recurring else None,
+        intervalCount=int((recurring or {}).get("interval_count") or 1),
+        priceId=_id_of(price.get("id")),
+        source="stripe",
+    )
+
+
+def _load_prices() -> None:
+    """Fetch all catalog prices from Stripe in one call; cache successes only."""
+
+    global _price_retry_after
+    if not settings.stripe_configured:
+        return
+    products = _products()
+    now = time.monotonic()
+    if now < _price_retry_after:
+        return
+    if all(spec.lookup_key in _price_cache and _price_cache[spec.lookup_key][0] > now for spec in products.values()):
+        return
+    try:
+        _ensure_stripe()
+        result = _plain(stripe.Price.list(lookup_keys=[spec.lookup_key for spec in products.values()], active=True, limit=10))
+    except Exception as exc:  # noqa: BLE001 - price display must never break the app
+        _price_retry_after = now + PRICE_FAILURE_BACKOFF_SECONDS
+        logger.warning("Stripe prices could not be loaded (using fallback for %ss): %s", PRICE_FAILURE_BACKOFF_SECONDS, exc)
+        return
+    for item in result.get("data") or []:
+        price = _plain(item)
+        lookup_key = price.get("lookup_key")
+        if lookup_key:
+            _price_cache[str(lookup_key)] = (now + PRICE_CACHE_SECONDS, _price_from_stripe(price))
+
+
+def price_for(product_key: str) -> PriceInfo:
+    spec = _products()[product_key]
+    _load_prices()
+    cached = _price_cache.get(spec.lookup_key)
+    if cached is not None:
+        return cached[1]
+    return spec.fallback
+
+
+def price_catalog() -> PriceCatalog:
+    return PriceCatalog(
+        plusMonthly=price_for("plus_monthly"),
+        plusYearly=price_for("plus_yearly"),
+        singleBlock=price_for("single_block"),
+    )
+
+
+# --------------------------------------------------------------------------------------
+# Stripe gateway. Thin wrappers so tests can monkeypatch a single module.
+# --------------------------------------------------------------------------------------
 
 
 def create_customer(user: User) -> str:
@@ -135,21 +255,43 @@ def create_customer(user: User) -> str:
     return str(customer["id"])
 
 
-def create_checkout_session(user: User, customer_id: str) -> str:
+def create_checkout_session(
+    user: User,
+    customer_id: str,
+    product_key: str,
+    plan: TrainingPlanRecord | None = None,
+) -> str:
     _ensure_stripe()
+    spec = _products()[product_key]
+    price = price_for(product_key)
+    if not price.priceId:
+        raise StripeNotConfiguredError(f"Für {product_key} ist in Stripe kein aktiver Preis mit Lookup-Key {spec.lookup_key} hinterlegt.")
+
     base = settings.public_frontend_url
-    session = stripe.checkout.Session.create(
-        mode="subscription",
-        customer=customer_id,
-        line_items=[{"price": settings.stripe_price_id, "quantity": 1}],
-        client_reference_id=user.id,
-        metadata={"user_id": user.id},
-        subscription_data={"metadata": {"user_id": user.id}},
-        allow_promotion_codes=True,
-        customer_update={"address": "auto", "name": "auto"},
-        success_url=f"{base}/?checkout=success&session_id={{CHECKOUT_SESSION_ID}}#konto",
-        cancel_url=f"{base}/?checkout=cancel#abo",
-    )
+    metadata = {"user_id": user.id, "product_key": product_key}
+    params: dict[str, Any] = {
+        "mode": spec.mode,
+        "customer": customer_id,
+        "line_items": [{"price": price.priceId, "quantity": 1}],
+        "client_reference_id": user.id,
+        "allow_promotion_codes": True,
+        "customer_update": {"address": "auto", "name": "auto"},
+    }
+    if spec.mode == "payment":
+        if plan is None:
+            raise ValueError("single_block requires a plan")
+        metadata["plan_id"] = plan.id
+        params["payment_intent_data"] = {"metadata": metadata}
+        params["invoice_creation"] = {"enabled": True}
+        params["success_url"] = f"{base}/?checkout=success&session_id={{CHECKOUT_SESSION_ID}}#plan/{plan.id}"
+        params["cancel_url"] = f"{base}/?checkout=cancel#plan/{plan.id}"
+    else:
+        params["subscription_data"] = {"metadata": metadata}
+        params["success_url"] = f"{base}/?checkout=success&session_id={{CHECKOUT_SESSION_ID}}#konto"
+        params["cancel_url"] = f"{base}/?checkout=cancel#abo"
+    params["metadata"] = metadata
+
+    session = stripe.checkout.Session.create(**params)
     return str(session["url"])
 
 
@@ -178,64 +320,26 @@ def construct_webhook_event(payload: bytes, signature: str | None) -> Mapping[st
     return _plain(stripe.Webhook.construct_event(payload, signature, settings.stripe_webhook_secret))
 
 
-_price_cache: dict[str, PriceInfo] = {}
-
-
-def price_info() -> PriceInfo | None:
-    """Price shown on the paywall. Successful lookups are cached; failures are retried next time."""
-
-    if not settings.stripe_configured:
-        return None
-    price_id = settings.stripe_price_id
-    cached = _price_cache.get(price_id)
-    if cached is not None:
-        return cached
-    try:
-        _ensure_stripe()
-        price = _plain(stripe.Price.retrieve(price_id))
-    except Exception as exc:  # noqa: BLE001 - price display is optional
-        logger.warning("Stripe price %s could not be loaded: %s", price_id, exc)
-        return None
-    recurring = price.get("recurring") or {}
-    amount = price.get("unit_amount")
-    if amount is None:
-        return None
-    info = PriceInfo(
-        amount=int(amount),
-        currency=str(price.get("currency", "chf")).upper(),
-        interval=str(recurring.get("interval", "month")),
-        intervalCount=int(recurring.get("interval_count") or 1),
-    )
-    _price_cache[price_id] = info
-    return info
-
-
 # --------------------------------------------------------------------------------------
-# Applying Stripe state to the user record
+# Applying Stripe state to the database
 # --------------------------------------------------------------------------------------
 
 
 def _period_end(subscription: Mapping[str, Any]) -> datetime | None:
-    # Newer Stripe API versions moved current_period_end from the subscription
-    # onto its items; support both shapes.
+    # Newer Stripe API versions moved current_period_end from the subscription onto
+    # its items; support both shapes.
     value = subscription.get("current_period_end")
     if value is None:
-        items = subscription.get("items") or {}
-        data = items.get("data") if isinstance(items, Mapping) else None
-        if data:
-            value = data[0].get("current_period_end")
+        value = _first_item(subscription).get("current_period_end")
     return _from_timestamp(value)
 
 
-def _id_of(value: Any) -> str | None:
-    if value is None:
-        return None
-    if isinstance(value, str):
-        return value
-    if isinstance(value, Mapping):
-        identifier = value.get("id")
-        return str(identifier) if identifier else None
-    return str(value)
+def _first_item(subscription: Mapping[str, Any]) -> Mapping[str, Any]:
+    items = subscription.get("items") or {}
+    data = items.get("data") if isinstance(items, Mapping) else None
+    if data and isinstance(data[0], Mapping):
+        return data[0]
+    return {}
 
 
 def apply_subscription(user: User, subscription: Mapping[str, Any]) -> None:
@@ -248,18 +352,62 @@ def apply_subscription(user: User, subscription: Mapping[str, Any]) -> None:
     user.subscription_status = str(subscription.get("status") or "") or None
     user.subscription_cancel_at_period_end = bool(subscription.get("cancel_at_period_end", False))
     user.subscription_current_period_end = _period_end(subscription)
+    price = _first_item(subscription).get("price")
+    recurring = price.get("recurring") if isinstance(price, Mapping) else None
+    if isinstance(recurring, Mapping) and recurring.get("interval"):
+        user.subscription_interval = str(recurring["interval"])
 
 
-def find_user_for_subscription(db: Session, subscription: Mapping[str, Any]) -> User | None:
-    metadata = subscription.get("metadata") or {}
-    user_id = metadata.get("user_id") if isinstance(metadata, Mapping) else None
+def unlock_plan(db: Session, user: User, plan_id: str, checkout_session_id: str | None) -> TrainingPlanRecord | None:
+    record = db.scalar(
+        select(TrainingPlanRecord).where(TrainingPlanRecord.id == plan_id, TrainingPlanRecord.user_id == user.id)
+    )
+    if record is None:
+        logger.warning("Paid checkout %s references unknown plan %s for user %s.", checkout_session_id, plan_id, user.id)
+        return None
+    if record.unlocked_at is None:
+        record.unlocked_at = datetime.now(timezone.utc)
+    if checkout_session_id:
+        record.stripe_checkout_session_id = checkout_session_id
+    return record
+
+
+def _user_for(db: Session, *, user_id: Any = None, customer_id: str | None = None) -> User | None:
     if user_id:
         user = db.scalar(select(User).where(User.id == str(user_id)))
         if user is not None:
             return user
-    customer_id = _id_of(subscription.get("customer"))
     if customer_id:
         return db.scalar(select(User).where(User.stripe_customer_id == customer_id))
+    return None
+
+
+def _apply_checkout_session(db: Session, user: User, session: Mapping[str, Any]) -> str | None:
+    """Apply a completed Checkout Session. Returns the unlocked plan id for one-time purchases."""
+
+    customer_id = _id_of(session.get("customer"))
+    if customer_id:
+        user.stripe_customer_id = customer_id
+    metadata = session.get("metadata") or {}
+    mode = session.get("mode")
+
+    if mode == "subscription":
+        subscription = session.get("subscription")
+        if isinstance(subscription, Mapping):
+            apply_subscription(user, subscription)
+        elif subscription:
+            apply_subscription(user, retrieve_subscription(str(subscription)))
+        return None
+
+    if mode == "payment":
+        if session.get("payment_status") not in ("paid", "no_payment_required"):
+            return None
+        plan_id = metadata.get("plan_id") if isinstance(metadata, Mapping) else None
+        if not plan_id:
+            return None
+        record = unlock_plan(db, user, str(plan_id), _id_of(session.get("id")))
+        return record.id if record else None
+
     return None
 
 
@@ -269,28 +417,19 @@ def handle_webhook_event(db: Session, event: Mapping[str, Any]) -> str:
     event_type = str(event.get("type", ""))
     data_object = (event.get("data") or {}).get("object") or {}
 
-    if event_type == "checkout.session.completed":
-        if data_object.get("mode") != "subscription":
-            return "ignored"
-        user_id = data_object.get("client_reference_id") or (data_object.get("metadata") or {}).get("user_id")
-        user = db.scalar(select(User).where(User.id == str(user_id))) if user_id else None
+    if event_type in {"checkout.session.completed", "checkout.session.async_payment_succeeded"}:
+        metadata = data_object.get("metadata") or {}
+        user = _user_for(
+            db,
+            user_id=data_object.get("client_reference_id") or (metadata.get("user_id") if isinstance(metadata, Mapping) else None),
+            customer_id=_id_of(data_object.get("customer")),
+        )
         if user is None:
-            customer_id = _id_of(data_object.get("customer"))
-            if customer_id:
-                user = db.scalar(select(User).where(User.stripe_customer_id == customer_id))
-        if user is None:
-            logger.warning("checkout.session.completed without matching user (session %s).", data_object.get("id"))
+            logger.warning("%s without matching user (session %s).", event_type, data_object.get("id"))
             return "no-user"
-        customer_id = _id_of(data_object.get("customer"))
-        if customer_id:
-            user.stripe_customer_id = customer_id
-        subscription = data_object.get("subscription")
-        if isinstance(subscription, Mapping):
-            apply_subscription(user, subscription)
-        elif subscription:
-            apply_subscription(user, retrieve_subscription(str(subscription)))
+        unlocked = _apply_checkout_session(db, user, data_object)
         db.commit()
-        return "checkout-completed"
+        return "plan-unlocked" if unlocked else "checkout-completed"
 
     if event_type in {
         "customer.subscription.created",
@@ -299,7 +438,12 @@ def handle_webhook_event(db: Session, event: Mapping[str, Any]) -> str:
         "customer.subscription.paused",
         "customer.subscription.resumed",
     }:
-        user = find_user_for_subscription(db, data_object)
+        metadata = data_object.get("metadata") or {}
+        user = _user_for(
+            db,
+            user_id=metadata.get("user_id") if isinstance(metadata, Mapping) else None,
+            customer_id=_id_of(data_object.get("customer")),
+        )
         if user is None:
             logger.warning("%s without matching user (subscription %s).", event_type, data_object.get("id"))
             return "no-user"
@@ -315,11 +459,12 @@ def handle_webhook_event(db: Session, event: Mapping[str, Any]) -> str:
     return "ignored"
 
 
-def complete_checkout_for_user(db: Session, user: User, session_id: str) -> None:
+def complete_checkout_for_user(db: Session, user: User, session_id: str) -> str | None:
     """Called when the browser returns from Stripe Checkout.
 
     The webhook is the source of truth, but it can arrive a few seconds later than the
-    redirect; syncing here makes the dashboard reflect the new subscription immediately.
+    redirect; syncing here makes the app reflect the purchase immediately. Returns the
+    unlocked plan id for one-time purchases.
     """
 
     session = retrieve_checkout_session(session_id)
@@ -327,28 +472,22 @@ def complete_checkout_for_user(db: Session, user: User, session_id: str) -> None
     customer_id = _id_of(session.get("customer"))
     if str(reference or "") != user.id and (not customer_id or customer_id != user.stripe_customer_id):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Diese Zahlung gehört nicht zu deinem Konto.")
-    if customer_id:
-        user.stripe_customer_id = customer_id
-    subscription = session.get("subscription")
-    if isinstance(subscription, Mapping):
-        apply_subscription(user, subscription)
-    elif subscription:
-        apply_subscription(user, retrieve_subscription(str(subscription)))
+    unlocked = _apply_checkout_session(db, user, session)
     db.commit()
+    return unlocked
 
 
 def billing_status(user: User) -> BillingStatus:
-    info = access_for(user)
+    plus = is_plus(user)
     return BillingStatus(
-        accessState=info.state,  # type: ignore[arg-type]
-        hasAccess=info.has_access,
+        tier="plus" if plus else "free",
+        hasFullAccess=plus or not settings.paywall_enabled,
         paywallEnabled=settings.paywall_enabled,
         paymentsConfigured=settings.stripe_configured,
-        trialDays=settings.trial_days,
-        trialEndsAt=info.trial_ends_at,
-        trialDaysLeft=info.trial_days_left,
+        previewWeeks=settings.preview_weeks,
         subscriptionStatus=user.subscription_status,
+        subscriptionInterval=user.subscription_interval,
         cancelAtPeriodEnd=bool(user.subscription_cancel_at_period_end),
         currentPeriodEnd=_aware(user.subscription_current_period_end),
-        price=price_info(),
+        prices=price_catalog(),
     )

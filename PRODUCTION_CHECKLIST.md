@@ -86,8 +86,9 @@ Der aktuelle Code ist ein funktionsfähiger lokaler MVP. Diese Punkte müssen vo
 
 - [ ] Supportprozess und Verantwortlichkeiten definieren.
 - [ ] Haftungs-, Versicherungs- und regulatorische Fragen klären.
-- [x] Abonnement-, Zahlungs- und Rückerstattungslogik getrennt vom Plan-Engine-Kern entwickeln (Stripe-Abo nach 14-tägiger Testphase, `backend/app/services/billing.py`).
-- [ ] Stripe-Live-Schlüssel, Preis-ID und Webhook-Secret im Render-Dashboard hinterlegen und den Webhook-Endpunkt in Stripe registrieren.
+- [x] Abonnement-, Zahlungs- und Rückerstattungslogik getrennt vom Plan-Engine-Kern entwickeln (Kostenlos / Plus / Einzelblock, `backend/app/services/billing.py`).
+- [x] Produkte und Preise in Stripe anlegen (Plus monatlich/jährlich, Einzelner Trainingsblock, Lookup-Keys `trainingsprofil_*`).
+- [ ] Stripe-Live-Schlüssel und Webhook-Secret im Render-Dashboard hinterlegen und den Webhook-Endpunkt in Stripe registrieren.
 - [ ] Preis, Währung, Steuern (Stripe Tax) und Rückerstattungsregeln festlegen; AGB und Widerrufsbelehrung in den Checkout verlinken.
 - [ ] Stripe-Kundenportal aktivieren und Kündigungs-/Zahlungsfehler-E-Mails in Stripe konfigurieren.
 - [ ] Admin-Rollen mit minimalen Berechtigungen definieren.

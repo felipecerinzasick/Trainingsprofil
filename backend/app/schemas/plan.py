@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -23,6 +23,18 @@ class GeneratePlanRequest(BaseModel):
         return value
 
 
+AccessLevel = Literal["full", "preview"]
+
+
+class PlanAccess(BaseModel):
+    """How much of a plan the current user may see."""
+
+    level: AccessLevel
+    previewWeeks: int
+    totalWeeks: int
+    unlockedAt: datetime | None = None
+
+
 class PlanListItem(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -36,11 +48,13 @@ class PlanListItem(BaseModel):
     endDate: date
     durationWeeks: int
     createdAt: datetime
+    accessLevel: AccessLevel = "full"
 
 
 class PlanRecordOut(PlanListItem):
     plan: dict[str, Any]
     profileSnapshot: TrainingProfile
+    access: PlanAccess
 
 
 class PlanGenerationBlocked(BaseModel):

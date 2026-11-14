@@ -5,7 +5,7 @@ import type { TrainingProfile } from "../types";
 import { PRIMARY_GOALS } from "../data/options";
 import { AppHeader } from "./AppHeader";
 import { Icon } from "./Icon";
-import { TrialBanner } from "./TrialBanner";
+import { UpgradeBanner } from "./UpgradeBanner";
 
 interface DashboardPageProps {
   user: AuthUser;
@@ -70,15 +70,15 @@ export function DashboardPage({ user, profile, billing, notice, onBilling, onHom
             <p>Dein Profil bildet die Grundlage. Jeder neue Trainingsblock wird daraus neu gefiltert und geplant.</p>
           </div>
           <div className="dashboard-welcome__actions">
-            {billing?.accessState === "active" && (
-              <button type="button" className="button button--soft" onClick={onBilling}><Icon name="check-circle" size={17} /> Abo verwalten</button>
-            )}
+            <button type="button" className="button button--soft" onClick={onBilling}>
+              <Icon name={billing?.tier === "plus" ? "check-circle" : "spark"} size={17} /> {billing?.tier === "plus" ? "Plus verwalten" : "Tarife"}
+            </button>
             <button type="button" className="button button--ghost" onClick={onEditProfile}><Icon name="edit" size={17} /> Profil bearbeiten</button>
           </div>
         </section>
 
         {notice && <div className="notice notice--success dashboard-notice"><Icon name="check-circle" size={20} /><div>{notice}</div></div>}
-        {billing && <TrialBanner status={billing} onUpgrade={onBilling} />}
+        {billing && <UpgradeBanner status={billing} onUpgrade={onBilling} />}
 
         <section className="dashboard-grid">
           <article className="profile-card">
@@ -140,7 +140,9 @@ export function DashboardPage({ user, profile, billing, notice, onBilling, onHom
                 <article className="plan-card" key={plan.id}>
                   <div className="plan-card__top">
                     <span className="plan-card__icon"><Icon name={plan.sportFocus === "strength" ? "dumbbell" : plan.sportFocus === "triathlon" ? "triathlon" : "run"} size={22} /></span>
-                    <span className="status-pill"><i /> {plan.status === "active" ? "aktiv" : plan.status}</span>
+                    {plan.accessLevel === "preview"
+                      ? <span className="status-pill status-pill--preview"><Icon name="lock" size={12} /> Vorschau</span>
+                      : <span className="status-pill"><i /> {plan.status === "active" ? "aktiv" : plan.status}</span>}
                   </div>
                   <small>{plan.durationWeeks} Wochen · {formatDate(plan.startDate)}–{formatDate(plan.endDate)}</small>
                   <h3>{plan.title}</h3>

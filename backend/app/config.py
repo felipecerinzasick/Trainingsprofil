@@ -32,13 +32,16 @@ class Settings(BaseSettings):
     google_client_id: str = ""
     # Public URL of the frontend; used for Stripe redirects. Falls back to the first CORS origin.
     frontend_url: str = ""
-    # Paywall: every account may use the app for free for this many days after registration.
+    # Paywall. Free accounts see a preview (the first ``preview_weeks`` weeks) of every plan;
+    # full plans and PDFs need Plus or a one-time unlock of the plan.
     paywall_enabled: bool = True
-    trial_days: int = 14
-    # Stripe (subscription paywall). Leave empty to disable checkout; the trial logic still applies.
+    preview_weeks: int = 2
+    # Stripe. Prices are resolved by lookup key so no price IDs have to be configured.
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""
-    stripe_price_id: str = ""
+    stripe_lookup_key_plus_monthly: str = "trainingsprofil_plus_monthly"
+    stripe_lookup_key_plus_yearly: str = "trainingsprofil_plus_yearly"
+    stripe_lookup_key_single_block: str = "trainingsprofil_single_block"
     cors_origins: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: [
             "http://localhost:5173",
@@ -63,7 +66,7 @@ class Settings(BaseSettings):
 
     @property
     def stripe_configured(self) -> bool:
-        return bool(self.stripe_secret_key and self.stripe_price_id)
+        return bool(self.stripe_secret_key)
 
     @field_validator("exercise_database_path", "exercise_media_path", mode="before")
     @classmethod

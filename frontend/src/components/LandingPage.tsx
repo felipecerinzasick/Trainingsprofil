@@ -1,11 +1,18 @@
+import { useEffect, useState } from "react";
+import { api } from "../api/client";
+import type { PriceCatalog } from "../api/types";
+import { FALLBACK_PRICES } from "../utils/billing";
 import { BrandLogo } from "./BrandLogo";
 import { Icon } from "./Icon";
+import { PricingTiers, type BillingInterval } from "./PricingTiers";
 
 interface LandingPageProps {
   onStart: () => void;
   hasDraft: boolean;
   onResume: () => void;
   onAccount: () => void;
+  /** Visitor picked Plus on the landing page: sign in / register, then continue to the subscription page. */
+  onChoosePlus: () => void;
   accountLabel?: string;
 }
 
@@ -46,8 +53,18 @@ function HeroVisual() {
   );
 }
 
-export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLabel }: LandingPageProps) {
+export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePlus, accountLabel }: LandingPageProps) {
   const scrollToHow = () => document.getElementById("so-funktionierts")?.scrollIntoView({ behavior: "smooth" });
+  const [prices, setPrices] = useState<PriceCatalog>(FALLBACK_PRICES);
+  const [interval, setInterval] = useState<BillingInterval>("month");
+
+  useEffect(() => {
+    let cancelled = false;
+    api.getPrices()
+      .then((catalog) => { if (!cancelled) setPrices(catalog); })
+      .catch(() => { /* The pricing sheet values stay as fallback. */ });
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <div className="landing" id="top">
@@ -57,6 +74,7 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
           <nav aria-label="Hauptnavigation">
             <a href="#fuer-wen">Für wen?</a>
             <a href="#so-funktionierts">So funktioniert’s</a>
+            <a href="#preise">Preise</a>
             <a href="#datenschutz">Deine Daten</a>
           </nav>
           <div className="landing-nav__actions">
@@ -237,6 +255,27 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
           </div>
         </section>
 
+        <section className="pricing-section" id="preise">
+          <div className="page-shell">
+            <div className="center-heading">
+              <span className="eyebrow">Preise</span>
+              <h2>Erst ausprobieren, dann entscheiden.</h2>
+              <p>Der Trainings-Check und die ersten zwei Wochen jedes Plans sind kostenlos. Danach wählst du, ob du alle Pläne mit Plus öffnest oder nur einen einzelnen Trainingsblock kaufst.</p>
+            </div>
+            <PricingTiers
+              prices={prices}
+              interval={interval}
+              onIntervalChange={setInterval}
+              onFree={hasDraft ? onResume : onStart}
+              freeLabel={hasDraft ? "Profil fortsetzen" : "Kostenlos starten"}
+              onPlus={onChoosePlus}
+              plusLabel="Plus wählen"
+              singleHint="Nach dem Trainings-Check direkt im Plan freischaltbar."
+            />
+            <p className="pricing-footnote">Preise inkl. MwSt. Zahlung sicher über Stripe. Plus ist monatlich bzw. jährlich kündbar; der Einzelkauf bleibt dauerhaft in deinem Konto.</p>
+          </div>
+        </section>
+
         <section className="privacy-section" id="datenschutz">
           <div className="page-shell privacy-card">
             <div className="privacy-card__icon"><Icon name="lock" size={32} /></div>
@@ -287,7 +326,7 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, accountLab
         <div className="page-shell landing-footer__inner">
           <Brand />
           <p>Trainingsprofil speichert Konto, Profil und Pläne zur Bereitstellung des Dienstes. Trainingshinweise sind allgemeine Empfehlungen und keine medizinische Beratung.</p>
-          <div><a href="/blog/">Blog</a><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
+          <div><a href="/blog/">Blog</a><a href="#preise">Preise</a><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
         </div>
       </footer>
     </div>
