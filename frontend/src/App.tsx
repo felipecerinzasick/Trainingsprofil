@@ -8,6 +8,7 @@ import { CompletePage } from "./components/CompletePage";
 import { DashboardPage } from "./components/DashboardPage";
 import { Icon } from "./components/Icon";
 import { LandingPage } from "./components/LandingPage";
+import { LegalPage } from "./components/LegalPage";
 import { Onboarding } from "./components/Onboarding";
 import { PlanPage } from "./components/PlanPage";
 import type { AppView, TrainingProfile } from "./types";
@@ -32,6 +33,7 @@ function routeFromHash(hash: string): InitialRoute {
   if (hash === "#anmelden") return { view: "auth" };
   if (hash === "#konto") return { view: "dashboard" };
   if (hash === "#abo") return { view: "billing" };
+  if (hash === "#rechtliches" || hash === "#datenschutz" || hash === "#hinweis") return { view: "legal" };
   if (hash.startsWith("#plan/")) return { view: "plan", planId: hash.slice("#plan/".length) };
   return { view: "landing" };
 }
@@ -174,9 +176,11 @@ export default function App() {
             ? "#konto"
             : view === "billing"
               ? "#abo"
-              : view === "plan" && selectedPlan
-                ? `#plan/${selectedPlan.id}`
-                : "";
+              : view === "legal"
+                ? "#rechtliches"
+                : view === "plan" && selectedPlan
+                  ? `#plan/${selectedPlan.id}`
+                  : "";
     // Always rewrite the full path so Stripe's return query parameters disappear.
     window.history.replaceState(null, "", `${window.location.pathname}${hash}`);
 
@@ -188,6 +192,7 @@ export default function App() {
       dashboard: "Meine Trainingspläne · Trainingsprofil",
       plan: selectedPlan ? `${selectedPlan.title} · Trainingsprofil` : "Trainingsplan · Trainingsprofil",
       billing: "Abo · Trainingsprofil",
+      legal: "Datenschutz & Rechtliches · Trainingsprofil",
     };
     document.title = titles[view];
   }, [view, selectedPlan]);
@@ -397,6 +402,17 @@ export default function App() {
     );
   }
 
+  if (view === "legal") {
+    return (
+      <LegalPage
+        user={user}
+        onHome={goHome}
+        onDashboard={() => setView("dashboard")}
+        onLogout={logout}
+      />
+    );
+  }
+
   if (view === "billing" && !user) {
     return (
       <AuthPage
@@ -463,6 +479,7 @@ export default function App() {
       onStart={start}
       onResume={start}
       onChoosePlus={choosePlus}
+      onLegal={() => { setGenerationError(""); setView("legal"); }}
       hasDraft={hasStoredDraft && profileHasContent}
       onAccount={() => setView(user ? "dashboard" : "auth")}
       accountLabel={user ? user.firstName || "Mein Bereich" : "Anmelden"}

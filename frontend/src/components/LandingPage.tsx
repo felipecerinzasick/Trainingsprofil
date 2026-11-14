@@ -13,6 +13,8 @@ interface LandingPageProps {
   onAccount: () => void;
   /** Visitor picked Plus on the landing page: sign in / register, then continue to the subscription page. */
   onChoosePlus: () => void;
+  /** Opens the privacy / legal page. */
+  onLegal: () => void;
   accountLabel?: string;
 }
 
@@ -53,7 +55,7 @@ function HeroVisual() {
   );
 }
 
-export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePlus, accountLabel }: LandingPageProps) {
+export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePlus, onLegal, accountLabel }: LandingPageProps) {
   const scrollToHow = () => document.getElementById("so-funktionierts")?.scrollIntoView({ behavior: "smooth" });
   const [prices, setPrices] = useState<PriceCatalog>(FALLBACK_PRICES);
   const [interval, setInterval] = useState<BillingInterval>("month");
@@ -278,26 +280,16 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
 
         <section className="privacy-section" id="datenschutz">
           <div className="page-shell privacy-card">
-            <div className="privacy-card__icon"><Icon name="lock" size={32} /></div>
+            <div className="privacy-card__icon"><Icon name="lock" size={30} /></div>
             <div className="privacy-card__copy">
-              <span className="eyebrow">Datenschutz und Einordnung</span>
-              <h2>Deine Angaben werden für dein Konto und deine Trainingspläne gespeichert.</h2>
+              <span className="eyebrow">Deine Daten</span>
+              <h2>Gespeichert wird nur, was für dein Konto und deine Pläne nötig ist.</h2>
               <p>
-                Wenn du ein Konto erstellst oder einen Plan generierst, speichern wir deine Kontoangaben, dein Trainingsprofil und deine Trainingspläne in der angebundenen Datenbank. Browser-Entwürfe dienen nur dazu, den Check fortzusetzen, bevor du dich anmeldest.
+                Kontoangaben, dein Trainingsprofil und deine Trainingspläne liegen in der angebundenen Datenbank. Keine Weitergabe zu Werbezwecken, keine Analyse-Dienste. Zahlungen laufen über Stripe; Kartendaten sehen wir nie.
               </p>
-              <div className="privacy-card__legal" id="hinweis">
-                <article>
-                  <strong>Datenschutzerklärung kurz</strong>
-                  <p>Die Daten werden zur Bereitstellung des Trainingsprofils, der Planerstellung, Speicherung im Dashboard und PDF-Ausgabe verarbeitet. Hosting und Datenbank laufen über Render. Eine Weitergabe zu Werbung oder Verkauf findet nicht statt. Du kannst Berichtigung, Export oder Löschung deiner Konto- und Profildaten anfragen.</p>
-                </article>
-                <article>
-                  <strong>Hinweis</strong>
-                  <p>Trainingspläne ersetzen keine medizinische Diagnose, Behandlung oder persönliche Betreuung. Bei Schmerzen, akuten Beschwerden, Schwangerschaft, Vorerkrankungen oder Unsicherheit solltest du vor Trainingsbeginn fachlichen Rat einholen.</p>
-                </article>
-              </div>
-              <p className="privacy-card__fineprint">
-                Diese Hinweise sind eine kompakte MVP-Datenschutzerklärung. Vor öffentlicher Skalierung sollten Impressum, vollständige Datenschutzerklärung, Löschprozess und Support-Kontakt rechtlich finalisiert werden.
-              </p>
+              <button type="button" className="button button--soft privacy-card__link" onClick={onLegal}>
+                Datenschutz &amp; rechtliche Hinweise lesen <Icon name="arrow-right" size={17} />
+              </button>
             </div>
             <div className="privacy-points">
               <span><Icon name="check" size={16} /> serverseitig gespeichert</span>
@@ -326,7 +318,13 @@ export function LandingPage({ onStart, hasDraft, onResume, onAccount, onChoosePl
         <div className="page-shell landing-footer__inner">
           <Brand />
           <p>Trainingsprofil speichert Konto, Profil und Pläne zur Bereitstellung des Dienstes. Trainingshinweise sind allgemeine Empfehlungen und keine medizinische Beratung.</p>
-          <div><a href="/blog/">Blog</a><a href="#preise">Preise</a><a href="#datenschutz">Datenschutzerklärung</a><a href="#hinweis">Disclaimer</a><a href="#top">Nach oben</a></div>
+          <div>
+            <a href="/blog/">Blog</a>
+            <a href="#preise">Preise</a>
+            <button type="button" onClick={onLegal}>Datenschutz</button>
+            <button type="button" onClick={onLegal}>Rechtliche Hinweise</button>
+            <a href="#top">Nach oben</a>
+          </div>
         </div>
       </footer>
     </div>
