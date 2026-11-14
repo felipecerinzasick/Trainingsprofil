@@ -31,6 +31,17 @@ class User(Base):
         DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False
     )
 
+    # Billing. ``trial_ends_at`` is derived from ``created_at`` when NULL; setting it
+    # explicitly allows extending a trial for a single account.
+    trial_ends_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    stripe_customer_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
+    stripe_subscription_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    subscription_status: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    subscription_cancel_at_period_end: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    subscription_current_period_end: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+
     profile: Mapped[TrainingProfileRecord | None] = relationship(
         back_populates="user", cascade="all, delete-orphan", uselist=False
     )

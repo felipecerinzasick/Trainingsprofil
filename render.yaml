@@ -26,6 +26,22 @@ services:
           type: web
           name: trainingsprofil-web
           envVarKey: RENDER_EXTERNAL_URL
+      - key: TRAINING_FRONTEND_URL
+        fromService:
+          type: web
+          name: trainingsprofil-web
+          envVarKey: RENDER_EXTERNAL_URL
+      - key: TRAINING_PAYWALL_ENABLED
+        value: "true"
+      - key: TRAINING_TRIAL_DAYS
+        value: "14"
+      # Stripe credentials are entered in the Render dashboard, never committed.
+      - key: TRAINING_STRIPE_SECRET_KEY
+        sync: false
+      - key: TRAINING_STRIPE_PRICE_ID
+        sync: false
+      - key: TRAINING_STRIPE_WEBHOOK_SECRET
+        sync: false
 
   - type: web
     name: trainingsprofil-web

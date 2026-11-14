@@ -1,5 +1,5 @@
 import type { TrainingProfile } from "../types";
-import type { ApiProblem, AuthResponse, AuthUser, ExerciseDetail, PlanListItem, PlanRecord } from "./types";
+import type { ApiProblem, AuthResponse, AuthUser, BillingStatus, ExerciseDetail, PlanListItem, PlanRecord } from "./types";
 
 const configuredApiUrl = (import.meta.env.VITE_API_URL as string | undefined) ?? "http://127.0.0.1:8000/api";
 const normalizedApiUrl = configuredApiUrl.replace(/\/+$/, "");
@@ -123,6 +123,17 @@ export const api = {
   getPlan: (id: string) => request<PlanRecord>(`/plans/${encodeURIComponent(id)}`),
 
   getExercise: (id: string) => request<ExerciseDetail>(`/exercises/${encodeURIComponent(id)}`, {}, false),
+
+  billingStatus: () => request<BillingStatus>("/billing/status"),
+
+  startCheckout: () => request<{ url: string }>("/billing/checkout", { method: "POST" }),
+
+  completeCheckout: (sessionId: string) => request<BillingStatus>("/billing/checkout/complete", {
+    method: "POST",
+    body: JSON.stringify({ sessionId }),
+  }),
+
+  openBillingPortal: () => request<{ url: string }>("/billing/portal", { method: "POST" }),
 
   deletePlan: (id: string) => request<{ message: string }>(`/plans/${encodeURIComponent(id)}`, { method: "DELETE" }),
 

@@ -30,6 +30,15 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 720
     google_client_id: str = ""
+    # Public URL of the frontend; used for Stripe redirects. Falls back to the first CORS origin.
+    frontend_url: str = ""
+    # Paywall: every account may use the app for free for this many days after registration.
+    paywall_enabled: bool = True
+    trial_days: int = 14
+    # Stripe (subscription paywall). Leave empty to disable checkout; the trial logic still applies.
+    stripe_secret_key: str = ""
+    stripe_webhook_secret: str = ""
+    stripe_price_id: str = ""
     cors_origins: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: [
             "http://localhost:5173",
@@ -46,6 +55,15 @@ class Settings(BaseSettings):
         if isinstance(value, str):
             return [item.strip() for item in value.split(",") if item.strip()]
         return value
+
+    @property
+    def public_frontend_url(self) -> str:
+        base = self.frontend_url.strip() or (self.cors_origins[0] if self.cors_origins else "http://localhost:5173")
+        return base.rstrip("/")
+
+    @property
+    def stripe_configured(self) -> bool:
+        return bool(self.stripe_secret_key and self.stripe_price_id)
 
     @field_validator("exercise_database_path", "exercise_media_path", mode="before")
     @classmethod

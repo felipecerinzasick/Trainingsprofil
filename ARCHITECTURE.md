@@ -28,6 +28,8 @@ Wichtige Bereiche:
 - `frontend/src/components/AuthPage.tsx` – Registrierung und Anmeldung
 - `frontend/src/components/DashboardPage.tsx` – Profilübersicht und Planbibliothek
 - `frontend/src/components/PlanPage.tsx` – formatierte Wochen- und Einheitenansicht
+- `frontend/src/components/BillingPage.tsx` – Paywall nach der Testphase und Abo-Verwaltung
+- `frontend/src/components/TrialBanner.tsx` – Hinweis auf die verbleibenden Testtage
 - `frontend/src/api/client.ts` – HTTP-Client und PDF-Download
 - `frontend/src/api/types.ts` – TypeScript-Typen des Planformats
 
@@ -47,6 +49,8 @@ Wichtige Bereiche:
 - `backend/app/api/auth.py` – Registrierung, Anmeldung und aktueller Benutzer
 - `backend/app/api/profile.py` – Trainingsprofil lesen, speichern und löschen
 - `backend/app/api/plans.py` – Plan erstellen, auflisten, öffnen, löschen und als PDF ausgeben
+- `backend/app/api/billing.py` – Abo-Status, Stripe Checkout, Kundenportal und Webhook
+- `backend/app/services/billing.py` – Testphase, Zugangsprüfung (`require_active_access`) und Spiegelung des Stripe-Abos auf das Benutzerkonto
 - `backend/app/services/safety.py` – medizinische Red Flags und Generierungsfreigabe
 - `backend/app/services/restrictions.py` – Beschwerden in Filter- und Anpassungsregeln übersetzen
 - `backend/app/services/exercise_catalog.py` – Übungsdatenbank laden, Equipment erweitern und Übungen ranken
@@ -106,6 +110,7 @@ TrainingPlan JSON
 - Vorname
 - Aktivstatus
 - Zeitstempel
+- Abo-Felder: optionales Testphasen-Ende, Stripe-Kunden- und Abo-ID, Abo-Status, Kündigung zum Periodenende, Periodenende
 
 ### `training_profiles`
 
@@ -131,6 +136,7 @@ Der Profil-Snapshot ist wichtig: Ein später geändertes Profil verändert berei
 - Pläne werden immer zusätzlich nach `user_id` gefiltert; eine fremde Plan-ID reicht nicht für Zugriff.
 - Die automatische Planerstellung wird bei ausgewählten ungeklärten Red Flags blockiert.
 - Einschränkungen werden sowohl im Übungsfilter als auch als sichtbare Anpassungshinweise berücksichtigt.
+- Plan-Endpunkte sind nach der 14-tägigen Testphase nur mit aktivem Stripe-Abo erreichbar (`402 SUBSCRIPTION_REQUIRED`). Der Abo-Status wird ausschliesslich über signierte Stripe-Webhooks und die serverseitig geprüfte Checkout-Sitzung gesetzt, nie vom Browser.
 
 Für den Produktivbetrieb muss die Token-Strategie auf sichere HttpOnly-Cookies beziehungsweise eine belastbare Session-/Refresh-Token-Architektur umgestellt werden.
 

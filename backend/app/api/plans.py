@@ -15,6 +15,7 @@ from ..schemas.common import MessageResponse
 from ..schemas.plan import GeneratePlanRequest, PlanListItem, PlanRecordOut
 from ..schemas.profile import TrainingProfile
 from ..security import get_current_user
+from ..services.billing import require_active_access
 from ..services.pdf_renderer import render_plan_pdf
 from ..services.plan_engine import generate_training_plan
 from ..services.safety import SafetyGateError
@@ -76,7 +77,7 @@ def _load_saved_profile(db: Session, user_id: str) -> TrainingProfileRecord | No
 @router.post("/generate", response_model=PlanRecordOut, status_code=status.HTTP_201_CREATED)
 def generate_plan(
     request: GeneratePlanRequest,
-    user: User = Depends(get_current_user),
+    user: User = Depends(require_active_access),
     db: Session = Depends(get_db),
 ) -> PlanRecordOut:
     saved_profile = _load_saved_profile(db, user.id)
@@ -149,7 +150,7 @@ def generate_plan(
 
 @router.get("", response_model=list[PlanListItem])
 def list_plans(
-    user: User = Depends(get_current_user),
+    user: User = Depends(require_active_access),
     db: Session = Depends(get_db),
 ) -> list[PlanListItem]:
     records = db.scalars(
@@ -163,7 +164,7 @@ def list_plans(
 @router.get("/{plan_id}", response_model=PlanRecordOut)
 def get_plan(
     plan_id: str,
-    user: User = Depends(get_current_user),
+    user: User = Depends(require_active_access),
     db: Session = Depends(get_db),
 ) -> PlanRecordOut:
     return _record_out(_owned_plan(db, user.id, plan_id))
@@ -172,7 +173,7 @@ def get_plan(
 @router.get("/{plan_id}/pdf")
 def download_plan_pdf(
     plan_id: str,
-    user: User = Depends(get_current_user),
+    user: User = Depends(require_active_access),
     db: Session = Depends(get_db),
 ) -> StreamingResponse:
     record = _owned_plan(db, user.id, plan_id)

@@ -185,6 +185,30 @@ export interface ExerciseDetail {
   media: ExerciseMedia | null;
 }
 
+export type AccessState = "trial" | "active" | "expired";
+
+export interface PriceInfo {
+  /** Amount in the smallest currency unit (e.g. Rappen). */
+  amount: number;
+  currency: string;
+  interval: string;
+  intervalCount: number;
+}
+
+export interface BillingStatus {
+  accessState: AccessState;
+  hasAccess: boolean;
+  paywallEnabled: boolean;
+  paymentsConfigured: boolean;
+  trialDays: number;
+  trialEndsAt: string;
+  trialDaysLeft: number;
+  subscriptionStatus: string | null;
+  cancelAtPeriodEnd: boolean;
+  currentPeriodEnd: string | null;
+  price: PriceInfo | null;
+}
+
 export interface ApiProblem {
   status: number;
   message: string;

@@ -324,9 +324,30 @@ TRAINING_DATABASE_URL=sqlite:///./data/trainingsplan.db
 TRAINING_JWT_SECRET_KEY=replace-with-a-long-random-secret-before-deployment
 TRAINING_ACCESS_TOKEN_EXPIRE_MINUTES=720
 TRAINING_CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
+TRAINING_PAYWALL_ENABLED=true
+TRAINING_TRIAL_DAYS=14
+TRAINING_STRIPE_SECRET_KEY=
+TRAINING_STRIPE_PRICE_ID=
+TRAINING_STRIPE_WEBHOOK_SECRET=
 ```
 
 Für den lokalen Test funktionieren die Defaults. Vor jeder echten Bereitstellung muss mindestens der JWT-Schlüssel ersetzt werden.
+
+### Paywall und Stripe-Abo
+
+Jedes Konto kann die Anwendung ab der Registrierung `TRAINING_TRIAL_DAYS` Tage (Standard: 14) kostenlos nutzen. Danach liefern die Plan-Endpunkte (`/api/plans/...`) den Status `402` mit dem Code `SUBSCRIPTION_REQUIRED`, bis ein Stripe-Abo aktiv ist. Profil, Konto und das Löschen eigener Pläne bleiben immer möglich. Mit `TRAINING_PAYWALL_ENABLED=false` wird die Sperre deaktiviert (z. B. für lokale Tests).
+
+Einrichtung in Stripe:
+
+1. Im Stripe-Dashboard ein Produkt mit einem wiederkehrenden Preis (z. B. monatlich, CHF) anlegen und die Preis-ID (`price_...`) als `TRAINING_STRIPE_PRICE_ID` setzen.
+2. Den geheimen API-Schlüssel (`sk_live_...` bzw. `sk_test_...`) als `TRAINING_STRIPE_SECRET_KEY` setzen.
+3. Unter *Developers → Webhooks* einen Endpunkt auf `https://<api-domain>/api/billing/webhook` anlegen und mindestens diese Events auswählen: `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`. Das Signing Secret (`whsec_...`) als `TRAINING_STRIPE_WEBHOOK_SECRET` setzen.
+4. Das Stripe-Kundenportal (*Settings → Billing → Customer portal*) aktivieren, damit Nutzer Zahlungsmethode und Kündigung selbst verwalten können.
+5. `TRAINING_FRONTEND_URL` auf die öffentliche Frontend-URL setzen (auf Render automatisch verdrahtet); dorthin leitet Stripe nach dem Bezahlen zurück.
+
+Lokal lässt sich der Webhook mit der Stripe CLI testen: `stripe listen --forward-to 127.0.0.1:8000/api/billing/webhook`. Das dabei ausgegebene Secret in `backend/.env` eintragen.
+
+Ablauf im Frontend: Im persönlichen Bereich zeigt ein Banner die verbleibenden Testtage. Nach Ablauf erscheint anstelle des Bereichs die Abo-Seite (`#abo`), die zu Stripe Checkout führt. Nach erfolgreicher Zahlung kehrt der Browser mit `?checkout=success&session_id=...` zurück; das Frontend bestätigt die Sitzung über `POST /api/billing/checkout/complete`, sodass der Zugang sofort frei ist, auch wenn der Webhook noch unterwegs ist.
 
 Einen starken Schlüssel kannst du beispielsweise erzeugen mit:
 
@@ -391,7 +412,8 @@ Render verwendet dabei:
 - `TRAINING_DATABASE_URL` aus der internen Render-Postgres-Verbindung
 - automatisch generierten `TRAINING_JWT_SECRET_KEY`
 - `TRAINING_GOOGLE_CLIENT_ID` für die Anmeldung mit Google
-- automatisch verdrahtete öffentliche URLs für Frontend, API und CORS
+- `TRAINING_STRIPE_SECRET_KEY`, `TRAINING_STRIPE_PRICE_ID` und `TRAINING_STRIPE_WEBHOOK_SECRET` als im Render-Dashboard hinterlegte Secrets (`sync: false`)
+- automatisch verdrahtete öffentliche URLs für Frontend, API, CORS und Stripe-Redirects
 
 ## Blog
 
