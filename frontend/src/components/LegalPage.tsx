@@ -7,6 +7,7 @@ interface LegalPageProps {
   user?: AuthUser | null;
   onHome: () => void;
   onDashboard?: () => void;
+  onBilling?: () => void;
   onLogout?: () => void;
 }
 
@@ -19,7 +20,7 @@ const SECTIONS = [
 ];
 
 /** Static page with the privacy statement, payment terms and the medical disclaimer. */
-export function LegalPage({ user, onHome, onDashboard, onLogout }: LegalPageProps) {
+export function LegalPage({ user, onHome, onDashboard, onBilling, onLogout }: LegalPageProps) {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   // The page is usually opened from the bottom of the landing page; start at the top.
@@ -29,7 +30,7 @@ export function LegalPage({ user, onHome, onDashboard, onLogout }: LegalPageProp
 
   return (
     <div className="legal-page">
-      <AppHeader user={user} onHome={onHome} onDashboard={user ? onDashboard : undefined} onLogout={user ? onLogout : undefined} />
+      <AppHeader user={user} onHome={onHome} onDashboard={user ? onDashboard : undefined} onBilling={user ? onBilling : undefined} onLogout={user ? onLogout : undefined} />
       <main className="legal-main page-shell">
         <header className="legal-hero">
           <button type="button" className="text-button" onClick={onHome}><Icon name="arrow-left" size={17} /> Zur Startseite</button>

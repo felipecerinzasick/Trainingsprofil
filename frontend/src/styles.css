@@ -3496,8 +3496,9 @@ select {
   .app-header__inner { min-height: 68px; }
   .app-header__actions .button--soft { font-size: 0; padding-inline: 13px; }
   .app-header__actions .button--soft svg { margin: 0; }
-  .app-header__actions .button--ghost span,
-  .app-header__logout { display: none; }
+  .app-header__actions .button--ghost span { display: none; }
+  .user-menu__trigger .user-menu__chevron { display: none; }
+  .user-menu__trigger { padding-inline: 13px; }
   .complete-header__actions .button--soft { display: none; }
   .auth-page__header .button { font-size: 0; width: 43px; padding: 0; }
   .auth-page__header .button svg { margin: 0; }
@@ -4165,4 +4166,71 @@ select {
   .privacy-card__icon svg { width: 26px; height: 26px; }
   .process-icon svg { width: 22px; height: 22px; }
   .legal-toc { grid-template-columns: 1fr; }
+}
+
+/* Account menu in the app header */
+
+.user-menu { position: relative; }
+
+.user-menu__trigger { gap: 7px; }
+.user-menu__chevron { transition: transform 160ms ease; }
+.user-menu.is-open .user-menu__chevron { transform: rotate(180deg); }
+
+.user-menu__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  min-width: 230px;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  animation: user-menu-in 140ms ease;
+}
+
+@keyframes user-menu-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.user-menu__identity {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.user-menu__identity strong { color: var(--ink-deep); font-size: .95rem; }
+.user-menu__identity small { color: var(--muted); font-size: .78rem; overflow-wrap: anywhere; }
+
+.user-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 11px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+}
+
+.user-menu__item:hover { background: var(--accent-soft); }
+.user-menu__item svg { color: var(--ink-soft); }
+.user-menu__item--logout { color: var(--danger); }
+.user-menu__item--logout svg { color: var(--danger); }
+.user-menu__item--logout:hover { background: #fff2ef; }
+
+@media (prefers-reduced-motion: reduce) {
+  .user-menu__panel { animation: none; }
 }

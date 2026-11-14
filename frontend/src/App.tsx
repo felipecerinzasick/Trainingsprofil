@@ -414,6 +414,7 @@ export default function App() {
         user={user}
         onHome={goHome}
         onDashboard={() => setView("dashboard")}
+        onBilling={() => openBilling()}
         onLogout={logout}
       />
     );
@@ -476,6 +477,7 @@ export default function App() {
         onEditProfile={() => void editSavedProfile()}
         onLogout={logout}
         onUnlock={() => openBilling({ id: selectedPlan.id, title: selectedPlan.title })}
+        onBilling={() => openBilling()}
       />
     );
   }

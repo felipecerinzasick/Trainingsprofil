@@ -61,7 +61,7 @@ export function DashboardPage({ user, profile, billing, notice, onBilling, onHom
 
   return (
     <div className="dashboard-page">
-      <AppHeader user={user} onHome={onHome} onDashboard={() => undefined} onLogout={onLogout} />
+      <AppHeader user={user} onHome={onHome} onBilling={onBilling} onLogout={onLogout} />
       <main className="dashboard-main page-shell">
         <section className="dashboard-welcome">
           <div>
